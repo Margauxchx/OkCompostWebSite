@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @compost.title %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @compost.address %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @compost.zipcode %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @compost.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @compost.country %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @compost.description %>
+</p>
+
+<p>
+  <strong>Access data:</strong>
+  <%= @compost.access_data %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @compost.image_url %>
+</p>
+
+<p>
+  <strong>Is open:</strong>
+  <%= @compost.is_open %>
+</p>
+
+<p>
+  <strong>Filling:</strong>
+  <%= @compost.filling %>
+</p>
+
+<%= link_to 'Edit', edit_compost_path(@compost) %> |
+<%= link_to 'Back', composts_path %>

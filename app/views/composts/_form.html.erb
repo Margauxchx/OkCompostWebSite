@@ -1,0 +1,67 @@
+<%= form_with(model: compost, local: true) do |form| %>
+  <% if compost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(compost.errors.count, "error") %> prohibited this compost from being saved:</h2>
+
+      <ul>
+      <% compost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipcode %>
+    <%= form.text_field :zipcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :access_data %>
+    <%= form.text_area :access_data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_open %>
+    <%= form.check_box :is_open %>
+  </div>
+
+  <div class="field">
+    <%= form.label :filling %>
+    <%= form.number_field :filling %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

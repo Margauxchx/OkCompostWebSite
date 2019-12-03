@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Composts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Address</th>
+      <th>Zipcode</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Description</th>
+      <th>Access data</th>
+      <th>Image url</th>
+      <th>Is open</th>
+      <th>Filling</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @composts.each do |compost| %>
+      <tr>
+        <td><%= compost.title %></td>
+        <td><%= compost.address %></td>
+        <td><%= compost.zipcode %></td>
+        <td><%= compost.city %></td>
+        <td><%= compost.country %></td>
+        <td><%= compost.description %></td>
+        <td><%= compost.access_data %></td>
+        <td><%= compost.image_url %></td>
+        <td><%= compost.is_open %></td>
+        <td><%= compost.filling %></td>
+        <td><%= link_to 'Show', compost %></td>
+        <td><%= link_to 'Edit', edit_compost_path(compost) %></td>
+        <td><%= link_to 'Destroy', compost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Compost', new_compost_path %>
