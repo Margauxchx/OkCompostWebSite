@@ -1,0 +1,18 @@
+# Define the pipeline stages
+stages:
+  # - test
+  - staging
+
+# Make sure everything is up-to-date before going further
+before_script:
+  - apt-get update -qy # this will produce few output and assume 'yes' to any prompt
+
+deploy_staging:
+  # docker image
+  image: ruby:2.5
+  stage: staging
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+  only:
+    - staging
