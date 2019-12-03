@@ -1,99 +1,86 @@
+<!--ATTRIBUTS NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar bg-dark">
+  <!--ICONE CHAT - URL : https://fontawesome.com/icons/cat?style=solid-->
+  <%= link_to root_path, class: "mr-2" do %>
+  <%= fa_icon "cat 4x" %>
+  <% end %>
+
+  <!--BOUTON BURGER QUI S'AFFICHE SUR PETIT ECRAN-->
+  <button class="navbar-toggler border" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   <!--ATTRIBUTS NAVBAR-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!--ICONE D'ACCUEIL - URL : -->
-    <%= link_to root_path, class: "text-dark mr-2" do %>
-    <%= fa_icon "cat 4x" %>
-    <% end %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <!--BOUTON BURGER QUI S'AFFICHE SUR PETIT ECRAN-->
-    <button class="navbar-toggler border" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!--ATTRIBUTS NAVBAR-->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <!--GROUPE BOUTONS DE GAUCHE-->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <%= link_to "Ok Compost !", root_path, class: "text-dark nav-link mx-2" %>
-        </li>
-      </ul>
+    <!--GROUPE BOUTONS DE GAUCHE-->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Ok Compost", root_path, class: "text nav-link mx-2" %>
+      </li>
+    </ul>
 
 
-      <!-- BARRE DE RECHERCHE - FORME-->
-      <form class="form-inline my-2 my-lg-0 mx-2 w-100">
-        <!-- BARRE DE RECHERCHE - CONTENU-->
-        <input class="form-control mr-sm-2 mx-3 w-75 text-left" type="search" placeholder="Search"
-          aria-label="Search">
-        <!-- BOUTON SEARCH-->
-        <button class="btn btn-secondary my-2 my-sm-0 mx-3" type="submit">Search</button>
-      </form>
+    <!-- BARRE DE RECHERCHE - FORME-->
+    <form class="form-inline my-2 my-lg-0 mx-2 w-100">
+      <!-- BARRE DE RECHERCHE - CONTENU-->
+      <input class="form-control mr-sm-2 mx-3 w-75 text-left" type="search" placeholder="Search"
+        aria-label="Search">
+      <!-- BOUTON SEARCH-->
+      <button class="btn btn-secondary my-2 my-sm-0 mx-3" type="submit">Search</button>
+    </form>
 
 
-      <!--BOUTONS CONNEXION AU COMPTE + PANIER-->
-      <ul class="navbar-nav mr-auto">
+    <!--BOUTONS CONNEXION AU COMPTE + PANIER-->
+    <ul class="navbar-nav mr-auto">
 
-        <!--BOUTONS DE PANIER - url : https://fontawesome.com/icons?d=gallery&q=CART-->
-        <% if user_signed_in? %>
-        <li class="nav-item">
-        <div class="text-center">
-          <%= link_to "#", class: "nav-link" %>
+      <!--COMPTE CONNECTE-->
+      <% if user_signed_in? %>
+
+      <!--BOUTONS DEPLIANT DE CONNEXION AU COMPTE-->
+      <li class="nav-item dropdown">
+        <!--TITRE DU BOUTON -> RESTE TOUJOURS AFFICHE-->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <!-- SI PRENOM RENSEIGNE -->
+          <% if current_user.firstname != nil && current_user.firstname != "" %>
+            <%= current_user.firstname %>
+          <!-- SI PAS DE PRENOM RENSEIGNE -->
+          <% elsif current_user.firstname == nil || current_user.firstname == "" %>
+            <%= current_user.email %>
+          <% end %>
+        </a>
+        <!--BOUTONS QUI SE DEPLIENT-->
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Mon profil", mon_profils_path, class: "dropdown-item" %>
+          <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
-        </li>
-        <% end %>
-
-        <!--BOUTONS POUR ESPACE DE SEPARATION-->
-        <li class="nav-item">
-          <i class="nav-link disabled"></i>
-        </li>
+      </li>
 
 
-        <!--COMPTE CONNECTE-->
-        <% if user_signed_in? %>
+      <!--COMPTE DECONNECTE-->
+      <% else %>
 
-        <!--BOUTONS DEPLIANT DE CONNEXION AU COMPTE-->
-        <li class="nav-item dropdown">
-          <!--TITRE DU BOUTON -> RESTE TOUJOURS AFFICHE-->
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <!-- SI PRENOM RENSEIGNE -->
-            <% if current_user.firstname != nil && current_user.firstname != "" %>
-              <%= current_user.firstname %>
-            <!-- SI PAS DE PRENOM RENSEIGNE -->
-            <% elsif current_user.firstname == nil || current_user.firstname == "" %>
-              <%= current_user.email %>
-            <% end %>
-          </a>
-          <!--BOUTONS QUI SE DEPLIENT-->
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Mon profil", mon_profils_path, class: "dropdown-item" %>
-            <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
+      <!--BOUTONS DEPLIANT DE CONNEXION AU COMPTE-->
+      <li class="nav-item dropdown">
+        <!--TITRE DU BOUTON -> RESTE TOUJOURS AFFICHE-->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Mon compte
+        </a>
+        <!--BOUTONS QUI SE DEPLIENT-->
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "Suivre une commande", new_user_session_path, class: "dropdown-item" %>
+          <span class="glyphicon glyphicon-search"></span>
+        </div>
+      </li>
+      <% end %>
 
-
-        <!--COMPTE DECONNECTE-->
-        <% else %>
-
-        <!--BOUTONS DEPLIANT DE CONNEXION AU COMPTE-->
-        <li class="nav-item dropdown">
-          <!--TITRE DU BOUTON -> RESTE TOUJOURS AFFICHE-->
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Mon compte
-          </a>
-          <!--BOUTONS QUI SE DEPLIENT-->
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
-            <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
-          </div>
-        </li>
-        <% end %>
-
-      </ul> <!--UL DES BOUTONS DE CONNEXION-->
-    </div>
-    <!--DIV DE NAVBAR-->
-  </nav>
+    </ul> <!--UL DES BOUTONS DE CONNEXION-->
+  </div>
+  <!--DIV DE NAVBAR-->
+</nav>
