@@ -49,12 +49,15 @@ ActiveRecord::Schema.define(version: 2019_12_03_110532) do
     t.boolean "is_composter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+=======
+>>>>>>> 6f478b305b25c6a48028c2931557335f8b3cfe56
   end
 
 end
