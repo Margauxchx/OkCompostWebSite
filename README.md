@@ -42,7 +42,11 @@ URL, actions...
 ## Built with
 Ruby, rails, bundler... versions
 Bootstrap, theme... versions
-Gems... versions
+
+### Gems
+General : devise, font-awesome, high-voltage, aws-sdk-s3, act-as-taggable-on
+Development & test : table-print, better errors + binding of caller, rspec rails, faker, facotry bot, dotenv, letter opene
+Test : shoulda matchers + rails controller testing, nyan cat formatter
 
 ## Development setup
 * Commands in code blocks
