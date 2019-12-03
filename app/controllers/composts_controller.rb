@@ -69,6 +69,11 @@ class CompostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def compost_params
-      params.require(:compost).permit(:title, :address, :zipcode, :city, :country, :description, :access_data, :image_url, :is_open, :filling)
+      params.require(:compost).permit(
+        :title, :address, :zipcode, :city,
+        :country, :description, :access_data,
+        :image_url, :is_open, :filling,
+        :district_list, :composition_list
+      )
     end
 end
