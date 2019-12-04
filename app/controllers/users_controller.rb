@@ -10,7 +10,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
+    @user = User.find(params[:id])
+    @composts = @user.owned_composts
+    @contributions = @user.contributions
   end
 
   # GET /users/new
