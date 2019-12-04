@@ -49,3 +49,22 @@
 	height: 100%;
 	align-items: center;
 }
+
+.form-control:focus {
+  border-color: #ADCE4B;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(150, 179, 64, 0.25);
+          box-shadow: 0 0 0 0.2rem rgba(150, 179, 64, 0.25);
+}
+
+.btn-link {
+  color: #8E8C84;
+}
+
+.btn-link:hover {
+  color: #3E3F3A;
+  text-decoration: none;
+}
+
+.input-group-text {
+  background-color: #FFF;
+}
