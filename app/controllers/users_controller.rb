@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :edit]
 
   # GET /users
   # GET /users.json
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
     @composts = @user.owned_composts
     @contributions = @user.contributions
   end
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    current_user_must_own_profile
   end
 
   # POST /users
@@ -73,5 +74,13 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:firstname, :lastname, :username, :email, :address, :zipcode, :city, :country, :avatar_url, :is_composter)
+    end
+
+    # Only owner of profil can edit it
+    def current_user_must_own_profile
+      if current_user.id != @user.id
+        flash[:error] = "Vous n'avez pas accès à l'édition de ce profil"
+        redirect_to user_path(@user.id)
+      end
     end
 end
