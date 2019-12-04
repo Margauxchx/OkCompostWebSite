@@ -5,13 +5,7 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
 
   # 1 - N association with owned_composts (composts), as composter
-<<<<<<< Updated upstream
   has_many :owned_composts, class_name: 'Compost', foreign_key: 'composter_id'
-=======
-  has_many :owned_composts,
-  class_name: 'Compost',
-  foreign_key: 'composter_id'
->>>>>>> Stashed changes
 
   # 1 - N association with contributions, as contributor
   has_many :contributions, foreign_key: 'contributor_id'
