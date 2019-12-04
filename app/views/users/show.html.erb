@@ -8,13 +8,13 @@
         <a href="" data-target="#profil_details" data-toggle="tab" class="nav-link active">Profil</a>
     </li>
     <li class="nav-item">
-        <a href="" data-target="#user_orders" data-toggle="tab" class="nav-link">Mes composts</a>
+        <a href="" data-target="#user_orders" data-toggle="tab" class="nav-link">Composts</a>
     </li>
     <li class="nav-item">
-        <a href="" data-target="#user_orders" data-toggle="tab" class="nav-link">Mes contributions</a>
+        <a href="" data-target="#user_contributions" data-toggle="tab" class="nav-link">Contributions</a>
     </li>
     <li class="nav-item">
-        <a href="" data-target="#user_orders" data-toggle="tab" class="nav-link">Mes messages</a>
+        <a href="" data-target="#user_private_messages" data-toggle="tab" class="nav-link">Messages</a>
     </li>
         </ul>
         <div class="tab-content py-4">
@@ -66,10 +66,46 @@
               <table class="table table-hover table">
                 <thead class='thead-light'>
                   <tr>
-                    <th><h4 class='text-secondary'>N° de commande</h4></th>
-                    <th><h4 class='text-secondary'>Contenu</h4></th>
-                    <th><h4 class='text-secondary'>Montant</h4></th>
-                    <th><h4 class='text-secondary'>Date de commande</h4></th>                    
+                    <th><h4 class='text-secondary'>Nom du compost</h4></th>
+                    <th><h4 class='text-secondary'>Lien</h4></th>                   
+                  </tr>
+                </thead> 
+                <tbody>
+                  <% @composts.each do |compost| %>
+                    <tr>
+                      <th><h3 class='text-secondary'><%= compost.title %></h3></th>
+                      <td><p><%= link_to "Voir ce compost", compost_path(compost.id), class: "btn btn-success" %></p></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div> <!-- /tab-pane -->
+
+            <div class="tab-pane" id="user_contributions">
+              <table class="table table-hover table">
+                <thead class='thead-light'>
+                  <tr>
+                    <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>  
+                    <th><h4 class='text-secondary'>Lien</h4></th>              
+                  </tr>
+                </thead> 
+                <tbody>
+                  <% @contributions.each do |contribution| %>
+                    <tr>
+                      <th><h3 class='text-secondary'><%= contribution.supplied_compost.title %></h3></th>
+                      <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-success" %></p></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div> <!-- /tab-pane -->
+
+            <div class="tab-pane" id="user_private_messages">
+              <table class="table table-hover table">
+                <thead class='thead-light'>
+                  <tr>
+                    <th><h4 class='text-secondary'>Mes messages</h4></th>
+                    <th><h4 class='text-secondary'>Contenu</h4></th>                   
                   </tr>
                 </thead> 
                 <tbody>
