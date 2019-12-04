@@ -2,51 +2,123 @@
   <strong>Firstname:</strong>
   <%= @user.firstname %>
 </p>
+<div class="container">
+  <h1>Bienvenue sur votre profil !</h1>
+</div>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a href="" data-target="#profil_details" data-toggle="tab" class="nav-link active">Profil</a>
+    </li>
+    <li class="nav-item">
+        <a href="" data-target="#user_orders" data-toggle="tab" class="nav-link">Composts</a>
+    </li>
+    <li class="nav-item">
+        <a href="" data-target="#user_contributions" data-toggle="tab" class="nav-link">Contributions</a>
+    </li>
+    <li class="nav-item">
+        <a href="" data-target="#user_private_messages" data-toggle="tab" class="nav-link">Messages</a>
+    </li>
+        </ul>
+        <div class="tab-content py-4">
+            <div class="tab-pane active" id="profil_details">
+              <table class='table table-borderless'>
+                <tbody>
+                  <tr>
+                    <th><h3 class='text-secondary'>Photo de profil</h3></th>
+                    <td><p><%= @user.avatar_url %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Prénom</h3></th>
+                    <td><p><%= @user.firstname %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Nom</h3></th>
+                    <td><p><%= @user.lastname %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Pseudo</h3></th>
+                    <td><p><%= @user.username %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Email</h3></th>
+                    <td><p><%= @user.email %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Adresse</h3></th>
+                    <td><p><%= @user.address %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Code postal</h3></th>
+                    <td><p><%= @user.zipcode %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Ville</h3></th>
+                    <td><p><%= @user.city %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Pays</h3></th>
+                    <td><p><%= @user.country %></p></td>
+                  </tr>
+                </tbody>
+              </table>
+              <% if current_user.id == @user.id %>
+                <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+              <% end %>
+            </div> <!-- /tab-pane -->
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+            <div class="tab-pane" id="user_orders">
+              <table class="table table-hover table">
+                <thead class='thead-light'>
+                  <tr>
+                    <th><h4 class='text-secondary'>Nom du compost</h4></th>
+                    <th><h4 class='text-secondary'>Lien</h4></th>                   
+                  </tr>
+                </thead> 
+                <tbody>
+                  <% @composts.each do |compost| %>
+                    <tr>
+                      <th><h3 class='text-secondary'><%= compost.title %></h3></th>
+                      <td><p><%= link_to "Voir ce compost", compost_path(compost.id), class: "btn btn-success" %></p></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div> <!-- /tab-pane -->
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+            <div class="tab-pane" id="user_contributions">
+              <table class="table table-hover table">
+                <thead class='thead-light'>
+                  <tr>
+                    <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>  
+                    <th><h4 class='text-secondary'>Lien</h4></th>              
+                  </tr>
+                </thead> 
+                <tbody>
+                  <% @contributions.each do |contribution| %>
+                    <tr>
+                      <th><h3 class='text-secondary'><%= contribution.supplied_compost.title %></h3></th>
+                      <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-success" %></p></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div> <!-- /tab-pane -->
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
+            <div class="tab-pane" id="user_private_messages">
+              <table class="table table-hover table">
+                <thead class='thead-light'>
+                  <tr>
+                    <th><h4 class='text-secondary'>Mes messages</h4></th>
+                    <th><h4 class='text-secondary'>Contenu</h4></th>                   
+                  </tr>
+                </thead> 
+                <tbody>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @user.zipcode %>
-</p>
+                </tbody>
+              </table>
+            </div> <!-- /tab-pane -->
+</div><!-- /container -->
 
-<p>
-  <strong>City:</strong>
-  <%= @user.city %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @user.country %>
-</p>
-
-<p>
-  <strong>Avatar url:</strong>
-  <%= @user.avatar_url %>
-</p>
-
-<p>
-  <strong>Is composter:</strong>
-  <%= @user.is_composter %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', root_path %>
