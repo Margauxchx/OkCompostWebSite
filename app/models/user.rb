@@ -11,4 +11,10 @@ class User < ApplicationRecord
   has_many :contributions, foreign_key: 'contributor_id'
   # N - N  association with supplied_composts (composts), via contributions
   has_many :supplied_composts, class_name: 'Compost', source: :supplied_compost
+
+
+  def profile_completion
+    profile_details = [self.email, self.username, self.firstname, self.lastname, self.address, self.zipcode, self.city, self.country]
+    return profile_completion = ( 100*(1 - profile_details.count(nil).to_f/profile_details.length.to_f)).to_i
+  end 
 end
