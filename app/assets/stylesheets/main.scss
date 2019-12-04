@@ -31,3 +31,21 @@
 .bg-light {
   background-color: #FFF !important;
 }
+
+.jumbotron {
+	background-image: url("vegetables.jpg");
+	background-size: cover;
+	background-position: center;
+    position:relative;
+    min-width:100%;
+    height:100vh;
+}
+
+#jumbotron-title {
+	color: white;
+}
+
+#jumbotron-row {
+	height: 100%;
+	align-items: center;
+}
