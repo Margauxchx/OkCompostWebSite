@@ -59,7 +59,9 @@
                   </tr>
                 </tbody>
               </table>
-              <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+              <% if current_user.id == @user.id %>
+                <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+              <% end %>
             </div> <!-- /tab-pane -->
 
             <div class="tab-pane" id="user_orders">
