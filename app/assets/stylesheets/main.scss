@@ -1,0 +1,51 @@
+.btn-primary {
+  color: #fff;
+  background-color: #ADCE4B;
+  border-color: #ADCE4B;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #96B340;
+  border-color: #96B340;
+}
+
+.badge-primary {
+  background-color: #ADCE4B;
+}
+
+.border-primary {
+  border-color: #ADCE4B !important;
+}
+
+.progress-bar {
+  color: #ADCE4B;
+  background-color: #ADCE4B;
+
+}
+
+.alert-primary, .alert-primary > th, .alert-primary > td {
+  background-color: #ADCE4B;
+}
+
+.bg-light {
+  background-color: #FFF !important;
+}
+
+.jumbotron {
+	background-image: url("vegetables.jpg");
+	background-size: cover;
+	background-position: center;
+    position:relative;
+    min-width:100%;
+    height:100vh;
+}
+
+#jumbotron-title {
+	color: white;
+}
+
+#jumbotron-row {
+	height: 100%;
+	align-items: center;
+}
