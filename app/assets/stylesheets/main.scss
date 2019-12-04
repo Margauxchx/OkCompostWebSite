@@ -32,21 +32,20 @@
   background-color: #FFF !important;
 }
 
-.form-control:focus {
-  border-color: #ADCE4B;
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(150, 179, 64, 0.25);
-          box-shadow: 0 0 0 0.2rem rgba(150, 179, 64, 0.25);
+.jumbotron {
+	background-image: url("vegetables.jpg");
+	background-size: cover;
+	background-position: center;
+    position:relative;
+    min-width:100%;
+    height:100vh;
 }
 
-.btn-link {
-  color: #8E8C84;
+#jumbotron-title {
+	color: white;
 }
 
-.btn-link:hover {
-  color: #3E3F3A;
-  text-decoration: none;
-}
-
-.input-group-text {
-  background-color: #FFF;
+#jumbotron-row {
+	height: 100%;
+	align-items: center;
 }
