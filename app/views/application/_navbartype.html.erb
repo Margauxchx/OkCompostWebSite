@@ -35,7 +35,7 @@
             Mon profil
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Mon profil", user_path(params[:id], class: "dropdown-item" %>
+            <%= link_to "Mon profil", user_path(current_user.id), class: "dropdown-item" %>
             <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         <% else %>
@@ -43,9 +43,10 @@
             Mon profil
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Mon profil", user_path(params[:id], class: "dropdown-item" %>
+            <%= link_to "Mon profil", user_path(current_user.id), class: "dropdown-item" %>
             <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
+        <% end %>
       </li>
 
       <% if current_user%>
