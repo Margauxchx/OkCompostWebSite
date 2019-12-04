@@ -13,16 +13,9 @@
   <body>
 
     <%= render "application/navbartype" %>
-    <br>
 
 
     <header>
-      <% if current_user%>
-        <%= link_to "déconnexion", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "connexion", new_user_session_path %>
-        <%= link_to "inscription", new_user_registration_path %>
-      <% end %>
     </header>
 
 
