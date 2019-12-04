@@ -13,7 +13,7 @@
         puts '*' * 40 + "\n \n"
     
         models_list = [
-        User, Compost
+        User, Compost, Contribution
         ]
     
         models_list.each do |model|
@@ -35,42 +35,7 @@
   #####################
   #####################
   # PLANT THE SEEDS...
-  
-  # ----------
-  def compost_seed
-    zipcode_list = [75001, 75002, 75003, 75004, 75005, 75006, 75007, 75008, 75009, 75010, 75011, 75012, 75013, 75014, 75015, 75016, 75017, 75018, 75019, 75020]
-    picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
-    picture_path = "compost_pictures/" + picture_file_name
-    new_compost = Compost.create!(
-      title: Faker::Food.vegetables + Faker::Music.genre,
-      address: Faker::Address.street_address,
-      zipcode: zipcode_list.sample.to_s,
-      city: 'Paris',
-      country: 'France',
-      description: 'no data',
-      access_data: 'no data',
-      image_url: picture_path,
-      is_open: true,
-      filling: rand(1..10)*10
-    )
-#     picture_file_name = 'snowboard_' + (format '%03d', rand(1..16)) + '.jpg'
-#     picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
-#     new_compost.picture.attach(
-#       io: File.open(picture_path),
-#       filename: picture_file_name,
-#       content_type: "image/jpg"
-#       )
-  end
-  
-  def composts_seed
-    puts "Seeding composts"
-    5.times do
-      compost_seed
-    end
-    puts Compost.all.size.to_s + ' composts created'
-  end
-  # ----------
-  
+
   # ----------
   def main_user_seed
     User.create!(
@@ -112,8 +77,67 @@
     end
     puts (User.all.size - 2).to_s + ' random users created'
   end
+  # ----------
+
   
   # ----------
+  def compost_seed(user)
+    zipcode_list = []
+    19.times { |district| zipcode_list << (format '%03d', (district + 1)) }
+    picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
+    picture_path = "compost_pictures/" + picture_file_name
+    user.owned_composts.create!(
+      title: Faker::Food.vegetables + Faker::Music.genre,
+      address: Faker::Address.street_address,
+      zipcode: zipcode_list.sample,
+      city: 'Paris',
+      country: 'France',
+      description: 'no data',
+      access_data: 'no data',
+      image_url: picture_path,
+      is_open: true,
+      filling: rand(1..10)*10
+    )
+#     picture_file_name = 'snowboard_' + (format '%03d', rand(1..16)) + '.jpg'
+#     picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
+#     new_compost.picture.attach(
+#       io: File.open(picture_path),
+#       filename: picture_file_name,
+#       content_type: "image/jpg"
+#       )
+  end
+  
+  def composts_seed
+    puts "Seeding composts"
+    10.times do
+      compost_seed(User.all.sample)
+    end
+    puts Compost.all.size.to_s + ' composts created'
+  end
+  # ----------
+  
+
+  # ----------
+  def contribution_seed(user)
+    my_composts = user.owned_composts.ids
+    all_composts_but_mines = Compost.all.ids - my_composts
+
+    rand(1..5).times do
+      user.contributions.create!(
+        supplied_compost_id: all_composts_but_mines.sample
+      )
+    end
+  end
+
+  def contributions_seed
+    puts "Seeding contributions"
+    User.all.each do |user|
+      contribution_seed(user)
+    end
+    puts "#{Contribution.all.size} contributions created"
+  end
+  # ----------
+  
   
   #####################
   #####################
@@ -123,9 +147,12 @@
     database_cleanup
     # puts
     puts "Beginning seed \n \n"
+    users_seed
+    puts
     composts_seed
     puts
-    users_seed
+    contributions_seed
+    puts
     puts
     puts '*' * 40
     puts "Seeding complete"

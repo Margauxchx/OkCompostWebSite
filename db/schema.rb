@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_112938) do
   enable_extension "plpgsql"
 
   create_table "composts", force: :cascade do |t|
+    t.bigint "composter_id"
     t.string "title"
     t.string "address"
     t.string "zipcode"
@@ -28,12 +29,17 @@ ActiveRecord::Schema.define(version: 2019_12_03_112938) do
     t.integer "filling"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["composter_id"], name: "index_composts_on_composter_id"
   end
 
   create_table "contributions", force: :cascade do |t|
+    t.bigint "contributor_id"
+    t.bigint "supplied_compost_id"
     t.datetime "contribution_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["contributor_id"], name: "index_contributions_on_contributor_id"
+    t.index ["supplied_compost_id"], name: "index_contributions_on_supplied_compost_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
