@@ -40,11 +40,11 @@
           </div>
         <% else %>
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Mon profil
+            M'identifier
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Mon profil", user_path(current_user.id), class: "dropdown-item" %>
-            <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Me connecter", new_user_session_path, class: "dropdown-item" %>
+            <%= link_to "M'inscrire", new_user_registration_path, method: :delete, class: "dropdown-item" %>
           </div>
         <% end %>
       </li>
