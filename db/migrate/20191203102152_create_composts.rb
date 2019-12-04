@@ -1,6 +1,9 @@
 class CreateComposts < ActiveRecord::Migration[5.2]
   def change
     create_table :composts do |t|
+      # N - 1 association with composters
+      t.belongs_to :composter, index: true
+
       t.string :title
       t.string :address
       t.string :zipcode

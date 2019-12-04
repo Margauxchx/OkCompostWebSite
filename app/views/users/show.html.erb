@@ -1,54 +1,82 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>Bienvenue sur votre profil !</h1>
+</div>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @user.firstname %>
-</p>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a href="" data-target="#profil_details" data-toggle="tab" class="nav-link active">Profil</a>
+    </li>
+    <li class="nav-item">
+        <a href="" data-target="#user_orders" data-toggle="tab" class="nav-link">Mes composts</a>
+    </li>
+    <li class="nav-item">
+        <a href="" data-target="#user_orders" data-toggle="tab" class="nav-link">Mes contributions</a>
+    </li>
+    <li class="nav-item">
+        <a href="" data-target="#user_orders" data-toggle="tab" class="nav-link">Mes messages</a>
+    </li>
+        </ul>
+        <div class="tab-content py-4">
+            <div class="tab-pane active" id="profil_details">
+              <table class='table table-borderless'>
+                <tbody>
+                  <tr>
+                    <th><h3 class='text-secondary'>Photo de profil</h3></th>
+                    <td><p><%= @user.avatar_url %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Prénom</h3></th>
+                    <td><p><%= @user.firstname %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Nom</h3></th>
+                    <td><p><%= @user.lastname %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Pseudo</h3></th>
+                    <td><p><%= @user.username %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Email</h3></th>
+                    <td><p><%= @user.email %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Adresse</h3></th>
+                    <td><p><%= @user.address %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Code postal</h3></th>
+                    <td><p><%= @user.zipcode %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Ville</h3></th>
+                    <td><p><%= @user.city %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h3 class='text-secondary'>Pays</h3></th>
+                    <td><p><%= @user.country %></p></td>
+                  </tr>
+                </tbody>
+              </table>
+              <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+            </div> <!-- /tab-pane -->
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
+            <div class="tab-pane" id="user_orders">
+              <table class="table table-hover table">
+                <thead class='thead-light'>
+                  <tr>
+                    <th><h4 class='text-secondary'>N° de commande</h4></th>
+                    <th><h4 class='text-secondary'>Contenu</h4></th>
+                    <th><h4 class='text-secondary'>Montant</h4></th>
+                    <th><h4 class='text-secondary'>Date de commande</h4></th>                    
+                  </tr>
+                </thead> 
+                <tbody>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+                </tbody>
+              </table>
+            </div> <!-- /tab-pane -->
+</div><!-- /container -->
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Zipcode:</strong>
-  <%= @user.zipcode %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @user.city %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @user.country %>
-</p>
-
-<p>
-  <strong>Avatar url:</strong>
-  <%= @user.avatar_url %>
-</p>
-
-<p>
-  <strong>Is composter:</strong>
-  <%= @user.is_composter %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', root_path %>
