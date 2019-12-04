@@ -28,5 +28,8 @@
 # Ignore credential to avoid messing with everything
 /config/credentials.yml.enc
 
+#Ignore commented username and password settings for production env
+/config/database.yml
+
 # Ignore .env file
 /.env
