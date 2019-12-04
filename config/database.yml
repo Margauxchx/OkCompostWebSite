@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: thp-okcompost_production
-  username: thp-okcompost
-  password: <%= ENV['THP-OKCOMPOST_DATABASE_PASSWORD'] %>
+  # username: thp-okcompost
+  # password: <%= ENV['THP-OKCOMPOST_DATABASE_PASSWORD'] %>
