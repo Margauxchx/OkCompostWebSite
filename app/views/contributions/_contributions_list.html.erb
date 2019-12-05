@@ -1,0 +1,25 @@
+<div class="tab-pane" id="contributions_list">
+    <table class="table table-hover table">
+    <thead class='thead-light'>
+        <tr>
+        <th><h4 class='text-secondary'>Contributeur</h4></th>  
+        <th><h4 class='text-secondary'>Date souhaitée</h4></th>  
+        <th><h4 class='text-secondary'>Statut</h4></th>              
+        <th><h4 class='text-secondary'></h4></th>              
+        </tr>
+    </thead> 
+    <tbody>
+        <% @contributions.each do |contribution| %>
+        <tr>
+            <th><h3 class='text-secondary'><%= contribution.contributor.username %></h3></th>
+            <th><h3 class='text-secondary'><%= contribution.contribution_date %></h3></th>
+            <th><h3 class='text-secondary'><%= contribution.status %></h3></th>
+            <td><p>
+                <%= button_to "Accepter", { controller: "contributions", action: "accept", contribution_id: contribution.id }, method: :accept, class: "btn btn-success" %>
+                <%= button_to "Refuser", { controller: "contributions", action: "reject", contribution_id: contribution.id }, method: :reject, class: "btn btn-danger" %>
+            </p></td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div> <!-- /tab-pane -->
