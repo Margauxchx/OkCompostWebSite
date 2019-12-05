@@ -77,6 +77,19 @@
   background-color: #FFF;
 }
 
+.faw {
+  font-family: 'FontAwesome';
+}
+
+.center {
+  text-align: center;
+}
+
+.number-field {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
 .navbar-collapse {
   z-index: 1;
   left: 0;
@@ -92,3 +105,4 @@
   background-clip: padding-box;
   border-radius: 0.25rem;
 }
+
