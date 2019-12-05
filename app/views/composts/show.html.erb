@@ -76,7 +76,8 @@
                 <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %>
                 <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-primary" %>
                 </div><br><br>
-              <%= render 'composts/contribute' %>
+              <%= render 'composts/contribute' %><br><br>
+    <%= render 'contributions/contributions_list' %>
              
   </div>
   <div class="tab-pane fade" id="contributions">
@@ -90,7 +91,7 @@
           <tbody>
             <tr>
               <th><h3 class='text-secondary'></h3>Pseudo</th>
-              <td><p><%=  link_to "Voir le profil", user_path, class: "btn btn-primary" %></p></td>
+              <td><p><%=  link_to "Voir le profil", user_path, class:"btn btn-primary" %></p></td>
             </tr>
 
           </tbody>
@@ -116,36 +117,8 @@
 </div>
 </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @compost.description %>
-</p>
-
-<p>
-  <strong>Access data:</strong>
-  <%= @compost.access_data %>
-</p>
-
-<p>
-  <strong>Image</strong><br/>
-  <%= image_tag 'compost_pictures/compost_002.jpg', size: "200x200" %>
-</p>
-
-<p>
-  <strong>Is open:</strong>
-  <%= @compost.is_open %>
-</p>
-
-<p>
-  <strong>Filling:</strong>
-  <%= @compost.filling %>
-</p>
-
-<%= link_to 'Edit', edit_compost_path(@compost) %> |
-<%= link_to 'Back', composts_path %> 
 
 
-<%= render 'composts/contribute' %>
 <br>
-<%= render 'contributions/contributions_list' %>
+
 
