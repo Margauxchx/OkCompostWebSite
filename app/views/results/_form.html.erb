@@ -14,4 +14,26 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
+  <div class="field">
+    <%= form.label :arrondissement %>
+    <%= form.text_field :district %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.check_box(:composition, {:multiple => true}, "bio", nil) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coquilles %>
+    <%= form.check_box(:composition, {:multiple => true}, "coquilles", nil) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bananes %>
+    <%= form.check_box(:composition, {:multiple => true}, "bananes", nil) %>
+  </div>
+  
+<input type="checkbox" name="product[category_ids][2]" id="product_category_ids_2" value="1">
 <% end %>
