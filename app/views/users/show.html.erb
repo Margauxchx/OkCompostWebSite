@@ -61,6 +61,7 @@
               </table>
               <% if current_user.id == @user.id %>
                 <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+                <%= link_to "Modifier vos paramètres de connexion", edit_user_registration_path, class: "btn btn-warning" %>
               <% end %>
             </div> <!-- /tab-pane -->
 
