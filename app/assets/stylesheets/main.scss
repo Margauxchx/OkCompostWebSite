@@ -76,3 +76,19 @@
 .input-group-text {
   background-color: #FFF;
 }
+
+.navbar-collapse {
+  z-index: 1;
+  left: 0;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem;
+  margin: 0.125rem 0 0;
+  font-size: 0.875rem;
+  color: #3E3F3A;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+}
