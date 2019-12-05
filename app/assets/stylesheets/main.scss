@@ -43,6 +43,7 @@
 
 #jumbotron-title {
 	color: white;
+  font-weight: bold;
 }
 
 #jumbotron-row {
@@ -91,4 +92,12 @@
   background-color: #fff;
   background-clip: padding-box;
   border-radius: 0.25rem;
+}
+
+.title_registration {
+  color: black;
+}
+
+.form-control {
+  font-family: "Fontawesome";
 }
