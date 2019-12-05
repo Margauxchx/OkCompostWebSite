@@ -1,4 +1,46 @@
-<p id="notice"><%= notice %></p>
+<h1>Résultats</h1>
+
+<table class="table table-striped">
+  <thead>
+    <th>Compost ID</th>
+    <th>Compost title</th>
+    <th>Compost district</th>
+    <th>Compost composition</th>
+    <th>Rank</th>
+  </thead>
+
+  <tbody>
+    <% @result.result_lines.each do |result_line| %>
+      <tr>
+        <td><%= result_line.compost.id %></td>
+        <td><%= link_to result_line.compost.title, compost_path(result_line.compost)%></td>
+        <td>
+          <%= link_to result_line.compost.district_list.to_s, {
+            :controller => "results", :action => "create",
+            :result => {
+              :district => result_line.compost.district_list.to_s, :composition => []
+            }
+          },
+          :method => "post" %>
+        
+        <td>
+          <% result_line.compost.composition_list.each do |composition_tag| %>
+            <%= link_to composition_tag.to_s, {
+              :controller => "results", :action => "create",
+              :result => {
+                :district => nil, :composition => [composition_tag.to_s]
+              }
+            },
+            { :method => "post", :class => 'btn btn-outline-warning'} %>
+          <% end %>
+        </td>
+        <td><%= result_line.rank %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_result_path(@result) %> |
 <%= link_to 'Back', results_path %>
