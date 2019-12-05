@@ -4,7 +4,7 @@ class CreateResults < ActiveRecord::Migration[5.2]
       # N -1 association with users
       t.belongs_to :user            
       
-      t.string :district
+      t.string :district, default: ''
       t.string :composition, array: true, default: []
 
       t.timestamps
