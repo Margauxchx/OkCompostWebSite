@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_072540) do
+ActiveRecord::Schema.define(version: 2019_12_05_100411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2019_12_05_072540) do
     t.datetime "contribution_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "message"
+    t.integer "status"
     t.index ["contributor_id"], name: "index_contributions_on_contributor_id"
     t.index ["supplied_compost_id"], name: "index_contributions_on_supplied_compost_id"
   end

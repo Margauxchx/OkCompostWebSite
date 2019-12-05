@@ -2,6 +2,9 @@
   <strong>Firstname:</strong>
   <%= @user.firstname %>
 </p>
+<div class="container">
+  <h1>Bienvenue sur votre profil !</h1>
+</div>
 
 <div class="container">
   <ul class="nav nav-tabs">
@@ -113,40 +116,9 @@
                 </thead> 
                 <tbody>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+                </tbody>
+              </table>
+            </div> <!-- /tab-pane -->
+</div><!-- /container -->
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Zipcode:</strong>
-  <%= @user.zipcode %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @user.city %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @user.country %>
-</p>
-
-<p>
-  <strong>Avatar url:</strong>
-  <%= @user.avatar_url %>
-</p>
-
-<p>
-  <strong>Is composter:</strong>
-  <%= @user.is_composter %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', root_path %>
