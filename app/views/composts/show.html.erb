@@ -62,7 +62,8 @@
                   </tr>
                   <tr>
                     <th><h4 class='text-secondary'>Plan d'accès</h4></th>
-                    <td><p><%= @compost.access_data %></p></td>
+                    <td><p><%= @compost.access_data %>
+                    </p>
                     </tr>
                   <tr>
                     <th><h4 class='text-secondary'>Tags</h4></th>
@@ -89,7 +90,7 @@
           <tbody>
             <tr>
               <th><h3 class='text-secondary'></h3>Pseudo</th>
-              <td><p><%=  link_to "Voir ce compost", compost_path, class: "btn btn-primary" %></p></td>
+              <td><p><%=  link_to "Voir le profil", user_path, class: "btn btn-primary" %></p></td>
             </tr>
 
           </tbody>
