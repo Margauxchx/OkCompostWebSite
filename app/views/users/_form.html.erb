@@ -11,55 +11,56 @@
     </div>
   <% end %>
 
-<div class="row border">
-  <div class="col-sm-6 offset-sm-3 border">
+<div class="row mb-2">
+  <div class="col-sm-6 offset-sm-3">
     <div class="field">
-      <%= form.label :firstname %>
-      <%= form.text_field :firstname, class: "form-control", placeholder:raw("&#xF406;  Prénom"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :firstname, class: "form-control", placeholder:raw("&#xf007;  Prénom") %>
+      <br>
     </div>
 
     <div class="field">
-      <%= form.label :lastname %>
-      <%= form.text_field :lastname, class: "form-control", placeholder:raw("&#xf0E0;  Email"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :lastname, class: "form-control", placeholder:raw("&#xf007;  Nom") %>
+      <br>
     </div>
 
     <div class="field">
-      <%= form.label :username %>
-      <%= form.text_field :username, class: "form-control", placeholder:raw("&#xf0E0;  Email"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :username, class: "form-control", placeholder:raw("&#xf007;  Pseudo") %>
+      <br>
     </div>
 
     <div class="field">
-      <%= form.label :email %>
-      <%= form.text_field :email, class: "form-control", placeholder:raw("&#xf0E0;  Email"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :email, class: "form-control", placeholder:raw("&#xf0E0;  Email") %>
+      <br>
     </div>
 
     <div class="field">
-      <%= form.label :address %>
-      <%= form.text_field :address, class: "form-control", placeholder:raw("&#xf0E0;  Email"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :address, class: "form-control", placeholder:raw("&#xf041;  Adresse") %>
+      <br>
     </div>
 
     <div class="field">
-      <%= form.label :zipcode %>
-      <%= form.text_field :zipcode, class: "form-control", placeholder:raw("&#xf0E0;  Email"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :zipcode, class: "form-control", placeholder:raw("&#xf041;  Code postal") %>
+      <br>
     </div>
 
     <div class="field">
-      <%= form.label :city %>
-      <%= form.text_field :city, class: "form-control", placeholder:raw("&#xf0E0;  Email"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :city, class: "form-control", placeholder:raw("&#xf041;  Ville") %>
+      <br>
     </div>
 
     <div class="field">
-      <%= form.label :country %>
-      <%= form.text_field :country, class: "form-control", placeholder:raw("&#xf0E0;  Email"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :country, class: "form-control", placeholder:raw("&#xf041;  Pays") %>
+      <br>
     </div>
 
     <div class="field">
-      <%= form.label :avatar_url %>
-      <%= form.text_field :avatar_url, class: "form-control", placeholder:raw("&#xf0E0;  Email"), style: "font-family: 'FontAwesome';" %>
+      <%= form.text_field :avatar_url, class: "form-control", placeholder:raw("&#xf030;  Photo de profil") %>
+      <br>
     </div>
 
     <div class="actions">
-      <%= form.submit %>
+      <button class="btn btn-primary">Modifier</button>
+      <br>
     </div>   
   </div>
 </div>
