@@ -6,16 +6,16 @@
       <div class="row text-white ">
         <div class="col-sm-6 offset-sm-3 text-center">
           <br>
-          <h1 class="text-center" style="color:black"> Connectez vous </h1>
+          <h1 class="text-center title_registration"> Connectez vous </h1>
           <br> <br> <br>
           <div class="info-form">
           <div>
-            <%= f.email_field :email, placeholder: raw("&#xf0E0;  Email"), autofocus: true, autocomplete: "email", class:"form-control", style: "font-family: 'FontAwesome';" %>
+            <%= f.email_field :email, placeholder: raw("&#xf0E0;  Email"), autofocus: true, autocomplete: "email", class:"form-control" %>
             </div>
           
           <div>
             <br>
-            <%= f.password_field :password, placeholder: raw("&#xf023;  Mot de passe"), autocomplete: "new-password", class:"form-control", style: "font-family: 'FontAwesome';" %>
+            <%= f.password_field :password, placeholder: raw("&#xf023;  Mot de passe"), autocomplete: "new-password", class:"form-control" %>
           </div>
           <br>
           <% if devise_mapping.rememberable? %>
