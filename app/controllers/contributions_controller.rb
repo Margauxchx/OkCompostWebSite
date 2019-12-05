@@ -10,12 +10,13 @@ class ContributionsController < ApplicationController
     def create
         @contribution = Contribution.new(
             contributor_id: params[:contributor_id], 
-            supplied_compost_id: params[:supplied_compost_id]
+            supplied_compost_id: params[:supplied_compost_id],
+            status: "submitted"
         )
         if @contribution.save!
             @compost.filling += contribution_default_quantity
             @compost.save!
-            flash[:success] = "Ta contrib a bien été créée"
+            flash[:success] = "Ta demande contribution a bien été prise en compte"
             redirect_to compost_path(@compost)
         else
             flash[:danger] = "La contribution n'a pas pu être créée n'a pas pu être créé"
