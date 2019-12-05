@@ -1,5 +1,5 @@
 <div class="container">
-  <br><h1 align=center>Compost <%= @compost.title %></h1>
+  <br><h1 class="center">Compost <%= @compost.title %></h1>
 </div><br>
 
 <div class="container">
@@ -24,11 +24,11 @@
             <div class="card shadow-lg">
               <div class="row banniere">
                 <div class="col-8">
-                   <%= image_tag 'compost_pictures/compost_002.jpg', style:"height: auto;width:100%" %>
+                   <%= image_tag 'compost_pictures/compost_002.jpg', class:"img-tag" %>
                 </div>
                 <div class="col-4 d-flex row flex-column">
                   <div class="container mt-4">
-                    <h3 style="text-transform: uppercase"><bold><%= @compost.title %></bold> </h3><br><br>
+                    <h3 class="h3-up" ><%= @compost.title %> </h3><br><br>
                     <p><strong>Description :</strong></p>
                     <p><%= @compost.description %></p>
                   </div>
@@ -71,10 +71,10 @@
                     <td><p>Tags de contenance</p></td>
                     </tr>
                 </tbody>
-            </table>
-              <div align="center">
-                <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %>
-                <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-primary" %>
+            </table><br>
+              <div class="center">
+                <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %><br>
+                <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-link" %>
                 </div><br><br>
               <%= render 'composts/contribute' %><br><br>
     <%= render 'contributions/contributions_list' %>
