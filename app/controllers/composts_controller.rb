@@ -12,6 +12,7 @@ class CompostsController < ApplicationController
   # GET /composts/1
   # GET /composts/1.json
   def show
+    @contributions = @compost.contributions
   end
 
   # GET /composts/new
