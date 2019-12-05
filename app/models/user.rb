@@ -12,6 +12,8 @@ class User < ApplicationRecord
   # N - N  association with supplied_composts (composts), via contributions
   has_many :supplied_composts, class_name: 'Compost', source: :supplied_compost
 
+  # 1 - N association with results
+  has_many :results    
 
   def profile_completion
     profile_details = [self.email, self.username, self.firstname, self.lastname, self.address, self.zipcode, self.city, self.country]

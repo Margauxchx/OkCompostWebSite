@@ -1,0 +1,48 @@
+<div class= "container">
+  <h1>Résultats</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <th>Compost ID</th>
+      <th>Compost title</th>
+      <th>Compost district</th>
+      <th>Compost composition</th>
+      <th>Rank</th>
+    </thead>
+
+    <tbody>
+      <% @result.result_lines.each do |result_line| %>
+        <tr>
+          <td><%= result_line.compost.id %></td>
+          <td><%= link_to result_line.compost.title, compost_path(result_line.compost), :class => 'btn btn-success' %></td>
+          <td>
+            <%= link_to result_line.compost.district_list.to_s, {
+              :controller => "results", :action => "create",
+              :result => {
+                :district => result_line.compost.district_list.to_s, :composition => []
+              }
+            },
+            :method => "post", :class => 'btn btn-warning' %>
+          
+          <td>
+            <% result_line.compost.composition_list.sort.each do |composition_tag| %>
+              <%= link_to composition_tag.to_s, {
+                :controller => "results", :action => "create",
+                :result => {
+                  :district => nil, :composition => [composition_tag.to_s]
+                }
+              },
+              { :method => "post", :class => 'btn btn-outline-info'} %>
+            <% end %>
+          </td>
+          <td><%= result_line.rank %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <%= link_to 'Nouvelle recherche', root_path, class: 'btn btn-lg btn-info' %>
+</div>
