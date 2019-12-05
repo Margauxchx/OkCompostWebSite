@@ -5,7 +5,9 @@
   <div class="field">
     <%= datetime_field_tag(:contribution_date, Time.current.strftime("%d-%m-%YT%H:%M") ) %>
   </div>
+  <% if current_user%>
     <%= hidden_field_tag(:contributor_id, current_user.id) %>
+  <% end %>
     <%= hidden_field_tag(:supplied_compost_id, @compost.id) %>
 
   <div class="actions">
