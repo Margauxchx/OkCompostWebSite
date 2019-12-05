@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_112938) do
+ActiveRecord::Schema.define(version: 2019_12_05_100411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,29 @@ ActiveRecord::Schema.define(version: 2019_12_03_112938) do
     t.datetime "contribution_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "message"
+    t.integer "status"
     t.index ["contributor_id"], name: "index_contributions_on_contributor_id"
     t.index ["supplied_compost_id"], name: "index_contributions_on_supplied_compost_id"
+  end
+
+  create_table "result_lines", force: :cascade do |t|
+    t.integer "rank", default: 0
+    t.bigint "result_id"
+    t.bigint "compost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compost_id"], name: "index_result_lines_on_compost_id"
+    t.index ["result_id"], name: "index_result_lines_on_result_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "district"
+    t.string "composition", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_results_on_user_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

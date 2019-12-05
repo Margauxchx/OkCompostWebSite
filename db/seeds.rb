@@ -81,15 +81,13 @@
 
   
   # ----------
-  def compost_seed(user)
-    zipcode_list = []
-    19.times { |district| zipcode_list << (format '%03d', (district + 1)) }
+  def compost_seed(user, districts, compositions)
     picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
     picture_path = "compost_pictures/" + picture_file_name
-    user.owned_composts.create!(
+    new_compost = user.owned_composts.create!(
       title: Faker::Food.vegetables + Faker::Music.genre,
       address: Faker::Address.street_address,
-      zipcode: zipcode_list.sample,
+      zipcode: districts.sample,
       city: 'Paris',
       country: 'France',
       description: 'no data',
@@ -98,19 +96,28 @@
       is_open: true,
       filling: rand(1..10)*10
     )
-#     picture_file_name = 'snowboard_' + (format '%03d', rand(1..16)) + '.jpg'
-#     picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
-#     new_compost.picture.attach(
-#       io: File.open(picture_path),
-#       filename: picture_file_name,
-#       content_type: "image/jpg"
-#       )
+    tag_with_district(new_compost)
+    tag_with_composition(new_compost, compositions)
+  end
+
+  def tag_with_district(compost)
+    compost.district_list.add(compost.zipcode)
+    compost.save!()
+  end
+
+  def tag_with_composition(compost, compositions)
+    compost.composition_list.add(compositions.sample(rand(1..4)))
+    compost.save!()
   end
   
   def composts_seed
     puts "Seeding composts"
-    10.times do
-      compost_seed(User.all.sample)
+    zipcodes_list = []
+    19.times { |district| zipcodes_list << (format '%03d', (district + 1)) }
+    composition_tags = ['bio', 'coquilles', 'bananes', 'agrumes']
+
+    50.times do
+      compost_seed(User.all.sample, zipcodes_list, composition_tags)
     end
     puts Compost.all.size.to_s + ' composts created'
   end
@@ -122,7 +129,7 @@
     my_composts = user.owned_composts.ids
     all_composts_but_mines = Compost.all.ids - my_composts
 
-    rand(1..5).times do
+    rand(3..10).times do
       user.contributions.create!(
         supplied_compost_id: all_composts_but_mines.sample
       )
