@@ -1,0 +1,16 @@
+<h1>Contribuer à ce compost</h1>
+<p> Choisis ta date de contribution :</p>
+<%= form_tag contributions_path, method: "post" do %>
+
+  <div class="field">
+    <%= datetime_field_tag(:contribution_date, Time.current.strftime("%d-%m-%YT%H:%M") ) %>
+  </div>
+  <% if current_user%>
+    <%= hidden_field_tag(:contributor_id, current_user.id) %>
+  <% end %>
+    <%= hidden_field_tag(:supplied_compost_id, @compost.id) %>
+
+  <div class="actions">
+    <%= submit_tag "contribuer" %>
+  </div>
+<% end %>
