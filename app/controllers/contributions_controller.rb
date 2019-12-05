@@ -16,8 +16,6 @@ class ContributionsController < ApplicationController
             status: "submitted"
         )
         if @contribution.save!
-            @compost.filling += contribution_default_quantity
-            @compost.save!
             flash[:success] = "Ta demande contribution a bien été prise en compte"
             redirect_to compost_path(@compost)
         else
@@ -28,8 +26,10 @@ class ContributionsController < ApplicationController
 
     def accept
         @contribution = Contribution.find(params[:contribution_id])
-        @compost = @contribution.supplied_compost 
+        @compost = @contribution.supplied_compost
         @contribution.accepted!
+        @compost.filling += contribution_default_quantity
+        @compost.save!
         flash[:success] = "La contribution a bien été acceptée"
         redirect_to compost_path(@compost.id)
     end 
