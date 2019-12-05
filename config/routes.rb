@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :composts
-  resources :contributions
+  resources :contributions do
+    post 'accept'
+    post 'reject'
+  end 
   root to: "composts#index" 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
