@@ -77,6 +77,19 @@
   background-color: #FFF;
 }
 
+.faw {
+  font-family: 'FontAwesome';
+}
+
+.center {
+  text-align: center;
+}
+
+.number-field {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
 .navbar-collapse {
   z-index: 1;
   left: 0;
@@ -104,9 +117,24 @@ body, html {
 
 #main-content {
   padding-bottom: 200px;
+
+.h3-up {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.img-tag {
+  height: auto;
+  width:100%;
+}
+
+.title_registration {
+  color: black;
+
 }
 
 footer {
   position: absolute;
   bottom: 0;
 }
+

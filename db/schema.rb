@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_100411) do
 
   create_table "results", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "district"
+    t.string "district", default: ""
     t.string "composition", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
