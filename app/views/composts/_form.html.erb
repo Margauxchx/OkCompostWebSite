@@ -11,57 +11,62 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+<section id="cover">
+  <div id="cover-caption">
+    <div id="container" class="container">
+      <div class="row text-white ">
+        <div class="col-sm-6 offset-sm-3 text-center">
+          <br>
+          <br><br>
+          <div class="info-form">
+            <div class="form-group">
+              <div class="input-group-prepend faw">
+                <%= form.text_field :title, class:"form-control", placeholder:raw("&#xf035;  Titre")  %>
+              </div> <br>
+               <div class="input-group-prepend faw">
+                <%= form.text_area :description, class:"form-control", placeholder:raw("&#xf039;  description") %>
+              </div><br>
+              <div class="input-group-prepend faw">
+                <%= form.text_field :adress, class:"form-control", placeholder:raw("&#xf041;  Adresse")  %>
+              </div><br>
+              <div class="input-group-prepend faw">
+                <%= form.text_field :zipcode, class:"form-control", placeholder:raw("&#xf041;  Code postal") %>
+              </div><br>
+              <div class="input-group-prepend faw">
+                <%= form.text_field :city, class:"form-control", placeholder:raw("&#xf041;  Ville") %>
+              </div><br>
+              <div class="input-group-prepend faw">
+                <%= form.text_field :country, class:"form-control", placeholder:raw("&#xf041;  Pays") %>
+              </div><br>
+               <div class="input-group-prepend faw">
+                <%= form.text_field :text_date, class:"form-control", placeholder:raw("&#xf05a;  Données d'accès") %>
+              </div><br>
+              <div class="input-group-prepend faw">
+                <%= form.text_field :image_url, class:"form-control", placeholder:raw("&#xf030;  Image") %>
+              </div><br>
+              
+            </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :zipcode %>
-    <%= form.text_field :zipcode %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :access_data %>
-    <%= form.text_area :access_data %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image_url %>
-    <%= form.text_field :image_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_open %>
-    <%= form.check_box :is_open %>
-  </div>
-
-  <div class="field">
-    <%= form.label :filling %>
-    <%= form.number_field :filling %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+        </div>
+        </div>
+      </div>
+      <div>
+        <%= form.label :"Ouvrir le compost aux contributions" %>
+        <%= form.check_box :is_open %>
+      </div>
+      <div>
+        <%= form.label :Remplissage %>
+        <%= form.number_field :filling, class:"number-field" %>
+      </div><br>
+      
+      <div class="actions center">
+        <%= form.submit 'Valider les informations', class:"btn btn-primary"%>
+      </div>
+      
+    </div>
+    </div>
+  
 <% end %>
+
+
+

@@ -78,6 +78,19 @@
   background-color: #FFF;
 }
 
+.faw {
+  font-family: 'FontAwesome';
+}
+
+.center {
+  text-align: center;
+}
+
+.number-field {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
 .navbar-collapse {
   z-index: 1;
   left: 0;
@@ -94,6 +107,16 @@
   border-radius: 0.25rem;
 }
 
+.h3-up {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.img-tag {
+  height: auto;
+  width:100%;
+}
+
 .title_registration {
   color: black;
 }
@@ -101,3 +124,4 @@
 .form-control {
   font-family: "Fontawesome";
 }
+
