@@ -1,55 +1,117 @@
-<p>
-  <strong>Title:</strong>
-  <%= @compost.title %>
-</p>
+<div class="container">
+  <br><h1 align=center>Compost <%= @compost.title %></h1>
+</div><br>
 
-<p>
-  <strong>Address:</strong>
-  <%= @compost.address %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @compost.zipcode %>
-</p>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#infos">Infos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#contributions">Historique des contributions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#use">Historique des usages</a>
+  </li>
+</ul>
+  
+<div id="myTabContent" class="tab-content py-4">
+  <div class="tab-pane fade active show" id="infos">
+    <table class='table table-borderless'>
+          <tbody>
+            <div class="container mt-4" >
+            <div class="card shadow-lg">
+              <div class="row banniere">
+                <div class="col-8">
+                   <%= image_tag 'compost_pictures/compost_002.jpg', style:"height: auto;width:100%" %>
+                </div>
+                <div class="col-4 d-flex row flex-column">
+                  <div class="container mt-4">
+                    <h3 style="text-transform: uppercase"><bold><%= @compost.title %></bold> </h3><br><br>
+                    <p><strong>Description :</strong></p>
+                    <p><%= @compost.description %></p>
+                  </div>
+                  <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
+                    <span class="badge badge-pill badge-primary  pt-2"><h5>Ouvert :  <%= @compost.is_open %></h5></span>
+                    <span class="badge badge-pill badge-primary  pt-2"><h5>Remplissage : <%= @compost.filling %> %</h5></span>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <br>
+              </div>
+                  
+  <!-- Access -->                  
+                  <tr>
+                    <h3>Accès</h3>
+                    <th><h4 class='text-secondary'>Adresse</h4></th>
+                    <td><p><%= @compost.address %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h4 class='text-secondary'>Code postal</h4></th>
+                    <td><p><%= @compost.zipcode %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h4 class='text-secondary'>Ville</h4></th>
+                    <td><p><%= @compost.city %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h4 class='text-secondary'>Pays</h4></th>
+                    <td><p><%= @compost.country %></p></td>
+                  </tr>
+                  <tr>
+                    <th><h4 class='text-secondary'>Plan d'accès</h4></th>
+                    <td><p><%= @compost.access_data %></p></td>
+                    </tr>
+                  <tr>
+                    <th><h4 class='text-secondary'>Tags</h4></th>
+                    <td><p>Tags de localisation</p></td>
+                    <td><p>Tags de contenance</p></td>
+                    </tr>
+                </tbody>
+            </table>
+              <div align="center">
+                <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %>
+                <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-primary" %>
+                </div><br><br>
+              <%= render 'composts/contribute' %>
+             
+  </div>
+  <div class="tab-pane fade" id="contributions">
+    <table class="table table-hover table">
+        <thead class='thead-light'>
+          <tr>
+            <th><h4 class='text-secondary'>Contributions au compost</h4></th>  
+            <th></th>              
+            </tr>
+        </thead> 
+          <tbody>
+            <tr>
+              <th><h3 class='text-secondary'></h3>Pseudo</th>
+              <td><p><%=  link_to "Voir ce compost", compost_path, class: "btn btn-primary" %></p></td>
+            </tr>
 
-<p>
-  <strong>City:</strong>
-  <%= @compost.city %>
-</p>
+          </tbody>
+      </table>
+  </div>
+  <div class="tab-pane fade" id="use">
+    <table class="table table-hover table">
+        <thead class='thead-light'>
+           <tr>
+            <th><h4 class='text-secondary'>Utilisations du compost</h4></th>
+            <th></th>                   
+            </tr>
+        </thead> 
+        <tbody>
+          <tr>
+              <th><h3 class='text-secondary'></h3>Pseudo</th>
+            </tr>
 
-<p>
-  <strong>Country:</strong>
-  <%= @compost.country %>
-</p>
+        </tbody>
+      </table>
+  </div>
+ 
+</div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @compost.description %>
-</p>
-
-<p>
-  <strong>Access data:</strong>
-  <%= @compost.access_data %>
-</p>
-
-<p>
-  <strong>Image</strong><br/>
-  <%= image_tag 'compost_pictures/compost_002.jpg', size: "200x200" %>
-</p>
-
-<p>
-  <strong>Is open:</strong>
-  <%= @compost.is_open %>
-</p>
-
-<p>
-  <strong>Filling:</strong>
-  <%= @compost.filling %>
-</p>
-
-<%= link_to 'Edit', edit_compost_path(@compost) %> |
-<%= link_to 'Back', composts_path %> 
-
-
-<%= render 'composts/contribute' %>
