@@ -1,0 +1,2 @@
+class ResultLine < ApplicationRecord
+end
