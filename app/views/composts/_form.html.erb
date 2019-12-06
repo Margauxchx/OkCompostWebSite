@@ -42,6 +42,10 @@
                 <%= form.text_field :image_url, class:"form-control", placeholder:raw("&#xf030;  Image") %>
               </div><br>
 
+              <div class="input-group-prepend faw">
+                <%= form.text_field :district_list, class: 'form-control', placeholder: 'Arrondissement : 001 - 019' %>
+              </div>
+
               <div class="input-group-prepend faw my-2">
                 <%= form.label :agrumes, class:'text-dark mr-2' %>
                 <%= form.check_box(:composition_list, {:multiple => true}, "agrumes", nil) %>
