@@ -16,6 +16,8 @@
               }
             },
             :method => "post", :class => 'btn btn-info mx-1 mb-1' %>
+          </div>
+          <div class="row">
             <% result_line.compost.composition_list.sort.each do |composition_tag| %>
               <%= link_to composition_tag.to_s, {
                 :controller => "results", :action => "create",
