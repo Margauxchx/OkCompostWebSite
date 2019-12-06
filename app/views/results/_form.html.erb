@@ -24,10 +24,7 @@
               <h6 class="card-subtitle mb-2 text-muted mt-3"> Renseignez vos critères de sélection :</h6>
               
               <div>
-                <%= form.label :arrondissement, class: "mr-2 my-3" %>
-                <%= select_tag("result[district]", options_for_select([['1er', '001'], ['2ème', '002'], ['3ème', '003'], ['4ème', '004'], ['5ème', '005'], ['6ème', '006'], ['7ème', '007'], ['8ème', '008'], ['9ème', '009'], ['10ème', '010'], ['11ème', '011'], ['12ème', '012'], ['13ème', '013'], ['14ème', '014'], ['15ème', '015'], ['16ème', '016'], ['17ème', '017'], ['18ème', '018'], ['19ème', '019']]), class: "form-control-welcome") %>
-                <!-- pour les arrondissements, tu peux les générer dans le controller, avec le @districts que je te mentionnais, si tu veux raccourcir ici -->
-                <!-- si ça ne marche pas bien ou vite dis-le moi, je te filerai un coup de main -->
+                <%= select_tag("result[district]", options_for_select([['Arrondissement', ""],['1er', '75001'], ['2ème', '75002'], ['3ème', '75003'], ['4ème', '75004'], ['5ème', '75005'], ['6ème', '75006'], ['7ème', '75007'], ['8ème', '75008'], ['9ème', '75009'], ['10ème', '75010'], ['11ème', '75011'], ['12ème', '75012'], ['13ème', '75013'], ['14ème', '75014'], ['15ème', '75015'], ['16ème', '75016'], ['17ème', '75017'], ['18ème', '75018'], ['19ème', '75019']]), class: "form-control-welcome") %>
               </div>
               
               <div class="row mt-2 mb-3">
