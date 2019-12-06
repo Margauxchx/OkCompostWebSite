@@ -27,7 +27,7 @@
                 <%= form.text_area :description, class:"form-control", placeholder:raw("&#xf039;  description") %>
               </div><br>
               <div class="input-group-prepend faw">
-                <%= form.text_field :adress, class:"form-control", placeholder:raw("&#xf041;  Adresse")  %>
+                <%= form.text_field :address, class:"form-control", placeholder:raw("&#xf041;  Adresse")  %>
               </div><br>
               <div class="input-group-prepend faw">
                 <%= form.text_field :zipcode, class:"form-control", placeholder:raw("&#xf041;  Code postal") %>
@@ -39,40 +39,28 @@
                 <%= form.text_field :country, class:"form-control", placeholder:raw("&#xf041;  Pays") %>
               </div><br>
               <div class="input-group-prepend faw">
-                <%= form.text_field :text_date, class:"form-control", placeholder:raw("&#xf05a;  Données d'accès") %>
-              </div><br>
-              <div class="input-group-prepend faw">
                 <%= form.text_field :image_url, class:"form-control", placeholder:raw("&#xf030;  Image") %>
               </div><br>
 
               <div class="input-group-prepend faw">
-                <%= form.text_field :district, class: 'form-control', placeholder: 'Arrondissement : 001 - 019' %>
+                <%= form.text_field :district_list, class: 'form-control', placeholder: 'Arrondissement : 001 - 019' %>
               </div>
 
-              <div class="form-check">
+              <div class="input-group-prepend faw my-2">
                 <%= form.label :agrumes, class:'text-dark mr-2' %>
-                <%= form.check_box(:composition, {:multiple => true}, "agrumes", nil) %>
+                <%= form.check_box(:composition_list, {:multiple => true}, "agrumes", nil) %>
 
                 <%= form.label :bananes, class:'text-dark mx-2' %>
-                <%= form.check_box(:composition, {:multiple => true}, "bananes", nil) %>
+                <%= form.check_box(:composition_list, {:multiple => true}, "bananes", nil) %>
               </div>
               
               <div class="input-group-prepend faw my-2">
-                <%= form.label :bio, class:'text-dark mx-2' %>
-                <%= form.check_box(:composition, {:multiple => true}, "bio", nil) %>
+                <%= form.label :bio, class:'text-dark mr-2' %>
+                <%= form.check_box(:composition_list, {:multiple => true}, "bio", nil) %>
 
                 <%= form.label :coquilles, class:'text-dark mx-2' %>
-                <%= form.check_box(:composition, {:multiple => true}, "coquilles", nil) %>
+                <%= form.check_box(:composition_list, {:multiple => true}, "coquilles", nil) %>
               </div>
-
-              <div class="input-group-prepend faw">
-
-              </div>
-
-              <div class="input-group-prepend faw">
-
-              </div>
-
             </div>
 
           </div>
