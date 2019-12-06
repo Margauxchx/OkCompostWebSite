@@ -1,11 +1,11 @@
 
   <%= render 'form', result: @result %>
 
-<div class="container ml-5">
+<div class="container mx-5">
   <h2 class="mb-3"><i class="fas fa-carrot"></i> Voici des exemples de super composts :</h2>
   <div class="row">
     <div class="col d-flex align-items-stretch">
-	  <div class="card search-card border-success mb-3">
+	  <div class="card search-card border-success mb-3" style="max-width: 20rem;">
 	    <div class="card-header bg-success"><%= @compost1.title%></div>
 	    <div class="card-body">
 	      <%= image_tag @compost1.picture, class:"img-tag" %>
