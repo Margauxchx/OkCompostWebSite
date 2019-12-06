@@ -15,10 +15,11 @@
   <li class="nav-item">
      <%= link_to 'Historique des usages', '#use', { 'data-toggle' => "tab", :class => "nav-link" } %>
   </li>
-  <!-- RAJOUTER IF PROPRIO -->
-  <li class="nav-item">
+    <% if is_owner?(@compost) %>
+    <li class="nav-item">
      <%= link_to 'Contributions en attente', '#waiting-contributions', { 'data-toggle' => "tab", :class => "nav-link" } %> 
-  </li>
+    </li>
+    <% end %>
   <%end%>
 </ul>
   
@@ -37,9 +38,16 @@
                     <h3 class="h3-up" ><%= @compost.title %> </h3><br><br>
                     <p><strong>Description :</strong></p>
                     <p><%= @compost.description %></p>
+                    <p><strong>Gestionnaire :</strong></p>
+                    <p><%= link_to @compost.composter.username, user_path(@compost.composter.id) %></p>
                   </div>
                   <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
-                    <span class="badge badge-pill badge-primary  pt-2"><h5>Ouvert :  <%= @compost.is_open %></h5></span>
+                      <% if @compost.is_open %>
+                      <span class="badge badge-pill badge-primary  pt-2"><h5>Ouvert</h5>
+                      <% else %>
+                      <span class="badge badge-pill badge-danger  pt-2"><h5>Fermé</h5>
+                      <% end %>
+                      </h5></span>
                     <span class="badge badge-pill badge-primary  pt-2"><h5>Remplissage : <%= @compost.filling %> %</h5></span>
                   </div>
                 </div>
@@ -51,7 +59,7 @@
   <!-- Access -->                 
                   <tr>
                     <h3>Accès</h3>
-                    <% if user_signed_in? %>
+                    <% if display_access_data?(@compost) %>
                     <th><h4 class='text-secondary'>Adresse</h4></th>
                     <td><p><%= @compost.address %></p></td>
                   </tr>
@@ -100,14 +108,13 @@
                 </tbody>
             </table><br>
     <%else%>
-    <h4 class="center">Vous devez être connecté pour accéder aux données d'accès du compost.<br><br>
-    <%= link_to 'Se connecter', new_user_session_path, class:"btn btn-primary" %></h4>
+    <h4 class="center">Contribuer au compost pour voir les infos d'accès.<br><br>
     <%end%>
-          <!-- RAJOUTER IF PROPRIO -->
               <div class="center">
+              <% if is_owner?(@compost) %>
                 <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %><br>
-                <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-link" %>
-                </div>
+              <% end %>
+              </div>
         
               <br><br>
               <%= render 'composts/contribute' %>

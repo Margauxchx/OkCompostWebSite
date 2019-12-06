@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # 1 - N association with contributions, as contributor
   has_many :contributions, foreign_key: 'contributor_id'
   # N - N  association with supplied_composts (composts), via contributions
-  has_many :supplied_composts, class_name: 'Compost', source: :supplied_compost
+  has_many :supplied_composts, class_name: 'Compost', through: :contributions, source: :supplied_compost
 
   # 1 - N association with results
   has_many :results    
