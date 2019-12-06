@@ -124,13 +124,24 @@ body, html {
   color: black;
 }
 
-section{
-  min-height: 350px;
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  display : table;
+  width: 100%;
+}
+
+
 footer {
-  bottom: 0;
-  background-color: lightgreen;
-  color: grey;
+  display : table-row;
+  height: 100px;
+  background-color: #ADCE4B;
+  color: #FFF;
 }
 
