@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_165913) do
+ActiveRecord::Schema.define(version: 2019_12_06_205404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_165913) do
     t.text "access_data"
     t.string "image_url"
     t.boolean "is_open"
-    t.integer "filling"
+    t.integer "filling", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["composter_id"], name: "index_composts_on_composter_id"
