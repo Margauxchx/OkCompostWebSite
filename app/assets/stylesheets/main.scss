@@ -110,15 +110,6 @@ body, html {
   height: 100%;
 }
 
-#main {
-  min-height: 100%;
-  position: relative;
-}
-
-#main-content {
-  padding-bottom: 200px;
-}
-
 .h3-up {
   text-transform: uppercase;
   text-align: center;
@@ -134,10 +125,11 @@ body, html {
 }
 
 section{
-  min-height: 350px
+  min-height: 350px;
 }
 
 footer {
   bottom: 0;
-  background-color: lightgreen
+  background-color: lightgreen;
+  color: grey;
 }
