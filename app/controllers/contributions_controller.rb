@@ -2,6 +2,7 @@ class ContributionsController < ApplicationController
     include ContributionsHelper
     before_action :authenticate_user!
     before_action :set_compost, only: [:create]
+    before_action :authenticate_user, only: [:create]
 
     def new
         @contribution = Contribution.new
@@ -47,4 +48,11 @@ class ContributionsController < ApplicationController
     def set_compost
         @compost = Compost.find(params[:supplied_compost_id])
     end 
+  
+    def authenticate_user
+    unless current_user
+      flash[:error] = "Merci de te connecter afin de pouvoir contribuer à ce compost"
+      redirect_to new_user_session_path
+    end
+  end
 end
