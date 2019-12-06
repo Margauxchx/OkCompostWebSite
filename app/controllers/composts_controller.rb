@@ -39,10 +39,6 @@ class CompostsController < ApplicationController
   def update
     respond_to do |format|
       if @compost.update(compost_params)
-        puts '*' * 60
-        puts compost_params[:district_list]
-        puts compost_params[:district_list].class
-        @compost.district_list = compost_params[:district_list]
         @compost.composition_list = compost_params[:composition_list]
         @compost.save()
         format.html { redirect_to @compost, notice: 'Compost was successfully updated.' }
@@ -72,7 +68,7 @@ class CompostsController < ApplicationController
         :title, :address, :zipcode, :city,
         :country, :description, :access_data,
         :image_url, :is_open, :filling,
-        :district_list, :composition_list => []
+        :composition_list => []
       )
     end
 
