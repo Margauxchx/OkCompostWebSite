@@ -173,14 +173,30 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>
-              <h3 class='text-secondary'></h3>Pseudo
-            </th>
-            <td>
-              <p><%=  link_to "Voir le profil", user_path, class:"btn btn-primary" %></p>
-            </td>
-          </tr>
+          <% @compost.contributions.each do |contribution| %>
+            <thead>
+              <th>
+                <h3 class='text-secondary'>Utilisateur·ice</h3>
+              </th>
+              <th>
+                <h3 class='text-secondary'>Date de la contribution</h3>
+              </th>
+              <th>
+                <h3 class='text-secondary'>Profil</h3>
+              </th>
+            </thead>
+            <tr>
+              <th>
+                <h4 class='text-secondary'><%= contribution.contributor.username %></h4>
+              </th>
+              <td>
+                <%= contribution.contribution_date %>
+              </td>
+              <td>
+                <p><%=  link_to "Voir le profil", user_path(contribution.contributor), class:"btn btn-primary" %></p>
+              </td>
+            </tr>
+          <% end %>
 
         </tbody>
       </table>
