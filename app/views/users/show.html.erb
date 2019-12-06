@@ -1,5 +1,11 @@
 <div class="container">
-  <h1>Bienvenue sur votre profil !</h1>
+  <% if current_user.id == @user.id %>
+    <h1>Bienvenue sur votre profil !</h1>
+  <% elsif @user.username %>
+    <h1>Profil de <%= @user.username %></h1>
+  <% else %>
+    <h1> Profil de l'utilisateur <%= @user.id %></h1>
+  <% end %>
 </div>
 
 <div class="container">
@@ -13,9 +19,11 @@
     <li class="nav-item">
         <a href="" data-target="#user_contributions" data-toggle="tab" class="nav-link">Contributions</a>
     </li>
-    <li class="nav-item">
-        <a href="" data-target="#user_private_messages" data-toggle="tab" class="nav-link">Messages</a>
-    </li>
+    <% if user_signed_in? && current_user.id == @user.id%>
+      <li class="nav-item">
+          <a href="" data-target="#user_private_messages" data-toggle="tab" class="nav-link">Messages</a>
+      </li>
+    <% end %>
         </ul>
         <div class="tab-content py-4">
             <div class="tab-pane active" id="profil_details">
@@ -102,7 +110,7 @@
                 </tbody>
               </table>
             </div> <!-- /tab-pane -->
-
+        
             <div class="tab-pane" id="user_private_messages">
               <table class="table table-hover table">
                 <thead class='thead-light'>
