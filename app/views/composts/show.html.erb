@@ -67,9 +67,29 @@
                     </tr>
                   <tr>
                     <th><h4 class='text-secondary'>Tags</h4></th>
-                    <td><p>Tags de localisation</p></td>
-                    <td><p>Tags de contenance</p></td>
-                    </tr>
+                    <td>
+                      <%= link_to @compost.district_list.to_s, {
+                        :controller => "results", :action => "create",
+                        :result => {
+                          :district => @compost.district_list.to_s, :composition => []
+                          }
+                        },
+                        :method => "post", :class => 'btn btn-outline-warning rounded-pill'
+                      %>
+                    </td>
+                    <td>
+                      <% @compost.composition_list.sort.each do |composition_tag| %>
+                        <%= link_to composition_tag.to_s, {
+                          :controller => "results", :action => "create",
+                          :result => {
+                            :district => nil, :composition => [composition_tag.to_s]
+                            }
+                          },
+                          { :method => "post", :class => 'btn btn-outline-info rounded-pill'} 
+                        %>
+                      <% end %>
+                    </td>
+                  </tr>
                 </tbody>
             </table><br>
               <div class="center">
