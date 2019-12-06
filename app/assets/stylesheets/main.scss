@@ -1,4 +1,4 @@
-.btn-primary {
+footer,.link_to, .btn-primary {
   color: #fff;
   background-color: #ADCE4B;
   border-color: #ADCE4B;
@@ -144,6 +144,13 @@
 
 body, html {
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  display: table;
+  width: 100%;
 }
 
 .h3-up {
@@ -170,7 +177,7 @@ section{
 }
 
 footer {
-  bottom: 0;
-  background-color: lightgreen;
-  color: grey;
+  display: table-row;
+  height: 100px;
 }
+
