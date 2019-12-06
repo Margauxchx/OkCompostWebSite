@@ -2,6 +2,7 @@ class CompostsController < ApplicationController
   include UsersHelper
   before_action :set_compost, only: [:show, :edit, :update, :destroy]
   before_action :profile_enhencement, only: [:index]
+  before_action :authenticate_user, only: [:new]
 
   # GET /composts
   # GET /composts.json
@@ -87,3 +88,10 @@ class CompostsController < ApplicationController
       end
     end
 end
+
+  def authenticate_user
+    unless current_user
+      flash[:error] = "Merci de te connecter afin de pouvoir créer un nouveau compost"
+      redirect_to new_user_session_path
+    end
+  end

@@ -6,14 +6,20 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#infos">Infos</a>
+    <%= link_to 'Infos', '#infos', { 'data-toggle' => "tab", :class => "nav-link active" } %>
+  </li>
+  <% if user_signed_in? %>
+  <li class="nav-item">
+    <%= link_to 'Historique des contributions', '#contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#contributions">Historique des contributions</a>
+     <%= link_to 'Historique des usages', '#use', { 'data-toggle' => "tab", :class => "nav-link" } %>
   </li>
+  <!-- RAJOUTER IF PROPRIO -->
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#use">Historique des usages</a>
+     <%= link_to 'Contributions en attente', '#waiting-contributions', { 'data-toggle' => "tab", :class => "nav-link" } %> 
   </li>
+  <%end%>
 </ul>
   
 <div id="myTabContent" class="tab-content py-4">
@@ -42,9 +48,10 @@
               <br>
               </div>
                   
-  <!-- Access -->                  
+  <!-- Access -->                 
                   <tr>
                     <h3>Accès</h3>
+                    <% if user_signed_in? %>
                     <th><h4 class='text-secondary'>Adresse</h4></th>
                     <td><p><%= @compost.address %></p></td>
                   </tr>
@@ -72,14 +79,25 @@
                     </tr>
                 </tbody>
             </table><br>
+    <%else%>
+    <h4 class="center">Vous devez être connecté pour accéder aux données d'accès du compost.<br><br>
+    <%= link_to 'Se connecter', new_user_session_path, class:"btn btn-primary" %></h4>
+    <%end%>
+          <!-- RAJOUTER IF PROPRIO -->
               <div class="center">
                 <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %><br>
                 <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-link" %>
-                </div><br><br>
-              <%= render 'composts/contribute' %><br><br>
-    <%= render 'contributions/contributions_list' %>
+                </div>
+        
+              <br><br>
+              <%= render 'composts/contribute' %>
+              <div class="center">
+                
+              <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-link" %>
+    </div>
              
   </div>
+
   <div class="tab-pane fade" id="contributions">
     <table class="table table-hover table">
         <thead class='thead-light'>
@@ -113,12 +131,22 @@
         </tbody>
       </table>
   </div>
+  
+  <div class="tab-pane fade" id="waiting-contributions">
+    <table class="table table-hover table"> 
+        <tbody>
+          <tr>
+            <h3 class='text-secondary'></h3><br>
+            <%= render 'contributions/contributions_list' %>
+            </tr>
+        </tbody>
+      </table>
+  </div>
+  
+  
+  
  
 </div>
 </div>
-
-
-
-<br>
 
 
