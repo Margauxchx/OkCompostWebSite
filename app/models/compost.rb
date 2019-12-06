@@ -19,10 +19,17 @@ class Compost < ApplicationRecord
 
   # use user input to create/update district tag
   before_save :tag_with_district
+  before_save :update_is_open
 
   private
 
   def tag_with_district
     self.district_list = self.zipcode
+  end
+
+  def update_is_open
+    if self.filling >= 100
+      self.is_open = false
+    end
   end
 end
