@@ -12,5 +12,14 @@ class Compost < ApplicationRecord
   # 1 - N association with result_lines
   has_many :result_lines
   # N - N association with results, via result_lines
-  has_many :results, through: :result_lines    
+  has_many :results, through: :result_lines
+
+  # use user input to create/update district tag
+  before_save :tag_with_district
+
+  private
+
+  def tag_with_district
+    self.district_list = self.zipcode
+  end
 end
