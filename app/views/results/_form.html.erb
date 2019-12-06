@@ -21,30 +21,32 @@
           <div class="card mx-5">
             <div class="card-body">
               <h5 class="card-title">Cherchez un compost !</h5>
-              <h6 class="card-subtitle mb-2 text-muted"> Renseignez vos critères de sélection :</h6>
+              <h6 class="card-subtitle mb-2 text-muted mt-3"> Renseignez vos critères de sélection :</h6>
               
               <div>
-                <%= form.label :arrondissement, class: "mr-2" %>
+                <%= form.label :arrondissement, class: "mr-2 my-3" %>
                 <%= select_tag("result[district]", options_for_select([['1er', '001'], ['2ème', '002'], ['3ème', '003'], ['4ème', '004'], ['5ème', '005'], ['6ème', '006'], ['7ème', '007'], ['8ème', '008'], ['9ème', '009'], ['10ème', '010'], ['11ème', '011'], ['12ème', '012'], ['13ème', '013'], ['14ème', '014'], ['15ème', '015'], ['16ème', '016'], ['17ème', '017'], ['18ème', '018'], ['19ème', '019']]), class: "form-control-welcome") %>
                 <!-- pour les arrondissements, tu peux les générer dans le controller, avec le @districts que je te mentionnais, si tu veux raccourcir ici -->
                 <!-- si ça ne marche pas bien ou vite dis-le moi, je te filerai un coup de main -->
               </div>
+              
+              <div class="row mt-2 mb-3">
+                <div class="field mr-2">
+                  <%= form.label :bio, class: "ml-3 mr-2" %>
+                  <%= form.check_box(:composition, {:multiple => true}, "bio", nil) %>
+                </div>
 
-              <div class="field">
-                <%= form.label :bio, class: "mr-2" %>
-                <%= form.check_box(:composition, {:multiple => true}, "bio", nil) %>
-              </div>
+                <div class="field mr-2">
+                  <%= form.label :coquilles, class: "mr-2" %>
+                  <%= form.check_box(:composition, {:multiple => true}, "coquilles", nil) %>
+                </div>
 
-              <div class="field">
-                <%= form.label :coquilles, class: "mr-2" %>
-                <%= form.check_box(:composition, {:multiple => true}, "coquilles", nil) %>
+                <div class="field mr-2">
+                  <%= form.label :bananes, class: "mr-2" %>
+                  <%= form.check_box(:composition, {:multiple => true}, "bananes", nil) %>
+                </div> 
               </div>
-
-              <div class="field">
-                <%= form.label :bananes, class: "mr-2" %>
-                <%= form.check_box(:composition, {:multiple => true}, "bananes", nil) %>
-              </div>
-              <button class="btn btn-primary">Et zou !</button>
+              <button class="btn btn-primary px-5">Et zou !</button>
             </div>
           </div>  
         </div>
