@@ -31,7 +31,7 @@
             <div class="card shadow-lg">
               <div class="row banniere">
                 <div class="col-8">
-                   <%= image_tag @compost.image_url, style:"height: auto;width:100%" %>
+                  <%= image_tag @compost.picture, style:"height: auto; max-width:100%" %>
                 </div>
                 <div class="col-4 d-flex row flex-column">
                   <div class="container mt-4">
@@ -57,10 +57,12 @@
               <br>
               </div>
                   
-  <!-- Access -->                 
+  <!-- Access -->   
+  <% if display_access_data?(@compost) %>             
                   <tr>
                     <h3>Accès</h3>
                     <% if display_access_data?(@compost) || is_owner?(@compost) %> 
+
                     <th><h4 class='text-secondary'>Adresse</h4></th>
                     <td><p><%= @compost.address %></p></td>
                   </tr>
@@ -120,9 +122,10 @@
               </div>
         
               <br><br>
-              <%= render 'composts/contribute' %>
+              <% if display_contribute_form?(@compost) %>
+                <%= render 'composts/contribute' %>
+              <% end %>
               <div class="center">
-                
               <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-link" %>
               </div>
              

@@ -7,8 +7,22 @@ module UsersHelper
     end
 
     def display_access_data?(compost)
-        compost.contributions.find{ |x| x.contributor == current_user && x.accepted? } != nil
+        # conditions :
+        ## composteur has always access
+        ## for other users :
+            ## compost is open
+            ## current_user has already an accepted contribution
+        current_user == compost.composter ||
+        (
+            compost.is_open &&
+            compost.contributions.find{ |x| x.contributor == current_user && x.accepted? } != nil
+        )
     end
+
+    def display_contribute_form?(compost)
+        current_user != compost.composter &&
+        compost.is_open
+    end 
 
     def is_owner?(compost)
         compost.composter == current_user
