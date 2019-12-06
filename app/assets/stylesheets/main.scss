@@ -51,7 +51,6 @@
 
 #jumbotron-title {
 	color: white;
-  font-weight: bold;
 }
 
 #jumbotron-row {
@@ -143,6 +142,10 @@
   border-radius: 0.25rem;
 }
 
+body, html {
+  height: 100%;
+}
+
 .h3-up {
   text-transform: uppercase;
   text-align: center;
@@ -157,10 +160,17 @@
   color: black;
 }
 
-.form-control {
-  font-family: "Fontawesome";
+section{
+  min-height: 350px;
 }
+
 
 .search-card {
   max-width: 20rem;
+}
+
+footer {
+  bottom: 0;
+  background-color: lightgreen;
+  color: grey;
 }

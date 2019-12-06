@@ -13,7 +13,8 @@
         puts '*' * 40 + "\n \n"
     
         models_list = [
-        User, Compost, Contribution
+        User, Compost, Contribution,
+        ActsAsTaggableOn::Tag
         ]
     
         models_list.each do |model|
@@ -96,14 +97,14 @@
       is_open: true,
       filling: rand(1..10)*10
     )
-    tag_with_district(new_compost)
+    # tag_with_district(new_compost)
     tag_with_composition(new_compost, compositions)
   end
 
-  def tag_with_district(compost)
-    compost.district_list.add(compost.zipcode)
-    compost.save!()
-  end
+  # def tag_with_district(compost)
+  #   compost.district_list.add(compost.zipcode)
+  #   compost.save!()
+  # end
 
   def tag_with_composition(compost, compositions)
     compost.composition_list.add(compositions.sample(rand(1..4)))
@@ -113,7 +114,7 @@
   def composts_seed
     puts "Seeding composts"
     zipcodes_list = []
-    19.times { |district| zipcodes_list << (format '%03d', (district + 1)) }
+    20.times { |district| zipcodes_list << '75' + (format '%03d', (district + 1)) }
     composition_tags = ['bio', 'coquilles', 'bananes', 'agrumes']
 
     50.times do
