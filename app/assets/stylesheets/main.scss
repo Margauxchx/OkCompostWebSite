@@ -43,6 +43,7 @@
 
 #jumbotron-title {
 	color: white;
+  font-weight: bold;
 }
 
 #jumbotron-row {
@@ -106,3 +107,20 @@
   border-radius: 0.25rem;
 }
 
+.h3-up {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.img-tag {
+  height: auto;
+  width:100%;
+}
+
+.title_registration {
+  color: black;
+}
+
+.form-control {
+  font-family: "Fontawesome";
+}

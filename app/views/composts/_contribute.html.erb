@@ -3,7 +3,7 @@
 
   <div class="field">
     <%= label_tag :contribution_date, "Propose un créneau pour ta contribution à ce compost :" %>
-    <%= datetime_field_tag(:contribution_date, Time.current.strftime("%d-%m-%YT%H:%M") )%>
+    <%= datetime_field_tag(:contribution_date, Time.current.strftime("%d-%m-%YT%H:%M"), class:"number-field" )%>
     </div><br>
   <div class="field center">
     <%= text_area_tag :message, nil, placeholder: "Ecris un gentil message pour le gestionnaire de ce compost", class:"form-control" %>

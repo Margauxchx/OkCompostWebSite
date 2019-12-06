@@ -1,7 +1,3 @@
-<p>
-  <strong>Firstname:</strong>
-  <%= @user.firstname %>
-</p>
 <div class="container">
   <h1>Bienvenue sur votre profil !</h1>
 </div>
@@ -23,48 +19,49 @@
         </ul>
         <div class="tab-content py-4">
             <div class="tab-pane active" id="profil_details">
-              <table class='table table-borderless'>
+              <table class='table table-borderless table-hover'>
                 <tbody>
                   <tr>
-                    <th><h3 class='text-secondary'>Photo de profil</h3></th>
-                    <td><p><%= @user.avatar_url %></p></td>
+                    <th><h4 class='text-secondary'>Photo de profil</h4></th>
+                    <td><h5><%= @user.avatar_url %></h5></td>
                   </tr>
                   <tr>
-                    <th><h3 class='text-secondary'>Prénom</h3></th>
-                    <td><p><%= @user.firstname %></p></td>
+                    <th><h4 class='text-secondary'>Prénom</h4></th>
+                    <td><h5><%= @user.firstname %></h5></td>
                   </tr>
                   <tr>
-                    <th><h3 class='text-secondary'>Nom</h3></th>
-                    <td><p><%= @user.lastname %></p></td>
+                    <th><h4 class='text-secondary'>Nom</h4></th>
+                    <td><h5><%= @user.lastname %></h5></td>
                   </tr>
                   <tr>
-                    <th><h3 class='text-secondary'>Pseudo</h3></th>
-                    <td><p><%= @user.username %></p></td>
+                    <th><h4 class='text-secondary'>Pseudo</h4></th>
+                    <td><h5><%= @user.username %></h5></td>
                   </tr>
                   <tr>
-                    <th><h3 class='text-secondary'>Email</h3></th>
-                    <td><p><%= @user.email %></p></td>
+                    <th><h4 class='text-secondary'>Email</h4></th>
+                    <td><h5><%= @user.email %></h5></td>
                   </tr>
                   <tr>
-                    <th><h3 class='text-secondary'>Adresse</h3></th>
-                    <td><p><%= @user.address %></p></td>
+                    <th><h4 class='text-secondary'>Adresse</h4></th>
+                    <td><h5><%= @user.address %></h5></td>
                   </tr>
                   <tr>
-                    <th><h3 class='text-secondary'>Code postal</h3></th>
-                    <td><p><%= @user.zipcode %></p></td>
+                    <th><h4 class='text-secondary'>Code postal</h4></th>
+                    <td><h5><%= @user.zipcode %></h5></td>
                   </tr>
                   <tr>
-                    <th><h3 class='text-secondary'>Ville</h3></th>
-                    <td><p><%= @user.city %></p></td>
+                    <th><h4 class='text-secondary'>Ville</h4></th>
+                    <td><h5><%= @user.city %></h5></td>
                   </tr>
                   <tr>
-                    <th><h3 class='text-secondary'>Pays</h3></th>
-                    <td><p><%= @user.country %></p></td>
+                    <th><h4 class='text-secondary'>Pays</h4></th>
+                    <td><h5><%= @user.country %></h5></td>
                   </tr>
                 </tbody>
               </table>
               <% if current_user.id == @user.id %>
                 <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+                <%= link_to "Modifier vos paramètres de connexion", edit_user_registration_path, class: "btn btn-warning" %>
               <% end %>
             </div> <!-- /tab-pane -->
 

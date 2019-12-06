@@ -1,15 +1,15 @@
 <%= form_with(model: compost, local: true) do |form| %>
-  <% if compost.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(compost.errors.count, "error") %> prohibited this compost from being saved:</h2>
+<% if compost.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(compost.errors.count, "error") %> prohibited this compost from being saved:</h2>
 
-      <ul>
-      <% compost.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% compost.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
 <section id="cover">
   <div id="cover-caption">
@@ -23,11 +23,11 @@
               <div class="input-group-prepend faw">
                 <%= form.text_field :title, class:"form-control", placeholder:raw("&#xf035;  Titre")  %>
               </div> <br>
-               <div class="input-group-prepend faw">
+              <div class="input-group-prepend faw">
                 <%= form.text_area :description, class:"form-control", placeholder:raw("&#xf039;  description") %>
               </div><br>
               <div class="input-group-prepend faw">
-                <%= form.text_field :adress, class:"form-control", placeholder:raw("&#xf041;  Adresse")  %>
+                <%= form.text_field :address, class:"form-control", placeholder:raw("&#xf041;  Adresse")  %>
               </div><br>
               <div class="input-group-prepend faw">
                 <%= form.text_field :zipcode, class:"form-control", placeholder:raw("&#xf041;  Code postal") %>
@@ -38,16 +38,32 @@
               <div class="input-group-prepend faw">
                 <%= form.text_field :country, class:"form-control", placeholder:raw("&#xf041;  Pays") %>
               </div><br>
-               <div class="input-group-prepend faw">
-                <%= form.text_field :text_date, class:"form-control", placeholder:raw("&#xf05a;  Données d'accès") %>
-              </div><br>
               <div class="input-group-prepend faw">
                 <%= form.text_field :image_url, class:"form-control", placeholder:raw("&#xf030;  Image") %>
               </div><br>
+
+              <div class="input-group-prepend faw">
+                <%= form.text_field :district_list, class: 'form-control', placeholder: 'Arrondissement : 001 - 019' %>
+              </div>
+
+              <div class="input-group-prepend faw my-2">
+                <%= form.label :agrumes, class:'text-dark mr-2' %>
+                <%= form.check_box(:composition_list, {:multiple => true}, "agrumes", nil) %>
+
+                <%= form.label :bananes, class:'text-dark mx-2' %>
+                <%= form.check_box(:composition_list, {:multiple => true}, "bananes", nil) %>
+              </div>
               
+              <div class="input-group-prepend faw my-2">
+                <%= form.label :bio, class:'text-dark mr-2' %>
+                <%= form.check_box(:composition_list, {:multiple => true}, "bio", nil) %>
+
+                <%= form.label :coquilles, class:'text-dark mx-2' %>
+                <%= form.check_box(:composition_list, {:multiple => true}, "coquilles", nil) %>
+              </div>
             </div>
 
-        </div>
+          </div>
         </div>
       </div>
       <div>
@@ -58,15 +74,12 @@
         <%= form.label :Remplissage %>
         <%= form.number_field :filling, class:"number-field" %>
       </div><br>
-      
+
       <div class="actions center">
-        <%= form.submit 'Créer mon compost', class:"btn btn-primary"%>
+        <%= form.submit 'Valider les informations', class:"btn btn-primary"%>
       </div>
-      
+
     </div>
-    </div>
-  
-<% end %>
+  </div>
 
-
-
+  <% end %>
