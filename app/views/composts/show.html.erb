@@ -60,7 +60,7 @@
   <!-- Access -->                 
                   <tr>
                     <h3>Accès</h3>
-                    <% if display_access_data?(@compost) %>
+                    <% if display_access_data?(@compost) || is_owner?(@compost) %> 
                     <th><h4 class='text-secondary'>Adresse</h4></th>
                     <td><p><%= @compost.address %></p></td>
                   </tr>
@@ -114,7 +114,8 @@
     
               <div class="center">
               <% if is_owner?(@compost) %>
-                <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %><br>
+                <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %>
+                <%= link_to 'Supprimer le compost', @compost,  method: :delete, data: { confirm: 'Etes vous sure de vouloir supprimer le compost ?' }, class: "btn btn-danger" %><br>
               <% end %>
               </div>
         
