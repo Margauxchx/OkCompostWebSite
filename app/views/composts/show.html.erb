@@ -1,92 +1,125 @@
 <% content_for :title, "OkCompost / Compost" %>
 <div class="container">
-  <br><h1 class="center">Compost <%= @compost.title %></h1>
+  <br>
+  <h1 class="center">Compost <%= @compost.title %></h1>
 </div><br>
 
 <div class="container">
 
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <%= link_to 'Infos', '#infos', { 'data-toggle' => "tab", :class => "nav-link active" } %>
-  </li>
-  <% if user_signed_in? %>
-  <li class="nav-item">
-    <%= link_to 'Historique des contributions', '#contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
-  </li>
-  <li class="nav-item">
-     <%= link_to 'Historique des usages', '#use', { 'data-toggle' => "tab", :class => "nav-link" } %>
-  </li>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= link_to 'Infos', '#infos', { 'data-toggle' => "tab", :class => "nav-link active" } %>
+    </li>
+    <% if user_signed_in? %>
+    <li class="nav-item">
+      <%= link_to 'Historique des contributions', '#contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Historique des usages', '#use', { 'data-toggle' => "tab", :class => "nav-link" } %>
+    </li>
     <% if is_owner?(@compost) %>
     <li class="nav-item">
-     <%= link_to 'Contributions en attente', '#waiting-contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
+      <%= link_to 'Contributions en attente', '#waiting-contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
     </li>
-  <%end%>
-  <% end %>
-</ul>
+    <%end%>
+    <% end %>
+  </ul>
 
-<div id="myTabContent" class="tab-content py-4">
-  <div class="tab-pane fade active show" id="infos">
-    <table class='table table-borderless'>
-          <tbody>
-            <div class="container mt-4" >
+  <div id="myTabContent" class="tab-content py-4">
+    <div class="tab-pane fade active show" id="infos">
+      <table class='table table-borderless'>
+        <tbody>
+          <div class="container mt-4">
             <div class="card shadow-lg">
               <div class="row banniere">
                 <div class="col-8">
-                  <%= image_tag @compost.picture, style:"height: auto; max-width:100%" %>
+                  <% if @compost.picture.attached? %>
+                    <%= image_tag @compost.picture, style:"height: auto; max-width:100%" %>
+                  <% else %>
+                    <h3> Hey, why don't you provide a nice compost picture ?</h3>
+                  <% end %>
                 </div>
                 <div class="col-4 d-flex row flex-column">
                   <div class="container mt-4">
-                    <h3 class="h3-up" ><%= @compost.title %> </h3><br>
+                    <h3 class="h3-up"><%= @compost.title %> </h3><br>
                     <p><strong>Gestionnaire :</strong>
-                    <%= link_to @compost.composter.username, user_path(@compost.composter.id), class: "btn btn-link"%></p><br>
+                      <%= link_to @compost.composter.username, user_path(@compost.composter.id), class: "btn btn-link"%>
+                    </p><br>
                     <p><strong>Description :</strong></p>
                     <p><%= @compost.description %></p>
                   </div>
                   <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
-                      <% if @compost.is_open %>
-                      <span class="badge badge-pill badge-primary  pt-2"><h5>Ouvert</h5>
-                        </span>
-                      <% else %>
-                      <span class="badge badge-pill badge-danger  pt-2"><h5>Fermé</h5>
-                        </span>
-                      <% end %>
-                    <span class="badge badge-pill badge-primary  pt-2"><h5>Remplissage : <%= @compost.filling %> %</h5></span>
+                    <% if @compost.is_open %>
+                    <span class="badge badge-pill badge-primary  pt-2">
+                      <h5>Ouvert</h5>
+                    </span>
+                    <% else %>
+                    <span class="badge badge-pill badge-danger  pt-2">
+                      <h5>Fermé</h5>
+                    </span>
+                    <% end %>
+                    <span class="badge badge-pill badge-primary  pt-2">
+                      <h5>Remplissage : <%= @compost.filling %> %</h5>
+                    </span>
                   </div>
                 </div>
-                </div>
               </div>
-              <br>
-              </div>
+            </div>
+            <br>
+          </div>
 
-  <!-- Access -->
-  <% if display_access_data?(@compost) %>
-                  <tr>
-                    <h3>Accès</h3>
+          <!-- Access -->
+          <% if display_access_data?(@compost) %>
+          <tr>
+            <h3>Accès</h3>
+            <% if display_access_data?(@compost) || is_owner?(@compost) %>
+            <th>
+              <h4 class='text-secondary'>Adresse</h4>
+            </th>
+            <td>
+              <p><%= @compost.address %></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <h4 class='text-secondary'>Code postal</h4>
+            </th>
+            <td>
+              <p><%= @compost.zipcode %></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <h4 class='text-secondary'>Ville</h4>
+            </th>
+            <td>
+              <p><%= @compost.city %></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <h4 class='text-secondary'>Pays</h4>
+            </th>
+            <td>
+              <p><%= @compost.country %></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <h4 class='text-secondary'>Plan d'accès</h4>
+            </th>
+            <td>
+              <p><%= @compost.access_data %>
+              </p>
+          </tr>
+          <% end %>
+          <tr>
+            <th>
+              <h4 class='text-secondary'>Tags</h4>
+            </th>
+            <td>
+              <%= link_to @compost.district_list.to_s, {
 
-                    <th><h4 class='text-secondary'>Adresse</h4></th>
-                    <td><p><%= @compost.address %></p></td>
-                  </tr>
-                  <tr>
-                    <th><h4 class='text-secondary'>Code postal</h4></th>
-                    <td><p><%= @compost.zipcode %></p></td>
-                  </tr>
-                  <tr>
-                    <th><h4 class='text-secondary'>Ville</h4></th>
-                    <td><p><%= @compost.city %></p></td>
-                  </tr>
-                  <tr>
-                    <th><h4 class='text-secondary'>Pays</h4></th>
-                    <td><p><%= @compost.country %></p></td>
-                  </tr>
-                  <tr>
-                    <th><h4 class='text-secondary'>Plan d'accès</h4></th>
-                    <td><p><%= @compost.access_data %>
-                    </p>
-                    </tr>
-                  <tr>
-                    <th><h4 class='text-secondary'>Tags</h4></th>
-                    <td>
-                      <%= link_to @compost.district_list.to_s, {
                         :controller => "results", :action => "create",
                         :result => {
                           :district => @compost.district_list.to_s, :composition => []
@@ -94,86 +127,114 @@
                         },
                         :method => "post", :class => 'btn btn-outline-warning rounded-pill'
                       %>
-                    </td>
-                    <td>
-                      <% @compost.composition_list.sort.each do |composition_tag| %>
-                        <%= link_to composition_tag.to_s, {
-                          :controller => "results", :action => "create",
-                          :result => {
-                            :district => nil, :composition => [composition_tag.to_s]
-                            }
-                          },
-                          { :method => "post", :class => 'btn btn-outline-info rounded-pill'}
-                        %>
-                      <% end %>
-                    </td>
-                  </tr>
-                </tbody>
-              <%else%>
-              <h4 class="center">Contribuer au compost pour voir les infos d'accès.</h4><br><br>
-              <%end%>
-            </table><br>
-
-              <div class="center">
-              <% if is_owner?(@compost) %>
-                <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %><br>
+            </td>
+            <td>
+              <% @compost.composition_list.sort.each do |composition_tag| %>
+                <%= link_to composition_tag.to_s, {
+                            :controller => "results", :action => "create",
+                            :result => {
+                              :district => nil, :composition => [composition_tag.to_s]
+                              }
+                            },
+                            { :method => "post", :class => 'btn btn-outline-info rounded-pill'}
+                          %>
               <% end %>
-              </div>
+              </td>
+          </tr>
+        </tbody>
+        <%else%>
+        <h4 class="center">Contribuer au compost pour voir les infos d'accès.</h4><br><br>
+        <%end%>
+      </table><br>
 
-              <br><br>
-              <% if display_contribute_form?(@compost) %>
-                <%= render 'composts/contribute' %>
-              <% end %>
-              <div class="center">
-              <%= link_to 'Retourner à la page accueil', composts_path, class: "btn btn-link" %>
-              </div>
+      <div class="center">
+        <% if is_owner?(@compost) %>
+        <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %>
+        <%= link_to 'Supprimer le compost', @compost,  method: :delete, data: { confirm: 'Etes vous sure de vouloir supprimer le compost ?' }, class: "btn btn-danger" %><br>
+        <% end %>
+      </div>
 
-  </div>
-  <div class="tab-pane fade" id="contributions">
-    <table class="table table-hover table">
+      <br><br>
+      <% if display_contribute_form?(@compost) %>
+      <%= render 'composts/contribute' %>
+      <% end %>
+      <div class="center">
+        <%= link_to 'Retourner à la page accueil', root_path, class: "btn btn-link" %>
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="contributions">
+      <table class="table table-hover table">
         <thead class='thead-light'>
           <tr>
-            <th><h4 class='text-secondary'>Contributions au compost</h4></th>
+            <th>
+              <h4 class='text-secondary'>Contributions au compost</h4>
+            </th>
             <th></th>
-            </tr>
-        </thead>
-          <tbody>
-            <tr>
-              <th><h3 class='text-secondary'></h3>Pseudo</th>
-              <td><p><%=  link_to "Voir le profil", user_path, class:"btn btn-primary" %></p></td>
-            </tr>
-
-          </tbody>
-      </table>
-  </div>
-
-  <div class="tab-pane fade" id="use">
-    <table class="table table-hover table">
-        <thead class='thead-light'>
-           <tr>
-            <th><h4 class='text-secondary'>Utilisations du compost</h4></th>
-            <th></th>
-            </tr>
+          </tr>
         </thead>
         <tbody>
-          <tr>
-              <th><h3 class='text-secondary'></h3>Pseudo</th>
+          <% @compost.contributions.each do |contribution| %>
+            <thead>
+              <th>
+                <h3 class='text-secondary'>Utilisateur·ice</h3>
+              </th>
+              <th>
+                <h3 class='text-secondary'>Date de la contribution</h3>
+              </th>
+              <th>
+                <h3 class='text-secondary'>Profil</h3>
+              </th>
+            </thead>
+            <tr>
+              <th>
+                <h4 class='text-secondary'><%= contribution.contributor.username %></h4>
+              </th>
+              <td>
+                <%= contribution.contribution_date %>
+              </td>
+              <td>
+                <p><%=  link_to "Voir le profil", user_path(contribution.contributor), class:"btn btn-primary" %></p>
+              </td>
             </tr>
+          <% end %>
 
         </tbody>
       </table>
-  </div>
+    </div>
 
-  <div class="tab-pane fade" id="waiting-contributions">
-    <table class="table table-hover table">
+    <div class="tab-pane fade" id="use">
+      <table class="table table-hover table">
+        <thead class='thead-light'>
+          <tr>
+            <th>
+              <h4 class='text-secondary'>Utilisations du compost</h4>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              <h3 class='text-secondary'></h3>Pseudo
+            </th>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="waiting-contributions">
+      <table class="table table-hover table">
         <tbody>
           <tr>
             <h3 class='text-secondary'></h3><br>
             <%= render 'contributions/contributions_list' %>
-            </tr>
+          </tr>
         </tbody>
       </table>
+    </div>
+
   </div>
 
-</div>
 </div>

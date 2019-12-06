@@ -13,6 +13,10 @@ class ResultsController < ApplicationController
   # GET /results/new
   def new
     @result = Result.new
+    @compost1 = Compost.all.sample
+    @user1 = User.find(@compost1.composter_id)
+    @compost2 = Compost.all.sample
+    @user2 = User.find(@compost2.composter_id)
   end
 
   # GET /results/1/edit

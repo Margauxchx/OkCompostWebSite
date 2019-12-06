@@ -28,7 +28,7 @@ class Compost < ApplicationRecord
   end
 
   def update_is_open
-    if self.filling >= 100
+    if self.filling && self.filling >= 100
       self.is_open = false
     end
   end
