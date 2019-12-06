@@ -12,5 +12,24 @@ class Compost < ApplicationRecord
   # 1 - N association with result_lines
   has_many :result_lines
   # N - N association with results, via result_lines
-  has_many :results, through: :result_lines    
+  has_many :results, through: :result_lines
+
+  # Active Storage picture association
+  has_one_attached :picture
+
+  # use user input to create/update district tag
+  before_save :tag_with_district
+  before_save :update_is_open
+
+  private
+
+  def tag_with_district
+    self.district_list = self.zipcode
+  end
+
+  def update_is_open
+    if self.filling && self.filling >= 100
+      self.is_open = false
+    end
+  end
 end

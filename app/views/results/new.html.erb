@@ -1,5 +1,30 @@
-<div class= "container">
-  <h1>Nouvelle recherche</h1>
 
   <%= render 'form', result: @result %>
+
+<div class="container ml-5">
+  <h2 class="mb-3"><i class="fas fa-carrot"></i> Voici des exemples de super composts :</h2>
+  <div class="row">
+    <div class="col d-flex align-items-stretch">
+	  <div class="card search-card border-success mb-3">
+	    <div class="card-header bg-success"><%= @compost1.title%></div>
+	    <div class="card-body">
+	      <%= image_tag @compost1.picture, class:"img-tag" %>
+	      <h4 class="card-title"><%=link_to @user1.username, user_path(@user1.id) %></h4>
+	      <p class="card-text"><%= @compost1.description %></p>
+	      <%= link_to "Voir ce compost", compost_path(@compost1.id), class: "btn btn-warning" %>
+	    </div>
+	  </div>	 	
+    </div>
+    <div class="col d-flex align-items-stretch">
+	  <div class="card search-card border-succes mb-3" style="max-width: 20rem;">
+	    <div class="card-header bg-success"><%= @compost2.title %></div>
+	    <div class="card-body">
+	      <%= image_tag @compost2.picture, class:"img-tag" %>
+	      <h4 class="card-title"><%= link_to @user2.username, user_path(@user2.id) %></h4>
+	      <p class="card-text"><%= @compost2.description %></p>
+	      <%= link_to "Voir ce compost", compost_path(@compost2.id), class: "btn btn-warning" %>
+	    </div>
+	  </div>	 	
+    </div>
+  </div>	
 </div>

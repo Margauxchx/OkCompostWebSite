@@ -8,22 +8,24 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/01b3f43a55.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
-
+    
     <%= render "application/navbartype" %>
 
 
-    <header>
-    </header>
+    <section>
+        <%= render 'flashes'%>
+        <%= yield %>
+    </section>
 
+    <footer>
+      <%= render "application/footer" %>
+    </footer>
 
-    <%= render 'flashes'%>
-    <%= yield %>
-
-    <br><br>
-    <%= render "application/footer" %>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

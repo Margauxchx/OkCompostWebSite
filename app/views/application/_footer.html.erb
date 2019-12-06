@@ -1,36 +1,27 @@
-<div class="footer container-fluid style="border: 1px solid black">
-  <div class="row"  style="border: 1px solid black">
+<footer>
+  <div class="footer container-fluid">
+    <div class="row">
 
-            <div class=" col-lg-3 col-md-3 col-sm-6 text-left" style="border: 1px solid black"><h3>OK COMPOST :</h3>
-              <p>est un service libre et gratuit pour rapprocher toutes les personnes qui veulent composter leurs restes végétaux.</p>
-            </div>
+              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>OK COMPOST :</h3>
+                <p>est un service libre et gratuit pour rapprocher toutes les personnes qui veulent composter leurs restes végétaux.</p>
+              </div>
 
-            <div class=" col-lg-3 col-md-3 col-sm-6 text-left" style="border: 1px solid black"><h3>SERVICES :</h3>
-              <ul>
-                <li>chercher un compost </li>
-                <li>proposer un nouveau compost</li>
-                <li>plan du site</li>
-              </ul>
-            </div>
+              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>SERVICES :</h3>
+                <ul>
+                  <li><%= link_to "chercher un compost", root_path, class: "link_to"%></li>
+                  <li><%= link_to "proposer un nouveau compost", new_compost_path, class: "link_to"%></li>
+                </ul>
+              </div>
 
-            <div class=" col-lg-3 col-md-3 col-sm-6 text-left" style="border: 1px solid black"><h3>LIENS UTILES :</h3>
-              <ul>
-                <li>FAQ</li>
-                <li>à propos</li>
-                <li>plan du site</li>
-                <li>team</li>
-                <li>nos valeurs</li>
-              </ul>
-            </div>
+              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>NOUS SOUTENIR :</h3>
+                <p>vous souhaitez soutenir la démarche, mais vous ne pouvez pas, ou, ne souhaitez pas composter pour le moment : apportez votre pierre à l'édifice en aidant la communauté à s'agrandir et en nous partageant sur les réseaux. :)</p>
+              </div>
+    </div>
+    <!-- Copyright -->
+    <div class="container-fluid footer-copyright border-top text-center">© 2019 Copyright
+    </div>
+    <!-- Copyright -->
 
-            <div class=" col-lg-3 col-md-3 col-sm-6 text-left" style="border: 1px solid black"><h3>CONTACT :</h3>
-              <p>nous soutenir</p>
-              <p>apporter votre pierre à l'édifice en aidant la communauté à s'agrandir. partagez nous sur les réseaux. :)</p>
-            </div>
   </div>
-  <!-- Copyright -->
-  <div class="container footer-copyright border text-center">© 2019 Copyright
-  </div>
-  <!-- Copyright -->
 
-</div>
+</footer>

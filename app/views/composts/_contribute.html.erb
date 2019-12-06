@@ -1,5 +1,5 @@
 <h1>Contribuer à ce compost</h1>
-<%= form_tag contributions_path, method: "post" do %>
+<%= form_tag contributions_path, method:"post" do %>
 
   <div class="field">
     <%= label_tag :contribution_date, "Propose un créneau pour ta contribution à ce compost :" %>
@@ -14,8 +14,8 @@
     <%= hidden_field_tag(:supplied_compost_id, @compost.id) %>
 <br>
 
-
-  <div class="actions center">
+<div class="actions center">
     <%= submit_tag "Demander à contribuer", class:"btn btn-primary" %>
   </div>
+  
 <% end %>
