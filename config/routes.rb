@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :results, only: [:create, :new, :show]
   devise_for :users
   resources :users
-  resources :composts
+  resources :composts do
+    resources :pictures, only: [:create]
+  end
   resources :contributions do
     post 'accept'
     post 'reject'
