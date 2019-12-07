@@ -1,3 +1,4 @@
+<% content_for :title, "OkCompost / Compost" %>
 <div class="container">
   <br>
   <h1 class="center">Compost <%= @compost.title %></h1>
@@ -135,7 +136,7 @@
                               :district => nil, :composition => [composition_tag.to_s]
                               }
                             },
-                            { :method => "post", :class => 'btn btn-outline-info rounded-pill'} 
+                            { :method => "post", :class => 'btn btn-outline-info rounded-pill'}
                           %>
               <% end %>
               </td>

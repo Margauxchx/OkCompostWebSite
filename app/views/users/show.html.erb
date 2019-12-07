@@ -1,3 +1,4 @@
+<% content_for :title, "OkCompost / Profil" %>
 <div class="container">
   <% if current_user.id == @user.id %>
     <h1>Bienvenue sur votre profil !</h1>
@@ -80,9 +81,9 @@
                 <thead class='thead-light'>
                   <tr>
                     <th><h4 class='text-secondary'>Nom du compost</h4></th>
-                    <th><h4 class='text-secondary'>Lien</h4></th>                   
+                    <th><h4 class='text-secondary'>Lien</h4></th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
                   <% @composts.each do |compost| %>
                     <tr>
@@ -98,10 +99,10 @@
               <table class="table table-hover table">
                 <thead class='thead-light'>
                   <tr>
-                    <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>  
-                    <th><h4 class='text-secondary'>Lien</h4></th>              
+                    <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>
+                    <th><h4 class='text-secondary'>Lien</h4></th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
                   <% @contributions.each do |contribution| %>
                     <tr>
@@ -118,9 +119,9 @@
                 <thead class='thead-light'>
                   <tr>
                     <th><h4 class='text-secondary'>Mes messages</h4></th>
-                    <th><h4 class='text-secondary'>Contenu</h4></th>                   
+                    <th><h4 class='text-secondary'>Contenu</h4></th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
 
                 </tbody>

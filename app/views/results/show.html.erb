@@ -1,3 +1,4 @@
+<% content_for :title, "OkCompost / Résultats" %>
 <div class= "container">
   <h1 class="my-2">Résultats :</h1>
     <div class="row">
@@ -31,9 +32,9 @@
           <p class="card-text"><%= result_line.compost.description %></p>
           <%= link_to "Voir ce compost", compost_path(result_line.compost.id), class: "btn btn-warning" %>
         </div>
-      </div>    
+      </div>
       </div>
       <% end %>
-    </div>  
+    </div>
     <%= link_to 'Nouvelle recherche', root_path, class: 'btn btn-lg btn-info mb-3' %>
   </div>
