@@ -11,29 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :arrondissement %>
-    <%= form.text_field :district %>
-  </div>
+  <div class="jumbotron">
+    <div class="container h-100">
+      <div class="row" id="jumbotron-row">
+        <div class="col-6">
+            <h1 id="jumbotron-title" class="display-3 mx-5 text-center">Offrez de belles rencontres à vos épluchures !</h1> 
+        </div>
+        <div class="col-6">
+          <div class="card mx-5">
+            <div class="card-body">
+              <h5 class="card-title">Cherchez un compost !</h5>
+              <h6 class="card-subtitle mb-2 text-muted mt-3"> Renseignez vos critères de sélection :</h6>
+              
+              <div>
+                <%= select_tag("result[district]", options_for_select([['Arrondissement', ""],['1er', '75001'], ['2ème', '75002'], ['3ème', '75003'], ['4ème', '75004'], ['5ème', '75005'], ['6ème', '75006'], ['7ème', '75007'], ['8ème', '75008'], ['9ème', '75009'], ['10ème', '75010'], ['11ème', '75011'], ['12ème', '75012'], ['13ème', '75013'], ['14ème', '75014'], ['15ème', '75015'], ['16ème', '75016'], ['17ème', '75017'], ['18ème', '75018'], ['19ème', '75019']]), class: "form-control-welcome") %>
+              </div>
+              
+              <div class="row mt-2 mb-3">
+                <div class="field mr-2">
+                  <%= form.label :bio, class: "ml-3 mr-2" %>
+                  <%= form.check_box(:composition, {:multiple => true}, "bio", nil) %>
+                </div>
 
-  <div class="field">
-    <%= form.label :bio %>
-    <%= form.check_box(:composition, {:multiple => true}, "bio", nil) %>
-  </div>
+                <div class="field mr-2">
+                  <%= form.label :coquilles, class: "mr-2" %>
+                  <%= form.check_box(:composition, {:multiple => true}, "coquilles", nil) %>
+                </div>
 
-  <div class="field">
-    <%= form.label :coquilles %>
-    <%= form.check_box(:composition, {:multiple => true}, "coquilles", nil) %>
-  </div>
+                <div class="field mr-2">
+                  <%= form.label :bananes, class: "mr-2" %>
+                  <%= form.check_box(:composition, {:multiple => true}, "bananes", nil) %>
+                </div> 
+              </div>
+              <button class="btn btn-primary px-5">Et zou !</button>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :bananes %>
-    <%= form.check_box(:composition, {:multiple => true}, "bananes", nil) %>
   </div>
-
-  <div class="actions">
-    <%= form.submit "Et zou !", class: 'btn btn-primary' %>
-  </div>
-  
 
 <% end %>

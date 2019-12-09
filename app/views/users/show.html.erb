@@ -1,5 +1,16 @@
+<% content_for :title, "OkCompost / Profil" %>
 <div class="container">
-  <br><h1 class="center">Profil</h1>
+
+  <h1 class="center">Profil</h1>
+  
+  <% if current_user.id == @user.id %>
+    <h1>Bienvenue sur votre profil !</h1>
+  <% elsif @user.username %>
+    <h1>Profil de <%= @user.username %></h1>
+  <% else %>
+    <h1> Profil de l'utilisateur <%= @user.id %></h1>
+  <% end %>
+
 </div>
 
 <div class="container">
@@ -13,9 +24,13 @@
     <li class="nav-item">
       <%= link_to 'Contributions', '#user_contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
     </li>
-    <li class="nav-item">
-      <%= link_to 'Messages', '#user_private_messages', { 'data-toggle' => "tab", :class => "nav-link" } %>
-    </li>
+
+    <% if user_signed_in? && current_user.id == @user.id%>
+      <li class="nav-item">
+        <%= link_to 'Messages', '#user_private_messages', { 'data-toggle' => "tab", :class => "nav-link" } %>
+      </li>
+    <% end %>
+
         </ul>
         <div class="tab-content py-4">
             <div class="tab-pane active" id="profil_details">
@@ -70,9 +85,9 @@
                 <thead class='thead-light'>
                   <tr>
                     <th><h4 class='text-secondary'>Nom du compost</h4></th>
-                    <th><h4 class='text-secondary'>Lien</h4></th>                   
+                    <th><h4 class='text-secondary'>Lien</h4></th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
                   <% @composts.each do |compost| %>
                     <tr>
@@ -90,10 +105,10 @@
               <table class="table table-hover table">
                 <thead class='thead-light'>
                   <tr>
-                    <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>  
-                    <th><h4 class='text-secondary'>Lien</h4></th>              
+                    <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>
+                    <th><h4 class='text-secondary'>Lien</h4></th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
                   <% @contributions.each do |contribution| %>
                     <tr>
@@ -104,15 +119,15 @@
                 </tbody>
               </table>
             </div> <!-- /tab-pane -->
-
+        
             <div class="tab-pane" id="user_private_messages">
               <table class="table table-hover table">
                 <thead class='thead-light'>
                   <tr>
                     <th><h4 class='text-secondary'>Mes messages</h4></th>
-                    <th><h4 class='text-secondary'>Contenu</h4></th>                   
+                    <th><h4 class='text-secondary'>Contenu</h4></th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
 
                 </tbody>
