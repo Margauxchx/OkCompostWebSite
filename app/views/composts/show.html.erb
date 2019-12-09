@@ -124,7 +124,7 @@
               <p><%= @compost.access_data %>
               </p>
           </tr>
-          <% end %>
+          
           <tr>
             <th>
               <h4 class='text-secondary'>Tags</h4>
@@ -187,8 +187,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @compost.contributions.each do |contribution| %>
-            <thead>
+          <thead>
               <th>
                 <h3 class='text-secondary'>Utilisateur·ice</h3>
               </th>
@@ -199,6 +198,8 @@
                 <h3 class='text-secondary'>Profil</h3>
               </th>
             </thead>
+          <% @compost.contributions.each do |contribution| %>
+            
             <tr>
               <th>
                 <h4 class='text-secondary'><%= contribution.contributor.username %></h4>
