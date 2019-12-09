@@ -185,3 +185,35 @@ footer {
   height: 100px;
 }
 
+.banner {
+	background-image: url("/assets/vegetables.jpg");
+	background-size: cover;
+	background-position: center;
+    position:relative;
+    min-width:100%;
+    height:20vh;
+}
+
+.banner-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
+
+#text {
+  width: 50%;
+  float: left;
+  margin-right: 20px;
+}
+
+.tm {
+  border: 0px solid;
+  overflow: hidden;
+}
+
+hr {
+  margin-left:250px;
+  margin-right:250px;
+}
