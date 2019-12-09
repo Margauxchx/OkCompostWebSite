@@ -45,7 +45,7 @@ footer,.link_to, .btn-primary {
 }
 
 .jumbotron {
-	background-image: url("/assets/vegetables.jpg");
+  background: url(asset-path('vegetables.jpg'));
 	background-size: cover;
 	background-position: center;
     position:relative;
@@ -224,3 +224,4 @@ hr {
   margin-left:100px;
   margin-right:100px;
 }
+

@@ -55,21 +55,32 @@
                           }
                         },
                         :method => "post", :class => 'btn btn-outline-warning rounded-pill'
-                      %>
+                      %><br><br>
+                       <% @compost.composition_list.sort.each do |composition_tag| %>
+                <%= link_to composition_tag.to_s, {
+                            :controller => "results", :action => "create",
+                            :result => {
+                              :district => nil, :composition => [composition_tag.to_s]
+                              }
+                            },
+                            { :method => "post", :class => 'btn btn-outline-info rounded-pill'}
+                          %>
+
+              <% end %>
                     </p>
 
                   </div>
                   <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
                     <% if @compost.is_open %>
-                    <span class="badge badge-pill badge-primary  pt-2">
+                    <span class="badge badge-pill badge-primary px-3 pt-2">
                       <h5>Ouvert</h5>
                     </span>
                     <% else %>
-                    <span class="badge badge-pill badge-danger  pt-2">
+                    <span class="badge badge-pill badge-danger px-3 pt-2">
                       <h5>Fermé</h5>
                     </span>
                     <% end %>
-                    <span class="badge badge-pill badge-primary  pt-2">
+                    <span class="badge badge-pill badge-primary px-3 pt-2">
                       <h5>Remplissage : <%= @compost.filling %> %</h5>
                     </span>
                   </div>
@@ -125,34 +136,7 @@
               </p>
           </tr>
           
-          <tr>
-            <th>
-              <h4 class='text-secondary'>Tags</h4>
-            </th>
-            <td>
-              <%= link_to @compost.district_list.to_s, {
-                        :controller => "results", :action => "create",
-                        :result => {
-                          :district => @compost.district_list.to_s, :composition => []
-                          }
-                        },
-                        :method => "post", :class => 'btn btn-outline-warning rounded-pill'
-                      %>
-            </td>
-            <td>
-              <% @compost.composition_list.sort.each do |composition_tag| %>
-                <%= link_to composition_tag.to_s, {
-                            :controller => "results", :action => "create",
-                            :result => {
-                              :district => nil, :composition => [composition_tag.to_s]
-                              }
-                            },
-                            { :method => "post", :class => 'btn btn-outline-info rounded-pill'}
-                          %>
-
-              <% end %>
-              </td>
-          </tr>
+        
         </tbody>
         <%else%>
         <h4 class="center">Contribuer au compost pour voir les infos d'accès.</h4><br><br>
@@ -249,5 +233,11 @@
     </div>
 
   </div>
+
+  <h3>Changer de photo ?</h3>
+<%= form_tag compost_pictures_path(@compost), multipart: true do %>
+  <%= file_field_tag :picture %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
 
 </div>

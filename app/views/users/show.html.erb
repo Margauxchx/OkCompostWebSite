@@ -19,7 +19,7 @@
       <%= link_to 'Profil', '#profil_details', { 'data-toggle' => "tab", :class => "nav-link active" } %>
     </li>
     <li class="nav-item">
-      <%= link_to 'Composts', '#user_orders', { 'data-toggle' => "tab", :class => "nav-link" } %>
+      <%= link_to 'Composts', '#user_composts', { 'data-toggle' => "tab", :class => "nav-link" } %>
     </li>
     <li class="nav-item">
       <%= link_to 'Contributions', '#user_contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
@@ -80,7 +80,10 @@
               <% end %>
             </div> <!-- /tab-pane -->
 
-            <div class="tab-pane" id="user_orders">
+            <div class="tab-pane" id="user_composts">
+              <% if current_user.id == @user.id %>
+                <%= link_to "Créer un nouveau compost", new_compost_path, class: "btn btn-info mb-3" %>
+              <% end %>
               <table class="table table-hover table">
                 <thead class='thead-light'>
                   <tr>
@@ -97,7 +100,6 @@
                   <% end %>
                 </tbody>
               </table>
-              <%= link_to 'Créer un nouveau compost', new_compost_path, class:"btn btn-primary" %>
             </div> <!-- /tab-pane -->
          
 
