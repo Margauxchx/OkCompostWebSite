@@ -1,5 +1,8 @@
 <% content_for :title, "OkCompost / Profil" %>
 <div class="container">
+
+  <h1 class="center">Profil</h1>
+  
   <% if current_user.id == @user.id %>
     <h1>Bienvenue sur votre profil !</h1>
   <% elsif @user.username %>
@@ -7,6 +10,7 @@
   <% else %>
     <h1> Profil de l'utilisateur <%= @user.id %></h1>
   <% end %>
+
 </div>
 
 <div class="container">
@@ -15,7 +19,7 @@
       <%= link_to 'Profil', '#profil_details', { 'data-toggle' => "tab", :class => "nav-link active" } %>
     </li>
     <li class="nav-item">
-      <%= link_to 'Composts', '#user_orders', { 'data-toggle' => "tab", :class => "nav-link" } %>
+      <%= link_to 'Composts', '#user_composts', { 'data-toggle' => "tab", :class => "nav-link" } %>
     </li>
     <li class="nav-item">
       <%= link_to 'Contributions', '#user_contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
@@ -71,12 +75,15 @@
                 </tbody>
               </table>
               <% if current_user.id == @user.id %>
-                <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+                <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-primary" %>
                 <%= link_to "Modifier vos paramètres de connexion", edit_user_registration_path, class: "btn btn-warning" %>
               <% end %>
             </div> <!-- /tab-pane -->
 
-            <div class="tab-pane" id="user_orders">
+            <div class="tab-pane" id="user_composts">
+              <% if current_user.id == @user.id %>
+                <%= link_to "Créer un nouveau compost", new_compost_path, class: "btn btn-info mb-3" %>
+              <% end %>
               <table class="table table-hover table">
                 <thead class='thead-light'>
                   <tr>
@@ -88,12 +95,13 @@
                   <% @composts.each do |compost| %>
                     <tr>
                       <th><h3 class='text-secondary'><%= compost.title %></h3></th>
-                      <td><p><%= link_to "Voir ce compost", compost_path(compost.id), class: "btn btn-success" %></p></td>
+                      <td><p><%= link_to "Voir ce compost", compost_path(compost.id), class: "btn btn-primary" %></p></td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
             </div> <!-- /tab-pane -->
+         
 
             <div class="tab-pane" id="user_contributions">
               <table class="table table-hover table">
@@ -107,7 +115,7 @@
                   <% @contributions.each do |contribution| %>
                     <tr>
                       <th><h3 class='text-secondary'><%= contribution.supplied_compost.title %></h3></th>
-                      <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-success" %></p></td>
+                      <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-primary" %></p></td>
                     </tr>
                   <% end %>
                 </tbody>
@@ -129,4 +137,4 @@
             </div> <!-- /tab-pane -->
 </div><!-- /container -->
 
-<%= link_to 'Back', root_path %>
+<%= link_to 'Revenir à la page accueil', root_path, class: "btn btn-link" %>
