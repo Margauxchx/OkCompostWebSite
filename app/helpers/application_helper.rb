@@ -9,7 +9,7 @@ module ApplicationHelper
     end
 
     def google_map(center)
-      "https://www.google.com/maps/embed/v1/place?key=API_KEY=#{center}"
+      "https://www.google.com/maps/embed/v1/place?key=#{Rails.application.credentials.google_maps_api_key}&q=#{center}"
     end
 
 end
