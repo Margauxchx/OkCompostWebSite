@@ -1,0 +1,58 @@
+<% content_for :title, "OkCompost / About" %>
+
+<div class="banner">
+  <h3 class="banner-text center" style="color:white">A PROPOS DE OK COMPOST</h3><br><br><br><br>
+</div>
+<br><br>
+<div class="container tm">
+  <div id="text1">
+    <hr class="long"><br>
+<p class="text-secondary text-center"><strong>Des petits gestes quotidiens permettent de réduire les déchets et certaines pratiques permettent même de les réutiliser au quotidien. C'est le cas du compost qui permet la création d'engrais naturel. <br>
+OK COMPOST est là pour rendre tout ça plus clair, facile et accessible à tous. </strong>
+</p> <br>
+  <hr class="long">
+   
+</div>
+  <br>
+  <div>
+    <p class="text-center text-secondary">OK COMPOST permet de rapprocher les différents acteurs qui peuvent intervenir tout au long du processus de compostage et s'adresse donc à plusieurs type de personne :
+  </p><br>
+<p class="text-center text-secondary"> Tu es un <strong>citoyen consommateur</strong> voulant recycler ses déchets alimentaires mais ne possédant pas de compost : OK COMPOST t'aide à trouver des composts près de chez toi. <br>
+  <%= link_to 'FAIS UNE RECHERCHE', root_path,class:"text-center" %></p>
+<p class="text-center text-secondary"> Tu es un <strong>citoyen propriétaire</strong> d'un compost et tu veux en faire profiter ton voisinage. <br>   <%= link_to 'CREES UN COMPOST', new_compost_path,class:"text-center" %></p>
+<p class="text-center text-secondary"> Tu es un <strong>agriculteur</strong> ou un <strong>citadin</strong> possédant un jardin/potager et tu voudrais pouvoir utiliser l'engrais créé. <br> <%= link_to 'VOIR LES COMPOSTS REMPLIS', root_path,class:"text-center" %> </p>
+  </div>
+</div>
+
+  
+ <br><hr><br> 
+<div class="container">
+  <div class="row">
+<div class="col-4 d-flex align-items-stretch">
+  <%= image_tag "aboutus_pictures/epluchures.png", width: 260, height: 250 %>
+  
+</div>
+<div class="col-4 d-flex align-items-stretch">
+    <%= image_tag "aboutus_pictures/composteur.png", width: 280, height: 250 %>
+</div>
+<div class="col-4 d-flex align-items-stretch">
+  <%= image_tag "aboutus_pictures/potager.png", width: 280, height: 250 %> 
+</div>
+</div>
+</div>
+
+<div class="container about">
+  <div class="row">
+<div class="col-4 d-flex align-items-stretch">
+  <p class="text-secondary">Redonnez le sourire à vos épluchures. Au lieu de jeter vos déchets alimentaires dans le bac à ordures gardez les pour en faire du compost</p>
+</div>
+<div class="col-4 d-flex align-items-stretch">
+  <p class="text-secondary">En quelques mois les déchets seront transformés en compost</p>
+</div>
+<div class="col-4 d-flex align-items-stretch">
+  <p class="text-secondary">Et deviendront un engrais 100% naturel qui permettra de nourrir les sols de jardin, potager et même ceux de champs agricoles </p>
+</div>
+</div>
+</div><br> <br>
+<p class="text-secondary text-center">Pour toute autre question, n'hésite pas à regarder <%= link_to 'la FAQ', page_path('faq') %> </p>
+<br><br>

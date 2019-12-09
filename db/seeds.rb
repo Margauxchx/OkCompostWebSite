@@ -116,7 +116,7 @@
     20.times { |district| zipcodes_list << '75' + (format '%03d', (district + 1)) }
     composition_tags = ['bio', 'coquilles', 'bananes', 'agrumes']
 
-    50.times do
+    20.times do
       compost_seed(User.all.sample, zipcodes_list, composition_tags)
     end
     puts Compost.all.size.to_s + ' composts created'
