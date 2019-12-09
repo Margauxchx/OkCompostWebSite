@@ -24,7 +24,7 @@
               <h6 class="card-subtitle mb-2 text-muted mt-3"> Renseignez vos critères de sélection :</h6>
               
               <div>
-                <%= select_tag("result[district]", options_for_select([['Arrondissement', ""],['1er', '75001'], ['2ème', '75002'], ['3ème', '75003'], ['4ème', '75004'], ['5ème', '75005'], ['6ème', '75006'], ['7ème', '75007'], ['8ème', '75008'], ['9ème', '75009'], ['10ème', '75010'], ['11ème', '75011'], ['12ème', '75012'], ['13ème', '75013'], ['14ème', '75014'], ['15ème', '75015'], ['16ème', '75016'], ['17ème', '75017'], ['18ème', '75018'], ['19ème', '75019']]), class: "form-control-welcome") %>
+                <%= select_tag("result[district]", options_for_select([['Arrondissement', ""],['1er', '75001'], ['2ème', '75002'], ['3ème', '75003'], ['4ème', '75004'], ['5ème', '75005'], ['6ème', '75006'], ['7ème', '75007'], ['8ème', '75008'], ['9ème', '75009'], ['10ème', '75010'], ['11ème', '75011'], ['12ème', '75012'], ['13ème', '75013'], ['14ème', '75014'], ['15ème', '75015'], ['16ème', '75016'], ['17ème', '75017'], ['18ème', '75018'], ['19ème', '75019']]), class: "form-control-welcome mb-2") %>
               </div>
               
               <div class="row mt-2 mb-3">
@@ -43,7 +43,9 @@
                   <%= form.check_box(:composition, {:multiple => true}, "bananes", nil) %>
                 </div> 
               </div>
-              <button class="btn btn-primary px-5">Et zou !</button>
+              <button class="btn btn-primary px-5 mr-3">Et zou !</button>
+              <p class="my-3">Ou alors : </p>
+              <%= link_to "Créer un compost !", new_compost_path, class: "btn btn-info" %>
             </div>
           </div>  
         </div>
