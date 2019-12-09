@@ -81,7 +81,6 @@
           </div>
 
           <!-- Access -->
-      
           <tr>
             <h3>Accès</h3>
             <% if display_access_data?(@compost) || is_owner?(@compost) %>
@@ -153,12 +152,13 @@
               <% end %>
               </td>
           </tr>
+          </>
         </tbody>
         <%else%>
         <h4 class="center">Contribuer au compost pour voir les infos d'accès.</h4><br><br>
         <%end%>
       </table><br>
-
+      <%= render 'application/map'%>
       <div class="center">
         <% if is_owner?(@compost) %>
         <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %>
@@ -251,3 +251,5 @@
   </div>
 
 </div>
+
+
