@@ -131,8 +131,6 @@
             </th>
             <td>
               <%= link_to @compost.district_list.to_s, {
-
-
                         :controller => "results", :action => "create",
                         :result => {
                           :district => @compost.district_list.to_s, :composition => []
@@ -151,6 +149,7 @@
                             },
                             { :method => "post", :class => 'btn btn-outline-info rounded-pill'}
                           %>
+
               <% end %>
               </td>
           </tr>
