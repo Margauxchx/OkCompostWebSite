@@ -5,23 +5,28 @@
 </div>
 <br><br>
 <div class="container tm">
-  <div id="text">
+  <div id="text1">
 <p class="text-secondary">Des petits gestes quotidiens permettent de réduire les déchets et certaines pratiques permettent même de les réutiliser au quotidien. C'est le cas du compost qui permet la création d'engrais naturel. <br>
 Ok compost est là pour rendre tout ca plus clair, facile et accessible à tous. 
-<%= link_to 'La team', page_path('team') %>
 </p>
+    <p class="text-secondary">Pour toutes autres questions, n'hésite pas à regarder <%= link_to 'la FAQ', page_path('faq') %> </p>
     </div>
   <div>
-    <embed>
-    <p class="text-secondary"> fiznoifozfb</p>
+    <p class="text-center text-secondary">OK COMPOST permet de rapprocher les différents acteurs qui peuvent intervenir tout au long du processus de compostage.
+  </p>
+<p class="text-center text-secondary"> Tu es un citoyen voulant recycler ses déchets alimentaire mais ne possedant pas de compost : OK COMPOST t'aide à trouver des composts près de chez toi. <br>
+  <%= link_to 'Fais une recherche', root_path,class:"text-center" %></p>
+<p class="text-center text-secondary"> Tu es un citoyen propriétaire d'un compost et tu veux en faire profiter ton voisinage. <br>   <%= link_to 'Créer un compost', new_compost_path,class:"text-center" %></p>
+<p class="text-center text-secondary"> Tu es un agriculteur ou un citadin possedant un jardin/potager et tu voudrais pouvoir utiliser l'engrais crée. <br> <%= link_to 'Voir les composts remplis', root_path,class:"text-center" %> </p>
   </div>
 </div>
+
   
  <br><hr><br> 
 <div class="container ">
   <div class="row">
 <div class="col-4 d-flex align-items-stretch">
-  <%= image_tag "aboutus_pictures/epluchures.png", width: 250, height: 250 %>
+  <%= image_tag "aboutus_pictures/epluchures.png", width: 260, height: 250 %>
 </div>
 <div class="col-4 d-flex align-items-stretch">
     <%= image_tag "aboutus_pictures/composteur.png", width: 280, height: 250 %>
