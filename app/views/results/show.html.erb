@@ -4,10 +4,6 @@
     <div class="row">
       <% @result.result_lines.each do |result_line| %>
 
-          <td><%= result_line.compost.id %></td>
-          <td><%= link_to result_line.compost.title, compost_path(result_line.compost), :class => 'btn btn-primary' %></td>
-          <td>
-
       <div class="col-4 d-flex align-items-stretch">
       <div class="card search-card border-success mb-3">
         <div class="card-header bg-success"><%= result_line.compost.title %></div>
