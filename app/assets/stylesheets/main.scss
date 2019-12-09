@@ -29,7 +29,6 @@ footer,.link_to, .btn-primary {
 .progress-bar {
   color: #ADCE4B;
   background-color: #ADCE4B;
-
 }
 
 .alert-primary, .alert-primary > th, .alert-primary > td {
@@ -228,3 +227,11 @@ hr {
   margin-left:100px;
   margin-right:100px;
 }
+
+#cedric-picture {
+  background-image: url(asset-path('team/cedric.jpg'));
+  width: 150px;
+  height: 150px;
+  background-position: center;
+}
+
