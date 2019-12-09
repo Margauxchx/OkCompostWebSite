@@ -14,7 +14,7 @@
       <% @result.result_lines.each do |result_line| %>
         <tr>
           <td><%= result_line.compost.id %></td>
-          <td><%= link_to result_line.compost.title, compost_path(result_line.compost), :class => 'btn btn-success' %></td>
+          <td><%= link_to result_line.compost.title, compost_path(result_line.compost), :class => 'btn btn-primary' %></td>
           <td>
             <%= link_to result_line.compost.district_list.to_s, {
               :controller => "results", :action => "create",

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Bienvenue sur votre profil !</h1>
+  <br><h1 class="center">Profil</h1>
 </div>
 
 <div class="container">
@@ -60,7 +60,7 @@
                 </tbody>
               </table>
               <% if current_user.id == @user.id %>
-                <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+                <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-primary" %>
                 <%= link_to "Modifier vos paramètres de connexion", edit_user_registration_path, class: "btn btn-warning" %>
               <% end %>
             </div> <!-- /tab-pane -->
@@ -77,12 +77,14 @@
                   <% @composts.each do |compost| %>
                     <tr>
                       <th><h3 class='text-secondary'><%= compost.title %></h3></th>
-                      <td><p><%= link_to "Voir ce compost", compost_path(compost.id), class: "btn btn-success" %></p></td>
+                      <td><p><%= link_to "Voir ce compost", compost_path(compost.id), class: "btn btn-primary" %></p></td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
+              <%= link_to 'Créer un nouveau compost', new_compost_path, class:"btn btn-primary" %>
             </div> <!-- /tab-pane -->
+         
 
             <div class="tab-pane" id="user_contributions">
               <table class="table table-hover table">
@@ -96,7 +98,7 @@
                   <% @contributions.each do |contribution| %>
                     <tr>
                       <th><h3 class='text-secondary'><%= contribution.supplied_compost.title %></h3></th>
-                      <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-success" %></p></td>
+                      <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-primary" %></p></td>
                     </tr>
                   <% end %>
                 </tbody>
@@ -118,4 +120,4 @@
             </div> <!-- /tab-pane -->
 </div><!-- /container -->
 
-<%= link_to 'Back', root_path %>
+<%= link_to 'Revenir à la page accueil', root_path, class: "btn btn-link" %>
