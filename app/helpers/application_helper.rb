@@ -9,7 +9,7 @@ module ApplicationHelper
     end
 
     def google_map(center)
-      "https://www.google.com/maps/embed/v1/place?key=AIzaSyClv0_c-MZs_sl4mFt44uEsMZS3Ly6yfvo&q=#{center}"
+      "https://www.google.com/maps/embed/v1/place?key=API_KEY=#{center}"
     end
 
 end
