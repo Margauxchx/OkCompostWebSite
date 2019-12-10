@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     post 'accept'
     post 'reject'
   end 
+  resources :conversations do
+    resources :messages
+  end
   root to: "composts#index" 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
