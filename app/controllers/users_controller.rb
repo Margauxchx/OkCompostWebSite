@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @composts = @user.owned_composts
     @contributions = @user.contributions
+    @conversations = Conversation.all
   end
 
   # GET /users/new
