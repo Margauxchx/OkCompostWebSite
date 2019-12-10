@@ -1,7 +1,8 @@
 class CompostsController < ApplicationController
   include UsersHelper
+  
   before_action :set_compost, only: [:show, :edit, :update, :destroy]
-  before_action :profile_enhencement, only: [:index]
+  before_action :profile_enhancement, only: [:index]
   before_action :authenticate_user, only: [:new]
 
   # GET /composts
@@ -74,7 +75,7 @@ class CompostsController < ApplicationController
     end
 
     # Method to ask the user to add more data to his profile on the welcome page ==> to move when we have the final welcome page
-    def profile_enhencement
+    def profile_enhancement
       if profile_completed?(50) == false
           flash.now[:notice] = "Votre profil n'est rempli qu'à #{current_user.profile_completion}%. A l'occasion, passez le compléter #{view_context.link_to('par ici', edit_user_path(current_user))}"      
       end
