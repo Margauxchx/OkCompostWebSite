@@ -8,7 +8,11 @@
       <div class="card search-card border-success mb-3">
         <div class="card-header bg-success"><%= result_line.compost.title %></div>
         <div class="card-body">
-          <%= image_tag result_line.compost.picture, class:"img-tag" %>
+          <% if result_line.compost.picture.attached? %>
+            <%= image_tag result_line.compost.picture, class:"img-tag" %>
+          <% else %>
+            <%= image_tag 'http://odil.tv/wp-content/uploads/2019/06/b00bc6e_2018122245.0.2235366676compost_web-1280x640.jpg', style:"height: auto; max-width:100%" %>
+          <% end %>
           <h4 class="card-title"><%=link_to User.find(result_line.compost.composter_id).username, user_path(result_line.compost.composter_id) %></h4>
           <div class="row">
 
