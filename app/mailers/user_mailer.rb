@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
  
   def welcome_email(user)
     @user = user 
-    @url  = 'http://OkCompost.fr/sign-in' 
+    @url  = 'https://ok-compost-staging.herokuapp.com' 
 
     mail(to: @user.email, subject: 'Bienvenue dans la communauté OkCompost !') 
   end
