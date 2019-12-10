@@ -2,6 +2,8 @@
 <html>
   <head>
     <title><%= yield(:title) %></title>
+
+    <%= favicon_link_tag 'care.png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,7 +15,7 @@
   </head>
 
   <body>
-    
+
     <%= render "application/navbartype" %>
 
 

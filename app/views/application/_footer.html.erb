@@ -2,18 +2,26 @@
   <div class="footer container-fluid">
     <div class="row">
 
-              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>OK COMPOST :</h3>
+              <div class="col-lg-3 col-md-3 col-sm-6 text-left"><h3>OK COMPOST :</h3>
                 <p>est un service libre et gratuit pour rapprocher toutes les personnes qui veulent composter leurs restes végétaux.</p>
               </div>
 
-              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>SERVICES :</h3>
+              <div class="col-lg-3 col-md-3 col-sm-6 text-left"><h3>SERVICES :</h3>
                 <ul>
                   <li><%= link_to "chercher un compost", root_path, class: "link_to"%></li>
                   <li><%= link_to "proposer un nouveau compost", new_compost_path, class: "link_to"%></li>
                 </ul>
+            </div>
+
+              <div class="col-lg-3 col-md-3 col-sm-6 text-left"><h3>LIENS UTILES :</h3>
+                <ul>
+                  <li><%= link_to "FAQ", "#", class: "link_to"%></li>
+                  <li><%= link_to "à propos", page_path('about'), class: "link_to"%></li>
+                  <li><%= link_to "team", page_path('team'), class: "link_to"%></li>
+                </ul>
               </div>
 
-              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>NOUS SOUTENIR :</h3>
+              <div class="col-lg-3 col-md-3 col-sm-6 text-left"><h3>NOUS SOUTENIR :</h3>
                 <p>vous souhaitez soutenir la démarche, mais vous ne pouvez pas, ou, ne souhaitez pas composter pour le moment : apportez votre pierre à l'édifice en aidant la communauté à s'agrandir et en nous partageant sur les réseaux. :)</p>
               </div>
     </div>

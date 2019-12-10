@@ -21,6 +21,14 @@ class Compost < ApplicationRecord
   before_save :tag_with_district
   before_save :update_is_open
 
+  #geocoder 
+  geocoded_by :full_street_address
+  after_validation :geocode
+
+  def full_street_address
+    return self.address + " " + self.zipcode + " " + self.city + ", " + self.country
+  end 
+
   private
 
   def tag_with_district
@@ -32,4 +40,6 @@ class Compost < ApplicationRecord
       self.is_open = false
     end
   end
+
+  
 end
