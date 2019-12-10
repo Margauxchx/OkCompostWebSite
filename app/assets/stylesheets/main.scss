@@ -189,7 +189,7 @@ footer {
 }
 
 .banner {
-	background-image: url("/assets/vegetables.jpg");
+	background-image: url(asset-path('vegetables.jpg'));
 	background-size: cover;
 	background-position: center;
     position:relative;
