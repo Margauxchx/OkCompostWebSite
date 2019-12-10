@@ -14,6 +14,12 @@
 </div>
 
 <div class="container">
+  <% if current_user.id != @user.id %>
+    <%= link_to "Ecrivez-moi!", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post", class: "btn btn-info mb-3" %>
+  <% end %>
+</div>
+
+<div class="container">
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <%= link_to 'Profil', '#profil_details', { 'data-toggle' => "tab", :class => "nav-link active" } %>
@@ -126,12 +132,11 @@
               <table class="table table-hover table">
                 <thead class='thead-light'>
                   <tr>
-                    <th><h4 class='text-secondary'>Mes messages</h4></th>
-                    <th><h4 class='text-secondary'>Contenu</h4></th>
+                    <th><h4 class='text-secondary'>Mes conversations</h4></th>
                   </tr>
                 </thead>
                 <tbody>
-
+                  <th><%= render 'conversations/index' %></th>
                 </tbody>
               </table>
             </div> <!-- /tab-pane -->
