@@ -29,7 +29,6 @@ footer,.link_to, .btn-primary {
 .progress-bar {
   color: #ADCE4B;
   background-color: #ADCE4B;
-
 }
 
 .alert-primary, .alert-primary > th, .alert-primary > td {
@@ -175,7 +174,6 @@ section{
   min-height: 350px;
 }
 
-
 .search-card {
   max-width: 20rem;
 }
@@ -185,4 +183,47 @@ footer {
   height: 100px;
 }
 
+.team > .row {
+  padding-top: 25px;
+  margin-bottom: 10px;
+}
 
+.banner {
+	background-image: url(asset-path('vegetables.jpg'));
+	background-size: cover;
+	background-position: center;
+    position:relative;
+    min-width:100%;
+    height:20vh;
+}
+
+.banner-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
+
+#text1 {
+  width: 50%;
+  height: 300px;
+  float: left;
+  margin-top: 60px;
+  padding-right: 50px;
+}
+
+.tm {
+  border: 0px solid;
+  overflow: hidden;
+}
+
+hr {
+  margin-left:250px;
+  margin-right:250px;
+}
+
+.long {
+  margin-left:100px;
+  margin-right:100px;
+}
