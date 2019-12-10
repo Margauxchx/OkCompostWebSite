@@ -8,7 +8,11 @@
 	  <div class="card search-card border-success mb-3" style="max-width: 20rem;">
 	    <div class="card-header bg-success"><%= @compost1.title%></div>
 	    <div class="card-body">
-	      <%= image_tag @compost1.picture, class:"img-tag" %>
+        <% if @compost1.picture.attached? %>
+          <%= image_tag @compost1.picture, class:"img-tag" %>
+        <% else %>
+          <%= image_tag 'http://odil.tv/wp-content/uploads/2019/06/b00bc6e_2018122245.0.2235366676compost_web-1280x640.jpg', style:"height: auto; max-width:100%" %>
+        <% end %>
 	      <h4 class="card-title"><%=link_to @user1.username, user_path(@user1.id) %></h4>
 
             <div class="row">
@@ -44,7 +48,11 @@
 	  <div class="card search-card border-success mb-3" style="max-width: 20rem;">
 	    <div class="card-header bg-success"><%= @compost2.title %></div>
 	    <div class="card-body">
-	      <%= image_tag @compost2.picture, class:"img-tag" %>
+        <% if @compost2.picture.attached? %>
+          <%= image_tag @compost2.picture, class:"img-tag" %>
+        <% else %>
+          <%= image_tag 'http://odil.tv/wp-content/uploads/2019/06/b00bc6e_2018122245.0.2235366676compost_web-1280x640.jpg', style:"height: auto; max-width:100%" %>
+        <% end %>
 	      <h4 class="card-title"><%= link_to @user2.username, user_path(@user2.id) %></h4>
         <div class="row">
           <%= link_to @compost2.district_list.to_s, {
