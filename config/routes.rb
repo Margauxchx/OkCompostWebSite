@@ -3,13 +3,11 @@ Rails.application.routes.draw do
   resources :results, only: [:create, :new, :show]
   devise_for :users
   resources :users
+
   resources :composts do
     resources :pictures, only: [:create]
+    resources :contributions, only: [:create, :update, :new]
   end
-  resources :contributions do
-    post 'accept'
-    post 'reject'
-  end 
-  root to: "composts#index" 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  
 end
