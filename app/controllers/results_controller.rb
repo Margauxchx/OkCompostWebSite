@@ -9,11 +9,23 @@ class ResultsController < ApplicationController
   # GET /results/new
   def new
     @result = Result.new
+    if current_user
+      if current_user.owned_composts.size > 0 && current_user.supplied_composts.size == 0
+        @composts = current_user.owned_composts.sample([3, current_user.owned_composts.size].min)
+      elsif current_user.supplied_composts.size > 0
+        @composts = current_user.supplied_composts.sample([3, current_user.supplied_composts.size].min)
+      else
+        @composts = Compost.all.sample(3)
+      end
+    else
+      @composts = Compost.all.sample(3)
+    end
 
-    @compost1 = Compost.all.sample
-    @user1 = User.find(@compost1.composter_id)
-    @compost2 = Compost.all.sample
-    @user2 = User.find(@compost2.composter_id)
+    if @composts.size < 3
+      (3 - @composts.size).times do
+        @composts << Compost.all.sample
+      end
+    end
   end
 
   # POST /results

@@ -20,7 +20,7 @@ class Result < ApplicationRecord
   def search_by_composition
     composts = Compost.tagged_with(self.composition)
     composts.each do |compost|
-      self.result_lines.new(compost_id: compost.id)
+      self.result_lines.new(compost_id: compost.id) if compost.is_open
     end
   end
 
