@@ -10,8 +10,12 @@
          <% else %>
           <% recipient = User.find(conversation.sender_id) %>
          <% end %>
-         <% if conversation.messages.last.user_id != current_user.id && conversation.messages.last.read == false %>
-          <%= link_to recipient.username, conversation_messages_path(conversation), class: "btn btn-warning" %>
+         <% if conversation.messages.last %>
+          <% if conversation.messages.last.user_id != current_user.id && conversation.messages.last.read == false %>
+           <%= link_to recipient.username, conversation_messages_path(conversation), class: "btn btn-warning" %>
+          <% else %>
+           <%= link_to recipient.username, conversation_messages_path(conversation), class: "btn btn-primary" %>
+          <% end %>
          <% else %>
           <%= link_to recipient.username, conversation_messages_path(conversation), class: "btn btn-primary" %>
          <% end %>
