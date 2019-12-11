@@ -1,17 +1,24 @@
-<div class="ui segment">
- <h3>Mailbox</h3>
- <div class="ui list">
-  <div class="item">
-   <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-    <% if conversation.sender_id == current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
+   <tbody>
+    <!-- each current_user conversations -->
+    <% if @conversations != nil %>
+     <% @conversations.each do |conversation| %>
+      <tr>
+       <th>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+         <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+         <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+         <% end %>
+         <% if conversation.messages.last.user_id != current_user.id && conversation.messages.last.read == false %>
+          <%= link_to recipient.username, conversation_messages_path(conversation), class: "btn btn-warning" %>
+         <% else %>
+          <%= link_to recipient.username, conversation_messages_path(conversation), class: "btn btn-primary" %>
+         <% end %>
+        <% end %>
+       </th>
+      </tr>
+     <% end %>
     <% end %>
-    <%= link_to recipient.username, conversation_messages_path(conversation) %>
-   <% end %>
-  <% end %>
-  </div>
- </div>
-</div>
+
+  </tbody>
