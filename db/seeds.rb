@@ -14,7 +14,7 @@
     
         models_list = [
         User, Compost, Contribution,
-        ActsAsTaggableOn::Tag
+        ActsAsTaggableOn::Tag, Result
         ]
     
         models_list.each do |model|
