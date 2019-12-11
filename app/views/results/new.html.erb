@@ -1,5 +1,45 @@
-<div class= "container">
-  <h1>Nouvelle recherche</h1>
-
-  <%= render 'form', result: @result %>
+<% content_for :title, "Bienvenue sur Ok Compost" %>
+<%= render 'form', result: @result %>
+<div class="container mx-5">
+  <h2 class="mb-3"><i class="fas fa-carrot"></i> Voici des exemples de super composts :</h2>
+  <div class="row">
+    <% @composts.each do |compost| %>
+      <div class="col d-flex align-items-stretch">
+        <div class="card search-card border-success mb-3">
+          <div class="card-header bg-success text-white font-weight-bolder"><%= compost.title%></div>
+          <div class="card-body">
+            <% if compost.picture.attached? %>
+              <%= image_tag compost.picture, class: "img-tag" %>
+            <% else %>
+              <%= image_tag 'http://odil.tv/wp-content/uploads/2019/06/b00bc6e_2018122245.0.2235366676compost_web-1280x640.jpg', style:"height: auto; max-width:100%" %>
+            <% end %>
+            <h4 class="card-title"><%=link_to compost.composter.username, user_path(compost.composter) %></h4>
+            <div class="row">
+              <%= link_to compost.district_list.to_s, {
+                :controller => "results", :action => "create",
+                :result => {
+                  :district => compost.district_list.to_s, :composition => []
+                }
+              },
+              :method => "post", :class => 'btn btn-info mx-1 mb-1'
+              %>
+            </div>
+            <div class="row">
+              <% compost.composition_list.sort.each do |composition_tag| %>
+                <%= link_to composition_tag.to_s, {
+                  :controller => "results", :action => "create",
+                  :result => {
+                    :district => nil, :composition => [composition_tag.to_s]
+                  }
+                },
+                { :method => "post", :class => 'btn btn-outline-info mx-1 mb-1'} %>
+              <% end %>
+            </div>
+            <p class="card-text"><%= compost.description %></p>
+            <%= link_to "Voir ce compost", compost_path(compost), class: "btn btn-warning" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

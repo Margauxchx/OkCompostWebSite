@@ -1,4 +1,4 @@
-.btn-primary {
+footer,.link_to, .btn-primary {
   color: #fff;
   background-color: #ADCE4B;
   border-color: #ADCE4B;
@@ -8,6 +8,14 @@
   color: #fff;
   background-color: #96B340;
   border-color: #96B340;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  color: #fff;
+  background-color: #96B340;
+  border-color: #96B340;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(81, 117, 154, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(81, 117, 154, 0.5);
 }
 
 .badge-primary {
@@ -21,7 +29,6 @@
 .progress-bar {
   color: #ADCE4B;
   background-color: #ADCE4B;
-
 }
 
 .alert-primary, .alert-primary > th, .alert-primary > td {
@@ -32,8 +39,12 @@
   background-color: #FFF !important;
 }
 
+.bg-success {
+  background-color: #ADCE4B !important;
+}
+
 .jumbotron {
-	background-image: url("vegetables.jpg");
+  background: url(asset-path('vegetables.jpg'));
 	background-size: cover;
 	background-position: center;
     position:relative;
@@ -64,6 +75,34 @@
           box-shadow: 0 0 0 0.2rem rgba(150, 179, 64, 0.25);
 }
 
+.form-control-welcome {
+  display: inline;
+  width: 50%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.form-control-welcome:focus {
+  border-color: #ADCE4B;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(150, 179, 64, 0.25);
+          box-shadow: 0 0 0 0.2rem rgba(150, 179, 64, 0.25);
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+}
+
 .btn-link {
   color: #8E8C84;
 }
@@ -77,7 +116,7 @@
   background-color: #FFF;
 }
 
-.faw {
+.form-control {
   font-family: 'FontAwesome';
 }
 
@@ -106,6 +145,17 @@
   border-radius: 0.25rem;
 }
 
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  display: table;
+  width: 100%;
+}
+
 
 .h3-up {
   text-transform: uppercase;
@@ -113,7 +163,7 @@
 }
 
 .img-tag {
-  height: auto;
+  height: 200px;
   width:100%;
 }
 
@@ -131,6 +181,10 @@ body {
   padding: 0;
   position: relative;
   padding-bottom: 15em;
+}
+
+.search-card {
+  max-width: 20rem;
 }
 
 footer {
@@ -151,3 +205,54 @@ footer {
   -moz-box-sizing: border-box; 
   box-sizing: border-box;
 }
+
+
+.team > .row {
+  padding-top: 25px;
+  margin-bottom: 10px;
+}
+
+.banner {
+	background-image: url(asset-path('vegetables.jpg'));
+	background-size: cover;
+	background-position: center;
+    position:relative;
+    min-width:100%;
+    height:20vh;
+}
+
+.banner-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
+
+#text1 {
+  width: 50%;
+  height: 300px;
+  float: left;
+  margin-top: 60px;
+  padding-right: 50px;
+}
+
+.tm {
+  border: 0px solid;
+  overflow: hidden;
+}
+
+hr {
+  margin-left:250px;
+  margin-right:250px;
+}
+
+.long {
+  margin-left:100px;
+  margin-right:100px;
+}
+
+.fa-bell {
+  color: #d9534f;
+}
+

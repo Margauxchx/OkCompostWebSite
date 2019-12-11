@@ -1,0 +1,79 @@
+<div class="col-4 d-flex align-items-stretch">
+  <% if current_user && result_line.compost.contributors.include?(current_user) %>
+    <div class="card search-card border-success mb-3">
+      <div class="card-header bg-success text-white font-weight-bolder"><%= result_line.compost.title %></div>
+    <% elsif current_user == User.find(result_line.compost.composter_id) %>
+      <div class="card search-card border-danger mb-3">
+        <div class="card-header bg-danger text-white font-weight-bolder"><%= result_line.compost.title %></div>
+    <% else %>
+      <div class="card search-card border-warning mb-3">
+        <div class="card-header bg-warning text-white font-weight-bolder"><%= result_line.compost.title %></div>
+      <% end %>
+      <div class="card-body">
+        <% if result_line.compost.picture.attached? %>
+          <%= image_tag result_line.compost.picture, class:"img-tag" %>
+        <% else %>
+          <%= image_tag 'http://odil.tv/wp-content/uploads/2019/06/b00bc6e_2018122245.0.2235366676compost_web-1280x640.jpg', style:"height: auto; max-width:100%" %>
+        <% end %>
+        <h4 class="card-title">
+          <% if current_user %>
+            <% if current_user ==  User.find(result_line.compost.composter_id) %>
+              <%=link_to 'Mon profil', user_path(result_line.compost.composter_id) %>
+            <% else %>
+              <%=link_to User.find(result_line.compost.composter_id).username, user_path(result_line.compost.composter_id) %>
+            <% end %>
+          <% end %>
+        </h4>
+        <div class="row">
+          <% if result_line.compost.district_list.include?(result_line.result.district) %>
+            <%= link_to result_line.compost.district_list.to_s, {
+              :controller => "results", :action => "create",
+              :result => {
+                :district => result_line.compost.district_list.to_s, :composition => []
+                }
+              },
+              :method => "post", 
+              :class => 'btn btn-info mx-1 mb-1' %>
+          <% else %>
+            <%= link_to result_line.compost.district_list.to_s, {
+              :controller => "results", :action => "create",
+              :result => {
+                :district => result_line.compost.district_list.to_s, :composition => []
+                }
+              },
+              :method => "post", 
+              :class => 'btn btn-outline-info mx-1 mb-1' %>
+          <% end %>
+        </div>
+        <div class="row">
+          <% result_line.compost.composition_list.sort.each do |composition_tag| %>
+            <% if result_line.result.composition.include?(composition_tag) %>
+              <%= link_to composition_tag.to_s, {
+                    :controller => "results", :action => "create",
+                    :result => {
+                      :district => nil, :composition => [composition_tag.to_s]
+                    }
+                  },
+                  { :method => "post", :class => 'btn btn-info mx-1 mb-1'} %>
+            <% else %>
+              <%= link_to composition_tag.to_s, {
+                    :controller => "results", :action => "create",
+                    :result => {
+                      :district => nil, :composition => [composition_tag.to_s]
+                    }
+                  },
+                  { :method => "post", :class => 'btn btn-outline-info mx-1 mb-1'} %>
+            <% end %>
+          <% end %>
+        </div>
+        <p class="card-text"><%= result_line.compost.description %></p>
+        <% if current_user && result_line.compost.contributors.include?(current_user) %>
+          <%= link_to "Revoir ce compost", compost_path(result_line.compost.id), class: "btn btn-success" %>
+        <% elsif current_user == User.find(result_line.compost.composter_id) %>
+          <%= link_to "Gérer mon compost", compost_path(result_line.compost.id), class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Voir ce compost", compost_path(result_line.compost.id), class: "btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+  </div>

@@ -1,8 +1,10 @@
 class CompostsController < ApplicationController
   include UsersHelper
-  before_action :set_compost, only: [:show, :edit, :update, :destroy]
-  before_action :profile_enhencement, only: [:index]
-  before_action :authenticate_user, only: [:new]
+  
+  before_action :authenticate_user, except: [:show, :index]
+  before_action :set_compost, except: [:new, :create, :index]
+  before_action :has_access?, except: [:new, :create, :show, :index]
+  before_action :profile_enhancement, only: [:index]
 
   # GET /composts
   def index
@@ -41,6 +43,7 @@ class CompostsController < ApplicationController
     respond_to do |format|
       if @compost.update(compost_params)
         @compost.composition_list = compost_params[:composition_list]
+        @compost.picture.attach(params[:picture]) if params[:picture]
         @compost.save()
         format.html { redirect_to @compost, notice: 'Compost was successfully updated.' }
       else
@@ -69,21 +72,29 @@ class CompostsController < ApplicationController
         :title, :address, :zipcode, :city,
         :country, :description, :access_data,
         :image_url, :is_open, :filling,
+        :picture,
         :composition_list => []
       )
     end
 
     # Method to ask the user to add more data to his profile on the welcome page ==> to move when we have the final welcome page
-    def profile_enhencement
+    def profile_enhancement
       if profile_completed?(50) == false
           flash.now[:notice] = "Votre profil n'est rempli qu'à #{current_user.profile_completion}%. A l'occasion, passez le compléter #{view_context.link_to('par ici', edit_user_path(current_user))}"      
       end
     end
-end
 
   def authenticate_user
     unless current_user
-      flash[:error] = "Merci de te connecter afin de pouvoir créer un nouveau compost"
-      redirect_to new_user_session_path
+      flash[:error] = "Merci de te connecter afin de voir cette page."
+      redirect_back(fallback_location: root_path)
     end
   end
+
+  def has_access?
+    unless current_user && is_owner?(@compost)
+      flash[:error] = "Cette action est réservée au propriétaire de ce compost."
+      redirect_back(fallback_location: compost_path(@compost))
+    end
+  end
+end

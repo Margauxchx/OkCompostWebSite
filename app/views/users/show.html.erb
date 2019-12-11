@@ -1,5 +1,22 @@
+<% content_for :title, "OkCompost / Profil" %>
 <div class="container">
-  <h1>Bienvenue sur votre profil !</h1>
+
+  <h1 class="center">Profil</h1>
+  
+  <% if current_user.id == @user.id %>
+    <h1>Bienvenue sur votre profil !</h1>
+  <% elsif @user.username %>
+    <h1>Profil de <%= @user.username %></h1>
+  <% else %>
+    <h1> Profil de l'utilisateur <%= @user.id %></h1>
+  <% end %>
+
+</div>
+
+<div class="container">
+  <% if current_user.id != @user.id %>
+    <%= link_to "Ecrivez-moi!", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post", class: "btn btn-info mb-3" %>
+  <% end %>
 </div>
 
 <div class="container">
@@ -8,14 +25,24 @@
       <%= link_to 'Profil', '#profil_details', { 'data-toggle' => "tab", :class => "nav-link active" } %>
     </li>
     <li class="nav-item">
-      <%= link_to 'Composts', '#user_orders', { 'data-toggle' => "tab", :class => "nav-link" } %>
+      <%= link_to 'Composts', '#user_composts', { 'data-toggle' => "tab", :class => "nav-link" } %>
     </li>
     <li class="nav-item">
       <%= link_to 'Contributions', '#user_contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
     </li>
-    <li class="nav-item">
-      <%= link_to 'Messages', '#user_private_messages', { 'data-toggle' => "tab", :class => "nav-link" } %>
-    </li>
+
+    <% if user_signed_in? && current_user.id == @user.id%>
+      <li class="nav-item">
+        <%= link_to '#user_private_messages', { 'data-toggle' => "tab", :class => "nav-link" } do %>
+         <% if @unread_conversations.length == 0 %>
+          <span class="mr-2">Messages</span>
+         <% else %>
+          <span class="mr-2">Messages (<%= @unread_conversations.length %>)</span>
+         <% end %>
+        <% end %>
+      </li>
+    <% end %>
+
         </ul>
         <div class="tab-content py-4">
             <div class="tab-pane active" id="profil_details">
@@ -60,62 +87,65 @@
                 </tbody>
               </table>
               <% if current_user.id == @user.id %>
-                <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-success" %>
+                <%= link_to "Modifier votre profil", edit_user_path(@user), class: "btn btn-primary" %>
                 <%= link_to "Modifier vos paramètres de connexion", edit_user_registration_path, class: "btn btn-warning" %>
               <% end %>
             </div> <!-- /tab-pane -->
 
-            <div class="tab-pane" id="user_orders">
+            <div class="tab-pane" id="user_composts">
+              <% if current_user.id == @user.id %>
+                <%= link_to "Créer un nouveau compost", new_compost_path, class: "btn btn-info mb-3" %>
+              <% end %>
               <table class="table table-hover table">
                 <thead class='thead-light'>
                   <tr>
                     <th><h4 class='text-secondary'>Nom du compost</h4></th>
-                    <th><h4 class='text-secondary'>Lien</h4></th>                   
+                    <th><h4 class='text-secondary'>Lien</h4></th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
                   <% @composts.each do |compost| %>
                     <tr>
                       <th><h3 class='text-secondary'><%= compost.title %></h3></th>
-                      <td><p><%= link_to "Voir ce compost", compost_path(compost.id), class: "btn btn-success" %></p></td>
+                      <td><p><%= link_to "Voir ce compost", compost_path(compost.id), class: "btn btn-primary" %></p></td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
             </div> <!-- /tab-pane -->
+         
 
             <div class="tab-pane" id="user_contributions">
-              <table class="table table-hover table">
+              <table class="table table-hover">
                 <thead class='thead-light'>
                   <tr>
-                    <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>  
-                    <th><h4 class='text-secondary'>Lien</h4></th>              
+                    <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>
+                    <th><h4 class='text-secondary'>Lien</h4></th>
                   </tr>
-                </thead> 
+                </thead>
                 <tbody>
                   <% @contributions.each do |contribution| %>
                     <tr>
                       <th><h3 class='text-secondary'><%= contribution.supplied_compost.title %></h3></th>
-                      <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-success" %></p></td>
+                      <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-primary" %></p></td>
                     </tr>
                   <% end %>
+
                 </tbody>
               </table>
             </div> <!-- /tab-pane -->
-
+        
             <div class="tab-pane" id="user_private_messages">
-              <table class="table table-hover table">
+              <table class="table table-hover">
                 <thead class='thead-light'>
                   <tr>
-                    <th><h4 class='text-secondary'>Mes messages</h4></th>
-                    <th><h4 class='text-secondary'>Contenu</h4></th>                   
+                    <th><h4 class='text-secondary'>Mes conversations </h4>
+                    </th>
                   </tr>
-                </thead> 
-                <tbody>
-
-                </tbody>
+                </thead>
+                <%= render 'conversations/index' %>
               </table>
             </div> <!-- /tab-pane -->
 </div><!-- /container -->
 
-<%= link_to 'Back', root_path %>
+<%= link_to 'Revenir à la page accueil', root_path, class: "btn btn-link" %>

@@ -84,7 +84,7 @@
   # ----------
   def compost_seed(user, districts, compositions)
     picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
-    picture_path = "compost_pictures/" + picture_file_name
+    picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
     new_compost = user.owned_composts.create!(
       title: Faker::Food.vegetables + Faker::Music.genre,
       address: Faker::Address.street_address,
@@ -93,18 +93,17 @@
       country: 'France',
       description: 'no data',
       access_data: 'no data',
-      image_url: picture_path,
+      # image_url: picture_path,
       is_open: true,
       filling: rand(1..10)*10
     )
-    # tag_with_district(new_compost)
     tag_with_composition(new_compost, compositions)
+    new_compost.picture.attach(
+      io: File.open(picture_path),
+      filename: picture_file_name,
+      content_type: "image/jpg"
+    )
   end
-
-  # def tag_with_district(compost)
-  #   compost.district_list.add(compost.zipcode)
-  #   compost.save!()
-  # end
 
   def tag_with_composition(compost, compositions)
     compost.composition_list.add(compositions.sample(rand(1..4)))
@@ -117,7 +116,7 @@
     20.times { |district| zipcodes_list << '75' + (format '%03d', (district + 1)) }
     composition_tags = ['bio', 'coquilles', 'bananes', 'agrumes']
 
-    50.times do
+    20.times do
       compost_seed(User.all.sample, zipcodes_list, composition_tags)
     end
     puts Compost.all.size.to_s + ' composts created'

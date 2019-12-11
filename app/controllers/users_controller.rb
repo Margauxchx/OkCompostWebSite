@@ -13,6 +13,10 @@ class UsersController < ApplicationController
   def show
     @composts = @user.owned_composts
     @contributions = @user.contributions
+    @conversations_sender = Conversation.where(sender_id: current_user.id)
+    @conversations_recipient = Conversation.where(recipient_id: current_user.id)
+    @conversations = (@conversations_sender + @conversations_recipient)
+    @unread_conversations = @conversations.find_all { |conversation| conversation.messages.last["read"] == false && conversation.messages.last.user_id != current_user.id }
   end
 
   # GET /users/new
@@ -64,6 +68,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
