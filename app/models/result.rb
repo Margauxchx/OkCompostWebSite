@@ -1,4 +1,6 @@
 class Result < ApplicationRecord
+  enum search_mode: [:normal, :strict, :cool]
+
   # N -1 association with users
   belongs_to :user, optional: true
 
@@ -18,7 +20,15 @@ class Result < ApplicationRecord
   end
 
   def search_by_composition
-    composts = Compost.tagged_with(self.composition)
+    case self.search_mode
+    when 'strict'
+      composts = Compost.tagged_with(self.composition, :on => :compositions, :match_all => true)
+    when 'cool'
+      composts = Compost.tagged_with(self.composition, :on => :compositions, :any => true)
+    else
+      composts = Compost.tagged_with(self.composition)
+    end
+
     composts.each do |compost|
       self.result_lines.new(compost_id: compost.id) if compost.is_open
     end
@@ -26,7 +36,14 @@ class Result < ApplicationRecord
 
   def search_by_both
     district_composts = Compost.tagged_with(self.district)
-    composts = district_composts.tagged_with(self.composition)
+    case self.search_mode
+    when 'strict'
+      composts = district_composts.tagged_with(self.composition, :on => :compositions, :match_all => true)
+    when 'cool'
+      composts = district_composts.tagged_with(self.composition, :on => :compositions, :any => true)
+    else
+      composts = district_composts.tagged_with(self.composition)
+    end
     composts.each do |compost|
       self.result_lines.new(compost_id: compost.id)
     end
