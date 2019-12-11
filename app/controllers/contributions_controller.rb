@@ -14,6 +14,8 @@ class ContributionsController < ApplicationController
             contributor_id: params[:contributor_id], 
             supplied_compost_id: params[:supplied_compost_id],
             contribution_date: params[:contribution_date],
+            message: params[:message],
+            
             status: "submitted"
         )
         if @contribution.save!
