@@ -1,3 +1,17 @@
+<head>
+  <% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      let coordinates_array = <%= @coordinates_array %>;
+      console.log(coordinates_array.length);
+      if ( coordinates_array.length > 0 ){
+        initMap( coordinates_array );
+        }
+    });
+    </script>
+  <% end %>
+</head>
+
 <% content_for :title, "OkCompost / Résultats" %>
 <div class= "container">
   <h1 class="my-2">Résultats :</h1>
@@ -37,8 +51,13 @@
       </div>
       </div>
       <% end %>
+      <p>
+          <div id="result-map"></div>
+      </p>
     </div>
     <%= link_to 'Nouvelle recherche', root_path, class: 'btn btn-lg btn-info mb-3' %>
+
   </div>
-  <%= render 'application/result_map'%>
+
+
 

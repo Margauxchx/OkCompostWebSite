@@ -8,6 +8,12 @@ class ResultsController < ApplicationController
 
   # GET /results/1
   def show
+    @coordinates_array = []
+    @result.composts.each do |compost|
+      @coordinates_array << [compost.latitude, compost.longitude]
+    end 
+  puts "***********************"
+  print @coordinates_array
   end
 
   # GET /results/new
