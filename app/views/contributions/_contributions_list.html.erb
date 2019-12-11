@@ -15,10 +15,21 @@
             <th><h3 class='text-secondary'><%= contribution.contributor.username %></h3></th>
             <th><h3 class='text-secondary'><%= contribution.contribution_date %></h3></th>
             <th><h3 class='text-secondary'><%= contribution.status %></h3></th>
-            <td><p>
-                <%= button_to "Accepter", { controller: "contributions", action: "accept", contribution_id: contribution.id }, class: "btn btn-success" %>
-                <%= button_to "Refuser", { controller: "contributions", action: "reject", contribution_id: contribution.id }, class: "btn btn-danger" %>
-            </p></td>
+            <td>
+              <div class="btn-group", role="group">
+                <%= button_to "Accepter",
+                  compost_contribution_path(contribution.supplied_compost, contribution),
+                  { :method => :patch, :params => { :contribution => { :status_action => "accept" } } ,
+                  :class => "btn btn-success mx-1" } 
+                %>
+
+                <%= button_to "Rejeter",
+                  compost_contribution_path(contribution.supplied_compost, contribution),
+                  { :method => :patch, :params => { :contribution => { :status_action => "reject" } } ,
+                  :class => "btn btn-danger mx-1" } 
+                %>
+              </diV>
+            </td>
         </tr>
         <% end %>
     </tbody>
