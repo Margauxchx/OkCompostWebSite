@@ -1,8 +1,13 @@
 class Contribution < ApplicationRecord
   after_create :ask_contribution_send
+  after_save :valid_contribution_send
   
   def ask_contribution_send
     UserMailer.ask_contribution_email(self).deliver_now
+  end
+  
+  def valid_contribution_send
+    UserMailer.valid_contribution_email(self).deliver_now
   end
   
   enum status: [:submitted, :accepted, :rejected]

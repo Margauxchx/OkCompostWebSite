@@ -14,10 +14,10 @@ class UserMailer < ApplicationMailer
     mail(to: @contribution.supplied_compost.composter.email, subject: 'Vous avez une nouvelle demande de contribution') 
   end
   
-  def new_password(user)
-    @user = user
+  def valid_contribution_email(contribution)
+    @contribution = contribution
     
-    mail(to: @user.email, subject: 'Changement de mot de passe') 
+    mail(to: @contribution.contributor.email, subject: 'Validation de votre contribution') 
   end
   
 end
