@@ -89,10 +89,12 @@ class ContributionsController < ApplicationController
     @compost.filling += contribution_default_quantity
     @compost.save!
     flash[:success] = 'La contribution a été acceptée.'
+    UserMailer.valid_contribution_email(@contribution).deliver_now
   end
 
   def reject_contribution
     @contribution.rejected!
     flash[:alert] = 'La contribution a été refusée.'
+    UserMailer.reject_contribution_email(@contribution).deliver_now
   end
 end
