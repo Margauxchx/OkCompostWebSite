@@ -22,7 +22,7 @@ class ContributionsController < ApplicationController
             flash[:success] = "Ta demande contribution a bien été prise en compte"
             redirect_to compost_path(@compost)
         else
-            flash[:danger] = "La contribution n'a pas pu être créée n'a pas pu être créé"
+            flash[:danger] = "La contribution n'a pas pu être créée"
             render root_path
         end 
     end
