@@ -28,6 +28,7 @@ class ContributionsController < ApplicationController
             flash[:danger] = "La contribution n'a pas pu être créée"
             render root_path
         end 
+    end
 
   def update
     case contribution_params[:status_action]

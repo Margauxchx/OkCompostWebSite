@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :contributions, only: [:create, :update, :new]
   end
   resources :conversations, only: [:create] do
-    resources :messages
+    resources :messages, only: [:create, :index]
   end
 end
