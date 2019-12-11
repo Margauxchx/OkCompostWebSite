@@ -23,6 +23,6 @@ class Contribution < ApplicationRecord
   	else
   	  @conversation = Conversation.create!(sender_id: @sender_id, recipient_id: @recipient_id)
   	end
-  	Message.create!(conversation_id: @conversation.id, user_id: @sender_id, body: "Date de conribution souhaitée : " +  self.contribution_date.to_s + " " + self.message)
+  	Message.create!(conversation_id: @conversation.id, user_id: @sender_id, body: "Date de contribution souhaitée : " + self.contribution_date.to_s + "\n \n" + self.message)
   end
 end
