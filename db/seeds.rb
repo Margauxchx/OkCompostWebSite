@@ -131,7 +131,8 @@
 
     rand(3..10).times do
       user.contributions.create!(
-        supplied_compost_id: all_composts_but_mines.sample
+        supplied_compost_id: all_composts_but_mines.sample,
+        message: Faker::Lorem.paragraph_by_chars(number: rand(60..140), supplemental: false)
       )
     end
   end
