@@ -228,9 +228,20 @@ hr {
   margin-right:100px;
 }
 
+#result-page {
+  height: 500px;
+}
+
+#search-results {
+  height: 100%;
+  overflow: scroll;
+}
+
 #result-map {
   width: 600px;
-  height: 400px;
+  height: 100%;
+}
+
 .fa-bell {
   color: #d9534f;
 }

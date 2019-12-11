@@ -13,12 +13,19 @@
 </head>
 
 <% content_for :title, "OkCompost / Résultats" %>
-<div class="container">
+<div class="container-fluid">
   <h1 class="my-2">Résultats :</h1>
-  <div class="row">
-    <% @result.result_lines.each do |result_line| %>
-      <%= render result_line %>
-    <% end %>
+  <div id="result-page" class="row">
+    <div class="col-6 h-100">
+      <div id='search-results'class="row">
+        <% @result.result_lines.each do |result_line| %>
+          <%= render result_line %>
+        <% end %>
+      </div>
+    </div>
+    <div id='result-map' class="col-6 fixed-top"></div>
   </div>
   <%= link_to 'Nouvelle recherche', root_path, class: 'btn btn-lg btn-info mb-3' %>
 </div>
+
+
