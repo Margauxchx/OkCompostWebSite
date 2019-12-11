@@ -106,9 +106,6 @@
   border-radius: 0.25rem;
 }
 
-body, html {
-  height: 100%;
-}
 
 .h3-up {
   text-transform: uppercase;
@@ -126,22 +123,31 @@ body, html {
 
 html {
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 body {
+  min-height: 100%;
   margin: 0;
   padding: 0;
-  display : table;
-  width: 100%;
+  position: relative;
+  padding-bottom: 15em;
 }
 
-
 footer {
-  display : table-row;
-  height: 100px;
+  position: absolute; 
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #ADCE4B;
   color: #FFF;
 }
 
+.footer-copyright {
+  color: #F8F5F0;
+  font-size: 12px;
+}
+
+* {
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}

@@ -1,20 +1,24 @@
+
 <footer>
   <div class="footer container-fluid">
     <div class="row">
 
-              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>OK COMPOST :</h3>
-                <p>est un service libre et gratuit pour rapprocher toutes les personnes qui veulent composter leurs restes végétaux.</p>
+           <div class=" col-lg-4 col-md-4 col-sm-6"><br><h5 class="text-center">Ok Compost qu'est ce que c'est ?</h5><br>
+                <p>Ok Compost est un service libre et gratuit pour rapprocher toutes les personnes qui veulent composter leurs restes végétaux.</p>
               </div>
 
-              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>SERVICES :</h3>
-                <ul>
-                  <li><%= link_to "chercher un compost", root_path, class: "text-muted"%></li>
-                  <li><%= link_to "proposer un nouveau compost", new_compost_path, class: "text-muted"%></li>
-                </ul>
+              <div class=" col-lg-4 col-md-4 col-sm-6 text-center"><br><h5>Les services que le sites offre :</h5>
+                <div class="text-center">
+                  <%= link_to "chercher un compost", root_path, class: "btn btn-link"%><br>
+                  <%= link_to "proposer un nouveau compost", new_compost_path, class: "btn btn-link"%>
+                  </div>
               </div>
 
-              <div class=" col-lg-4 col-md-4 col-sm-6 text-left"><h3>NOUS SOUTENIR :</h3>
-                <p>vous souhaitez soutenir la démarche, mais vous ne pouvez pas, ou, ne souhaitez pas composter pour le moment : apportez votre pierre à l'édifice en aidant la communauté à s'agrandir et en nous partageant sur les réseaux. :)</p>
+              <div class=" col-lg-4 col-md-4 col-sm-6 text-center"><br><h5>Venez nous retrouver sur les réseaux :</h5><br>
+                <p class="text-center">
+                <i class="fab fa-instagram fa-3x"></i>
+                <i class="fab fa-twitter fa-3x"></i>  
+               <i class="fab fa-facebook fa-3x"></i></p>
               </div>
     </div>
     <!-- Copyright -->
@@ -25,4 +29,5 @@
   </div>
 
 </footer>
+
 
