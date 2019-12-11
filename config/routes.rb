@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :pictures, only: [:create]
     resources :contributions, only: [:create, :update, :new]
   end
-  resources :conversations do
+  resources :conversations, only: [:create] do
     resources :messages
   end
 end
