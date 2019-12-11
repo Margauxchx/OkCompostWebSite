@@ -33,7 +33,13 @@
 
     <% if user_signed_in? && current_user.id == @user.id%>
       <li class="nav-item">
-        <%= link_to 'Messages', '#user_private_messages', { 'data-toggle' => "tab", :class => "nav-link" } %>
+        <%= link_to '#user_private_messages', { 'data-toggle' => "tab", :class => "nav-link" } do %>
+         <% if @unread_conversations.length == 0 %>
+          <span class="mr-2">Messages</span>
+         <% else %>
+          <span class="mr-2">Messages (<%= @unread_conversations.length %>)</span>
+         <% end %>
+        <% end %>
       </li>
     <% end %>
 
@@ -110,7 +116,7 @@
          
 
             <div class="tab-pane" id="user_contributions">
-              <table class="table table-hover table">
+              <table class="table table-hover">
                 <thead class='thead-light'>
                   <tr>
                     <th><h4 class='text-secondary'>Nom du compost approvisionné</h4></th>
@@ -124,20 +130,20 @@
                       <td><p><%= link_to "Voir ce compost", compost_path(contribution.supplied_compost.id), class: "btn btn-primary" %></p></td>
                     </tr>
                   <% end %>
+
                 </tbody>
               </table>
             </div> <!-- /tab-pane -->
         
             <div class="tab-pane" id="user_private_messages">
-              <table class="table table-hover table">
+              <table class="table table-hover">
                 <thead class='thead-light'>
                   <tr>
-                    <th><h4 class='text-secondary'>Mes conversations</h4></th>
+                    <th><h4 class='text-secondary'>Mes conversations </h4>
+                    </th>
                   </tr>
                 </thead>
-                <tbody>
-                  <th><%= render 'conversations/index' %></th>
-                </tbody>
+                <%= render 'conversations/index' %>
               </table>
             </div> <!-- /tab-pane -->
 </div><!-- /container -->
