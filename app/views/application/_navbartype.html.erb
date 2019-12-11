@@ -11,6 +11,20 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <%= link_to 'Créer un nouveau compost', new_compost_path, class: "text nav-link" %>
+
+  <% if current_user && current_user.owned_composts.size > 0 %>
+    <div class="btn-group">
+      <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Mes composts
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <% current_user.owned_composts.each do |compost| %>
+          <%= link_to compost.title, compost_path(compost), class: "dropdown-item" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
   <%= link_to 'Le concept', page_path('about'), class: "text nav-link" %>
   <%= link_to 'Faq', page_path('faq'), class: "text nav-link" %>
 
