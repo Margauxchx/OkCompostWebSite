@@ -4,24 +4,36 @@
     <div class="row">
 
 
-           <div class=" col-lg-4 col-md-4 col-sm-6"><br><h5 class="text-center">Ok Compost qu'est ce que c'est ?</h5><br>
+           <div class=" col-lg-3 col-md-3 col-sm-6"><br><h5 class="text-center">Ok Compost qu'est ce que c'est ?</h5><br>
                 <p>Ok Compost est un service libre et gratuit pour rapprocher toutes les personnes qui veulent composter leurs restes végétaux.</p>
               </div>
 
-              <div class=" col-lg-4 col-md-4 col-sm-6 text-center"><br><h5>Les services que le sites offre :</h5>
+              <div class=" col-lg-3 col-md-3 col-sm-6 text-center"><br><h5>Les services que le site offre :</h5>
                 <div class="text-center">
                   <%= link_to "chercher un compost", root_path, class: "btn btn-link"%><br>
                   <%= link_to "proposer un nouveau compost", new_compost_path, class: "btn btn-link"%>
                   </div>
               </div>
 
-              <div class=" col-lg-4 col-md-4 col-sm-6 text-center"><br><h5>Venez nous retrouver sur les réseaux :</h5><br>
+              <div class=" col-lg-3 col-md-3 col-sm-6 text-center"><br><h5>Liens utiles</h5>
+                <div class="text-center">
+               <%= link_to "FAQ", page_path('faq'), class: "btn btn-link"%><br>
+                <%= link_to "à propos", page_path('about'), class: "btn btn-link"%>
+                <%= link_to "L'équipe", page_path('team'), class: "btn btn-link"%>
+                  </div>
+
+              </div>
+      
+              <div class=" col-lg-3 col-md-3 col-sm-6 text-center"><br><h5>Venez bientôt nous retrouver sur les réseaux :</h5><br>
                 <p class="text-center">
                 <i class="fab fa-instagram fa-3x"></i>
                 <i class="fab fa-twitter fa-3x"></i>  
                <i class="fab fa-facebook fa-3x"></i></p>
 
               </div>
+      
+            
+      
     </div>
     <!-- Copyright -->
     <div class="container-fluid footer-copyright text-center">© 2019 Copyright
