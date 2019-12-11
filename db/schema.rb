@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_205404) do
+ActiveRecord::Schema.define(version: 2019_12_10_145900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_12_06_205404) do
     t.integer "filling", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["composter_id"], name: "index_composts_on_composter_id"
   end
 
@@ -65,6 +67,35 @@ ActiveRecord::Schema.define(version: 2019_12_06_205404) do
     t.index ["supplied_compost_id"], name: "index_contributions_on_supplied_compost_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "private_messages", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "recipient_id"
+    t.bigint "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_private_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_private_messages_on_sender_id"
+  end
+
   create_table "result_lines", force: :cascade do |t|
     t.integer "rank", default: 0
     t.bigint "result_id"
@@ -77,7 +108,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_205404) do
 
   create_table "results", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "district", default: ""
+    t.string "district"
     t.string "composition", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
