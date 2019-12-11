@@ -20,4 +20,10 @@ class UserMailer < ApplicationMailer
     mail(to: @contribution.contributor.email, subject: 'Validation de votre contribution') 
   end
   
+  def reject_contribution_email(contribution)
+    @contribution = contribution
+    
+    mail(to: @contribution.contributor.email, subject: 'Rejet de votre contribution') 
+  end
+  
 end

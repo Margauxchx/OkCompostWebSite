@@ -33,6 +33,7 @@ class ContributionsController < ApplicationController
         @compost.save!
         flash[:success] = "La contribution a bien été acceptée"
         redirect_to compost_path(@compost.id)
+      UserMailer.valid_contribution_email(@contribution).deliver_now
     end 
 
     def reject
@@ -41,6 +42,7 @@ class ContributionsController < ApplicationController
         @contribution.rejected!
         flash[:alert] = "La contribution a été refusée"
         redirect_to compost_path(@compost.id)
+       UserMailer.reject_contribution_email(@contribution).deliver_now
     end 
 
     private
