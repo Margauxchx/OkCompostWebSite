@@ -47,6 +47,8 @@ group :development, :test do
   gem 'rspec-rails'
   # Replace fixtures
   gem 'factory_bot_rails'
+  #for scrapping
+  gem 'nokogiri'
 end
 
 group :development do
