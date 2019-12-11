@@ -6,7 +6,7 @@ class ResultsController < ApplicationController
   def show
     @coordinates_array = []
     @result.composts.each do |compost|
-      @coordinates_array << [compost.latitude, compost.longitude]
+      @coordinates_array << [compost.latitude, compost.longitude, compost.id]
     end 
   puts "***********************"
   print @coordinates_array

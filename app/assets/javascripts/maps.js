@@ -13,7 +13,11 @@ function initMap(coordinates) {
             map: map,
             icon: {
                 url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
-              }
+              },
+            url: '/results/47#result_'+ coord[2]
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            window.location.href = this.url;
         });
     });
 

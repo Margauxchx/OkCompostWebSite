@@ -19,7 +19,9 @@
     <div class="col-6 h-100">
       <div id='search-results'class="row">
         <% @result.result_lines.each do |result_line| %>
-          <%= render result_line %>
+          <div id= 'result_<%= result_line.compost.id %>' >
+            <%= render result_line %>
+          </div>
         <% end %>
       </div>
     </div>
