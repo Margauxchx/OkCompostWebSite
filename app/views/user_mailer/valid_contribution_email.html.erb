@@ -4,9 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Bonjour <%= @contribution.supplied_compost.composter.email %></h1>
+    <h1>Bonjour <%= @contribution.contributor.email %></h1>
     <p>
-      Ta demande de contribution sur le compost <%= @contribution.supplied_compost.title %> a été accepté par son propriétaire. Viens prendre contact avec lui au plus vite pour convenir d'un créneau. 
+      Ta demande de contribution sur le compost <%= @contribution.supplied_compost.title %> a obtenur une réponse. Connecte toi vite pour en prendre connaissance
+    
     </p>
   
     <p> À très vite sur OkCompost.fr !
