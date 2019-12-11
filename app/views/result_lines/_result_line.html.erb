@@ -1,13 +1,13 @@
 <div class="col-4 d-flex align-items-stretch">
   <% if current_user && result_line.compost.contributors.include?(current_user) %>
     <div class="card search-card border-success mb-3">
-      <div class="card-header bg-success text-light"><%= result_line.compost.title %></div>
+      <div class="card-header bg-success text-white font-weight-bolder"><%= result_line.compost.title %></div>
     <% elsif current_user == User.find(result_line.compost.composter_id) %>
       <div class="card search-card border-danger mb-3">
-        <div class="card-header bg-danger text-light"><%= result_line.compost.title %></div>
+        <div class="card-header bg-danger text-white font-weight-bolder"><%= result_line.compost.title %></div>
     <% else %>
       <div class="card search-card border-warning mb-3">
-        <div class="card-header bg-warning text-light"><%= result_line.compost.title %></div>
+        <div class="card-header bg-warning text-white font-weight-bolder"><%= result_line.compost.title %></div>
       <% end %>
       <div class="card-body">
         <% if result_line.compost.picture.attached? %>
