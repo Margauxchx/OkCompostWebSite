@@ -13,6 +13,8 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# Permit great style for conversations
+gem 'semantic-ui-sass'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -47,6 +49,10 @@ group :development, :test do
   gem 'rspec-rails'
   # Replace fixtures
   gem 'factory_bot_rails'
+  #for scrapping
+  gem 'nokogiri'
+  #for using csv
+  gem 'csv'
 end
 
 group :development do

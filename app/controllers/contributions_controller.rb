@@ -1,31 +1,34 @@
 # frozen_string_literal: true
 
 class ContributionsController < ApplicationController
+
   include ContributionsHelper
   before_action :authenticate_user!
   before_action :set_compost, except: [:new]
   before_action :set_contribution, except: [:new, :create]
 
-  def new
-    @contribution = Contribution.new
-    @compost = Compost.find(params[:id])
-  end
+    def new
+        @contribution = Contribution.new
+        @compost = Compost.find(params[:id])
+    end 
 
-  def create
-    @contribution = Contribution.new(
-      contributor_id: params[:contributor_id],
-      supplied_compost_id: params[:supplied_compost_id],
-      contribution_date: params[:contribution_date],
-      status: 'submitted'
-    )
-    if @contribution.save!
-      flash[:success] = 'Ta demande contribution a bien été prise en compte'
-      redirect_to compost_path(@compost)
-    else
-      flash[:danger] = "La contribution n'a pas pu être créée n'a pas pu être créé"
-      render root_path
+    def create
+        @contribution = Contribution.new(
+            contributor_id: params[:contributor_id], 
+            supplied_compost_id: params[:supplied_compost_id],
+            contribution_date: params[:contribution_date],
+            message: params[:message],
+            
+            status: "submitted"
+        )
+        if @contribution.save!
+            flash[:success] = "Ta demande contribution a bien été prise en compte"
+            redirect_to compost_path(@compost)
+        else
+            flash[:danger] = "La contribution n'a pas pu être créée"
+            render root_path
+        end 
     end
-  end
 
   def update
     case contribution_params[:status_action]
