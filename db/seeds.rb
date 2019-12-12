@@ -59,7 +59,7 @@
   def random_user_seed
     User.create(
       email: Faker::Internet.unique.email,
-      username: 'random_user_' + rand(1..100).to_s,
+      username: Faker::Movies::HarryPotter.character,
       password: 'motdepasse',
       password_confirmation: 'motdepasse'
     )
@@ -99,7 +99,7 @@
 
   def composts_seed
     puts "Seeding composts"
-    compost_adresses = extract_content_of('list.csv')
+    compost_adresses = extract_content_of('db/list.csv')
     composition_tags = ['bio', 'coquilles', 'bananes', 'agrumes']
     picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
     picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
