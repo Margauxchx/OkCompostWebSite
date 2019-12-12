@@ -19,7 +19,9 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <% current_user.owned_composts.each do |compost| %>
-          <%= link_to compost.title, compost_path(compost), class: "dropdown-item" %>
+          <% if compost.id != nil %>
+           <%= link_to compost.title, compost_path(compost), class: "dropdown-item" %>
+          <% end %>
         <% end %>
       </div>
     </div>
