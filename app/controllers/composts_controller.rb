@@ -28,13 +28,11 @@ class CompostsController < ApplicationController
   # POST /composts
   def create
     @compost = current_user.owned_composts.new(compost_params)
-
-    respond_to do |format|
-      if @compost.save
-        format.html { redirect_to @compost, notice: 'Compost was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    
+    if @compost.save
+      redirect_to @compost, notice: 'Compost was successfully created.' 
+    else
+      render :new
     end
   end
 
