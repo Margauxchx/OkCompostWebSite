@@ -1,7 +1,7 @@
 class Compost < ApplicationRecord
 validates :title,
   presence: true,
-  length: { in: 3..30 }
+  length: { in: 3..50 }
 validates :address, presence: true
 validates :zipcode, 
   presence: true,

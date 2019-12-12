@@ -82,28 +82,39 @@
 
   
   # ----------
-  def compost_seed(user, districts, compositions)
-    picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
-    picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
-    new_compost = user.owned_composts.create!(
-      title: (Faker::Food.vegetables + Faker::Music.genre).slice(0..29),
-      address: Faker::Address.street_address,
-      zipcode: districts.sample,
-      city: 'Paris',
-      country: 'France',
-      description: 'no data',
-      access_data: 'no data',
-      # image_url: picture_path,
-      is_open: true,
-      filling: rand(1..10)*10
-    )
-    tag_with_composition(new_compost, compositions)
-    new_compost.picture.attach(
-      io: File.open(picture_path),
-      filename: picture_file_name,
-      content_type: "image/jpg"
-    )
+  require 'csv'
+
+  def extract_content_of(file)
+    content_by_row=[]
+    CSV.foreach (file) do |read_content|
+      content_by_row << read_content
+    end
+    return content_by_row
   end
+
+  # def compost_seed(user, districts, compositions)
+  #   compost_adresses = extract_content_of('list.csv')
+  #   picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
+  #   picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
+  #   new_compost = user.owned_composts.create!(
+  #     title: compost_adresses.,
+  #     address: Faker::Address.street_address,
+  #     zipcode: districts.sample,
+  #     city: 'Paris',
+  #     country: 'France',
+  #     description: 'no data',
+  #     access_data: 'no data',
+  #     # image_url: picture_path,
+  #     is_open: true,
+  #     filling: rand(1..10)*10
+  #   )
+  #   tag_with_composition(new_compost, compositions)
+  #   new_compost.picture.attach(
+  #     io: File.open(picture_path),
+  #     filename: picture_file_name,
+  #     content_type: "image/jpg"
+  #   )
+  # end
 
   def tag_with_composition(compost, compositions)
     compost.composition_list.add(compositions.sample(rand(1..4)))
@@ -112,13 +123,44 @@
   
   def composts_seed
     puts "Seeding composts"
-    zipcodes_list = []
-    20.times { |district| zipcodes_list << '75' + (format '%03d', (district + 1)) }
+    #["nom", "adresse", "ville", "région", "cp", "tel", "mail", "type", "horaires"]
+    compost_adresses = extract_content_of('list.csv')
     composition_tags = ['bio', 'coquilles', 'bananes', 'agrumes']
+    picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
+    picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
+    for i in 1..(compost_adresses.length-1) do
+      user = User.all.sample
+      new_compost = user.owned_composts.create!(
+        title: compost_adresses[i][0],
+        address: compost_adresses[i][1],
+        zipcode: compost_adresses[i][4],
+        city: 'Paris',
+        country: 'France',
+        description: 
+          if compost_adresses[i][7]
+            compost_adresses[i][7]
+          else 
+            "ce compost n'a pas encore de description"
+          end,
+        access_data: compost_adresses[i][8],
+        # image_url: picture_path,
+        is_open: true,
+        filling: rand(0..7)*10
+      )
+      tag_with_composition(new_compost, composition_tags)
+      new_compost.picture.attach(
+        io: File.open(picture_path),
+        filename: picture_file_name,
+        content_type: "image/jpg"
+      )
+    end 
+    # zipcodes_list = []
+    # 20.times { |district| zipcodes_list << '75' + (format '%03d', (district + 1)) }
+    # composition_tags = ['bio', 'coquilles', 'bananes', 'agrumes']
 
-    20.times do
-      compost_seed(User.all.sample, zipcodes_list, composition_tags)
-    end
+    # 20.times do
+    #   compost_seed(User.all.sample, zipcodes_list, composition_tags)
+    # end
     puts Compost.all.size.to_s + ' composts created'
   end
   # ----------
