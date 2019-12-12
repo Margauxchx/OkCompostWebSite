@@ -17,8 +17,11 @@
   <body>
     
     <%= render "application/navbartype" %>
-    <%= render 'flashes'%>
-    <%= yield %>
+
+    <section>
+      <%= render 'flashes'%>
+      <%= yield %>
+    </section>
 
     <footer>
       <%= render "application/footer" %>
