@@ -1,4 +1,7 @@
 class Contribution < ApplicationRecord
+  validates :contribution_date, presence: true
+  validates :message, presence: true
+
   enum status: [:submitted, :accepted, :rejected]
   # N - 1 association with contributors (users)
   belongs_to :contributor, class_name: 'User'
