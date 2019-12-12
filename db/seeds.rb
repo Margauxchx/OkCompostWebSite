@@ -11,28 +11,28 @@
         puts '*' * 40
         puts 'Database wipeout'
         puts '*' * 40 + "\n \n"
-    
+
         models_list = [
         User, Compost, Contribution,
         ActsAsTaggableOn::Tag
         ]
-    
+
         models_list.each do |model|
         cleanup(model)
         end
-    
+
         puts
         puts '*' * 40
         puts "Database wiped, oh yeah."
         puts '*' * 40
     end
-  
+
     def cleanup(model)
         model.destroy_all
         puts '-' * 20
         puts model.to_s + ' : table cleaned up.'
     end
-  
+
   #####################
   #####################
   # PLANT THE SEEDS...
@@ -46,7 +46,7 @@
       password_confirmation: 'motdepasse'
     )
   end
-  
+
   def main_admin_seed
     User.create(
       email: 'thp-okcompost-admin@yopmail.com',
@@ -55,7 +55,7 @@
       password_confirmation: 'motdepasse'
     )
   end
-  
+
   def random_user_seed
     User.create(
       email: Faker::Internet.unique.email,
@@ -64,15 +64,15 @@
       password_confirmation: 'motdepasse'
     )
   end
-  
+
   def users_seed
     puts "Seeding users"
     main_user_seed
     puts 'Main user created'
-  
+
     main_admin_seed
     puts 'Main admin created'
-  
+
     5.times do
       random_user_seed
     end
@@ -80,13 +80,13 @@
   end
   # ----------
 
-  
+
   # ----------
   def compost_seed(user, districts, compositions)
     picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
     picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
     new_compost = user.owned_composts.create!(
-      title: Faker::Food.vegetables + Faker::Music.genre,
+      title: ,
       address: Faker::Address.street_address,
       zipcode: districts.sample,
       city: 'Paris',
@@ -109,7 +109,7 @@
     compost.composition_list.add(compositions.sample(rand(1..4)))
     compost.save!()
   end
-  
+
   def composts_seed
     puts "Seeding composts"
     zipcodes_list = []
@@ -122,7 +122,7 @@
     puts Compost.all.size.to_s + ' composts created'
   end
   # ----------
-  
+
 
   # ----------
   def contribution_seed(user)
@@ -144,12 +144,12 @@
     puts "#{Contribution.all.size} contributions created"
   end
   # ----------
-  
-  
+
+
   #####################
   #####################
   # AND GET SOME WEEDS :)
-  
+
   def perform_seed
     database_cleanup
     # puts
@@ -166,5 +166,5 @@
     puts '*' * 40
     puts
   end
-  
+
   perform_seed
