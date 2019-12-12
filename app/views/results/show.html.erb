@@ -1,10 +1,32 @@
+<head>
+  <% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      let input_array = <%= @input_array %>;
+      let result = <%= @result.id %>
+      console.log(input_array.length);
+      if ( input_array.length > 0 ){
+        initMap( input_array, result );
+        }
+    });
+    </script>
+  <% end %>
+</head>
+
 <% content_for :title, "OkCompost / Résultats" %>
-<div class="container">
+<div class="container-fluid">
   <h1 class="my-2">Résultats :</h1>
-  <div class="row">
-    <% @result.result_lines.each do |result_line| %>
-      <%= render result_line %>
-    <% end %>
+  <div id="result-page" class="row">
+    <div class="col-6 h-100">
+      <div id='search-results'class="row">
+        <% @result.result_lines.each do |result_line| %>
+            <%= render result_line %>
+        <% end %>
+      </div>
+    </div>
+    <div id='result-map' class="col-6"></div>
   </div>
   <%= link_to 'Nouvelle recherche', root_path, class: 'btn btn-lg btn-info mb-3' %>
 </div>
+
+
