@@ -21,26 +21,18 @@
           <div class="info-form">
             <div class="form-group">
               <div class="input-group-prepend faw">
-                <%= form.text_field :title, class:"form-control", placeholder:raw("&#xf035;  Titre")  %>
+                <%= form.text_field :title, class:"form-control", placeholder:raw("&#xf035;  Titre (obligatoire, maximum 30 caractères)")  %>
               </div> <br>
               <div class="input-group-prepend faw">
-                <%= form.text_area :description, class:"form-control", placeholder:raw("&#xf039;  description") %>
+                <%= form.text_area :description, class:"form-control", placeholder:raw("&#xf039;  Description (obligatoire, max 160 caractères)") %>
               </div><br>
               <div class="input-group-prepend faw">
-                <%= form.text_field :address, class:"form-control", placeholder:raw("&#xf041;  Adresse")  %>
+                <%= form.text_field :address, class:"form-control", placeholder:raw("&#xf041;  Adresse (obligatoire)")  %>
               </div><br>
               <div class="input-group-prepend faw">
-                <%= form.text_field :zipcode, class:"form-control", placeholder:raw("&#xf041;  Code postal") %>
+                <%= form.text_field :zipcode, class:"form-control", placeholder:raw("&#xf041;  Code postal de Paris (obligatoire)") %>
               </div><br>
-              <div class="input-group-prepend faw">
-                <%= form.text_field :city, class:"form-control", placeholder:raw("&#xf041;  Ville") %>
-              </div><br>
-              <div class="input-group-prepend faw">
-                <%= form.text_field :country, class:"form-control", placeholder:raw("&#xf041;  Pays") %>
-              </div><br>
-              <div class="input-group-prepend faw">
-                <%= form.text_field :image_url, class:"form-control", placeholder:raw("&#xf030;  Image") %>
-              </div><br>
+
 
               <div class="input-group-prepend faw my-2">
                 <%= form.label :agrumes, class:'text-dark mr-2' %>

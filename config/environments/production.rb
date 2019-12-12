@@ -23,7 +23,7 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -64,6 +64,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "thp-okcompost_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -91,4 +92,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  ActionMailer::Base.smtp_settings = {
+  :user_name => ENV['SENDGRID_LOGIN'],
+  :password => ENV['SENDGRID_PWD'],
+  :domain => 'https://ok-compost-staging.herokuapp.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+  
+
 end
+
+

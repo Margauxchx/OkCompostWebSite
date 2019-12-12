@@ -1,8 +1,25 @@
 class User < ApplicationRecord
+  validates :email,
+    presence: true,
+    uniqueness: true,
+    format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: " valide, s'il vous plaît !"}
+  validates :username,
+    presence: true,
+    uniqueness: true
+    
+  after_create :welcome_send
+  
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
+
+  # Active Storage association with avatar
+  has_one_attached :avatar
 
   # 1 - N association with owned_composts (composts), as composter
   has_many :owned_composts, class_name: 'Compost', foreign_key: 'composter_id'

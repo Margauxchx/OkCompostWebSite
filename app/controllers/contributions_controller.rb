@@ -21,12 +21,12 @@ class ContributionsController < ApplicationController
             
             status: "submitted"
         )
-        if @contribution.save!
+        if @contribution.save
             flash[:success] = "Ta demande contribution a bien été prise en compte"
             redirect_to compost_path(@compost)
         else
-            flash[:danger] = "La contribution n'a pas pu être créée"
-            render root_path
+            flash[:error] = "La contribution n'a pas pu être créée, tous les champs doivent être remplis"
+            redirect_to compost_path(@compost)
         end 
     end
 
@@ -40,6 +40,26 @@ class ContributionsController < ApplicationController
     redirect_to compost_path(@compost)
   end
 
+    def accept
+        @contribution = Contribution.find(params[:contribution_id])
+        @compost = @contribution.supplied_compost
+        @contribution.accepted!
+        @compost.filling += contribution_default_quantity
+        @compost.save!
+        flash[:success] = "La contribution a bien été acceptée"
+        redirect_to compost_path(@compost.id)
+      UserMailer.valid_contribution_email(@contribution).deliver_now
+    end 
+
+    def reject
+        @contribution = Contribution.find(params[:contribution_id])
+        @compost = @contribution.supplied_compost 
+        @contribution.rejected!
+        flash[:alert] = "La contribution a été refusée"
+        redirect_to compost_path(@compost.id)
+       UserMailer.reject_contribution_email(@contribution).deliver_now
+    end 
+
   private
 
   def contribution_params
@@ -47,6 +67,7 @@ class ContributionsController < ApplicationController
       :status_action
     )
   end
+
 
   def set_compost
     @compost = Compost.find(params[:compost_id])
@@ -68,10 +89,12 @@ class ContributionsController < ApplicationController
     @compost.filling += contribution_default_quantity
     @compost.save!
     flash[:success] = 'La contribution a été acceptée.'
+    UserMailer.valid_contribution_email(@contribution).deliver_now
   end
 
   def reject_contribution
     @contribution.rejected!
     flash[:alert] = 'La contribution a été refusée.'
+    UserMailer.reject_contribution_email(@contribution).deliver_now
   end
 end

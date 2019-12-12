@@ -14,7 +14,7 @@
     
         models_list = [
         User, Compost, Contribution,
-        ActsAsTaggableOn::Tag
+        ActsAsTaggableOn::Tag, Result
         ]
     
         models_list.each do |model|
@@ -86,7 +86,7 @@
     picture_file_name = 'compost_' + (format '%03d', rand(1..7)) + '.jpg'
     picture_path = Rails.root.join("app", "assets", "images", "compost_pictures", picture_file_name)
     new_compost = user.owned_composts.create!(
-      title: Faker::Food.vegetables + Faker::Music.genre,
+      title: (Faker::Food.vegetables + Faker::Music.genre).slice(0..29),
       address: Faker::Address.street_address,
       zipcode: districts.sample,
       city: 'Paris',
@@ -131,7 +131,8 @@
 
     rand(3..10).times do
       user.contributions.create!(
-        supplied_compost_id: all_composts_but_mines.sample
+        supplied_compost_id: all_composts_but_mines.sample,
+        message: Faker::Lorem.paragraph_by_chars(number: rand(60..140), supplemental: false)
       )
     end
   end

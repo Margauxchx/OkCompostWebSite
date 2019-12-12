@@ -1,0 +1,51 @@
+<div class="container text-center">
+  <h3 class="my-5 text-secondary">A Propos De Ok Compost</h3>
+  <hr class="long mb-5">
+</div>
+
+<div class="container tm">
+  <div id="text1" class="mb-3">
+    <hr class="long mb-4">
+    <p class="text-secondary text-center mb-4"><strong>Des petits gestes quotidiens permettent de réduire les déchets et certaines pratiques permettent même de les réutiliser au quotidien. C'est le cas du compost qui permet la création d'engrais naturel. <br>
+    OK COMPOST est là pour rendre tout ça plus clair, facile et accessible à tous. </strong>
+    </p>
+    <hr class="long">
+  </div>
+  <div>
+    <p class="text-center text-secondary mb-3">OK COMPOST permet de rapprocher les différents acteurs qui peuvent intervenir tout au long du processus de compostage et s'adresse donc à plusieurs types de personnes :
+    </p>
+    <p class="text-center text-secondary"> Vous êtes un <strong>citoyen consommateur</strong> voulant recycler vos déchets alimentaires mais ne possédant pas de compost : OK COMPOST vous aide à trouver des composts près de chez vous. <br>
+    <%= link_to 'FAIS UNE RECHERCHE', root_path,class:"text-center" %></p>
+    <p class="text-center text-secondary"> Vous êtes un <strong>citoyen propriétaire</strong> d'un compost et vous voulez en faire profiter votre voisinage. <br>   <%= link_to 'CREES UN COMPOST', new_compost_path,class:"text-center" %></p>
+    <p class="text-center text-secondary"> Vous êtes un <strong>agriculteur</strong> ou un <strong>citadin</strong> possédant un jardin/potager et vous voudriez pouvoir utiliser l'engrais créé. <br> <%= link_to 'VOIR LES COMPOSTS REMPLIS', root_path,class:"text-center" %> </p>
+  </div>
+</div>
+
+<hr class="my-3"> 
+
+<div class="container">
+  <div class="card-deck">
+    <div class="card border-0 text-center card-about">
+      <%= image_tag "aboutus_pictures/epluchures.png", class: "about-picture mx-auto" %>
+      <div class="card-body">
+        <p class="card-text">Redonnez le sourire à vos épluchures. Au lieu de jeter vos déchets alimentaires dans le bac à ordures, gardez-les pour en faire du compost.</p>
+      </div>
+    </div>
+    <div class="card border-0 text-center card-about">
+      <%= image_tag "aboutus_pictures/composteur.png", class: "about-picture mx-auto" %>
+      <div class="card-body">
+        <p class="card-text">En quelques mois les déchets seront transformés en compost</p>
+      </div>
+    </div>
+    <div class="card border-0 text-center card-about">
+      <%= image_tag "aboutus_pictures/potager.png", class: "about-picture mx-auto" %>
+      <div class="card-body">
+        <p class="card-text">Et deviendront un engrais 100% naturel qui permettra de nourrir les sols de jardins, potagers et même ceux de champs agricoles</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="text-secondary text-center mb-5">Pour toute autre question, n'hésitez pas à regarder <%= link_to 'la FAQ', page_path('faq') %> </p>
+
+<hr class="long mb-5">

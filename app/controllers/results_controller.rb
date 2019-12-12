@@ -4,11 +4,20 @@ class ResultsController < ApplicationController
 
   # GET /results/1
   def show
+    @input_array = []
+    @result.composts.each do |compost|
+      # send input to the JS MapIni function with for each result line an array with : latitude, longitude and compost_id
+      @input_array << [compost.latitude, compost.longitude, compost.id]
+    end 
+  puts "***********************"
+  print @coordinates_array
   end
 
   # GET /results/new
   def new
     @result = Result.new
+    @compositions = Compost.tag_counts_on("compositions")
+
     if current_user
       if current_user.owned_composts.size > 0 && current_user.supplied_composts.size == 0
         @composts = current_user.owned_composts.sample([3, current_user.owned_composts.size].min)
@@ -31,7 +40,6 @@ class ResultsController < ApplicationController
   # POST /results
   def create
     @result = Result.new(result_params)
-
     respond_to do |format|
       if @result.save
         format.html { redirect_to @result, notice: 'Voici les résultats de votre recherche :' }
@@ -59,7 +67,8 @@ class ResultsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
       params.require(:result).permit(
-        :district , :composition => []
+        :district , :search_mode,
+        :composition => []
       )
     end
 end
