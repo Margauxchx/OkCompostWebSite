@@ -2,6 +2,12 @@ class Contribution < ApplicationRecord
   validates :contribution_date, presence: true
   validates :message, presence: true
 
+  after_create :ask_contribution_send
+  
+  def ask_contribution_send
+    UserMailer.ask_contribution_email(self).deliver_now
+  end
+  
   enum status: [:submitted, :accepted, :rejected]
   # N - 1 association with contributors (users)
   belongs_to :contributor, class_name: 'User'
