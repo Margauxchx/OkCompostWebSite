@@ -31,6 +31,7 @@ module ThpOkcompost
     config.generators.system_tests = nil
 
     # Change devise default locale to french
-    # config.i18n.default_locale = :fr
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+    config.i18n.default_locale = :fr
   end
 end
