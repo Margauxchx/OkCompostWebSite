@@ -24,24 +24,39 @@ function initMap(input, result_id) {
                 if (card.className.includes(color)){
                    initial = color;
                 }
+            });
         google.maps.event.addListener(marker, 'mouseover', function() {
             marker.setIcon("http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
             card.classList.remove('border-'+initial);
             cardHeader.classList.remove('bg-'+initial);
             card.classList.add("border-info");
             cardHeader.classList.add('bg-info');
-            })   
-        });
+            }); 
         google.maps.event.addListener(marker, 'mouseout', function() {
             marker.setIcon("http://maps.google.com/mapfiles/ms/icons/green-dot.png");
             card.classList.remove("border-info");
             cardHeader.classList.remove('bg-info');
             card.classList.add('border-'+initial);
             cardHeader.classList.add('bg-'+initial);
-        });
+            });
         google.maps.event.addListener(marker, 'click', function() {
-            card.scrollIntoView(true)
-            })  
+            card.scrollIntoView(false)
+            });
+        card.addEventListener('mouseover', function() {
+            marker.setIcon("http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
+            card.classList.remove('border-'+initial);
+            cardHeader.classList.remove('bg-'+initial);
+            card.classList.add("border-info");
+            cardHeader.classList.add('bg-info');
+            }); 
+        card.addEventListener('mouseout', function() {
+            marker.setIcon("http://maps.google.com/mapfiles/ms/icons/green-dot.png");
+            card.classList.remove("border-info");
+            cardHeader.classList.remove('bg-info');
+            card.classList.add('border-'+initial);
+            cardHeader.classList.add('bg-'+initial);
+            });
+
     });
 
 }
