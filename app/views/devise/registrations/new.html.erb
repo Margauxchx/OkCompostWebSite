@@ -12,20 +12,20 @@
           <br><br>
           <div class="info-form">
             <div>
-                <%= f.email_field :email, autofocus: true, placeholder:raw("&#xf0E0;  Email"), autocomplete: "email", class:"form-control mb-3" %>
+                <%= f.email_field :email, autofocus: true, placeholder:raw("&#xf0E0;  Email"), autocomplete: "email (obligatoire)", class:"form-control mb-3" %>
             </div>
             <div>
-                <%= f.text_field :username, autofocus: true, placeholder:raw("&#xf007;  Pseudo"), autocomplete: "username", class:"form-control mb-3" %>
+                <%= f.text_field :username, autofocus: true, placeholder:raw("&#xf007;  Pseudo (obligatoire)"), autocomplete: "username", class:"form-control mb-3" %>
             </div>
             <div>
-              <%= f.password_field :password, placeholder: raw("&#xf09c;  Mot de passe"), autocomplete: "new-password", class:"form-control" %>
+              <%= f.password_field :password, placeholder: raw("&#xf09c;  Mot de passe (obligatoire)"), autocomplete: "new-password", class:"form-control" %>
               <% if @minimum_password_length %>
                 <em class="text-secondary mb-3">(<%= @minimum_password_length %> characters minimum)</em>
               <% end %>
               <br>
             </div>
             <div>
-              <%= f.password_field :password_confirmation, placeholder: raw("&#xf023;  Confirmer le mot de passe"), autocomplete: "new-password", class:"form-control mb-5" %>
+              <%= f.password_field :password_confirmation, placeholder: raw("&#xf023;  Confirmer le mot de passe (obligatoire)"), autocomplete: "new-password", class:"form-control mb-5" %>
             </div>
             <div>
               <%= f.submit "S'inscrire", class:"btn btn-primary"  %>
