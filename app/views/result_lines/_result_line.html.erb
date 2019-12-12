@@ -1,29 +1,33 @@
-<div class="col-6 d-flex align-items-stretch">
+<div id="result-cont" class="container">
   <% if current_user && result_line.compost.contributors.include?(current_user) %>
-    <div id='result_<%= result_line.compost.id %>' class="card search-card border-success mb-3">
-      <div class="card-header bg-success text-white font-weight-bolder"><%= result_line.compost.title %></div>
-    <% elsif current_user == User.find(result_line.compost.composter_id) %>
-      <div id='result_<%= result_line.compost.id %>' class="card search-card border-danger mb-3">
-        <div class="card-header bg-danger text-white font-weight-bolder"><%= result_line.compost.title %></div>
-    <% else %>
-      <div id='result_<%= result_line.compost.id %>' class="card search-card border-warning mb-3">
-        <div class="card-header bg-warning text-white font-weight-bolder"><%= result_line.compost.title %></div>
-      <% end %>
-      <div class="card-body">
-        <% if result_line.compost.picture.attached? %>
+<div id='result_<%= result_line.compost.id %>'  class="card mb-3 border-success" style="max-width: 600px;">
+  <div class="card-header bg-success text-white font-weight-bolder"><%= result_line.compost.title %></div>
+   <% elsif current_user == User.find(result_line.compost.composter_id) %>
+  <div id='result_<%= result_line.compost.id %>'  class="card mb-3 border-danger" style="max-width: 600px;">
+    <div class="card-header bg-danger text-white font-weight-bolder"><%= result_line.compost.title %></div>
+     <% else %>
+     <div id='result_<%= result_line.compost.id %>'  class="card mb-3 border-warning" style="max-width: 600px;">
+       <div class="card-header bg-warning text-white font-weight-bolder"><%= result_line.compost.title %></div>
+        <% end %>
+  <div class="row no-gutters">
+    <div class="col-md-4">
+       <% if result_line.compost.picture.attached? %>
           <%= image_tag result_line.compost.picture, class:"img-tag" %>
         <% else %>
           <%= image_tag 'http://odil.tv/wp-content/uploads/2019/06/b00bc6e_2018122245.0.2235366676compost_web-1280x640.jpg', style:"height: auto; max-width:100%" %>
         <% end %>
-        <h4 class="card-title">
+
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">
           <% if current_user %>
             <% if current_user ==  User.find(result_line.compost.composter_id) %>
-              <%=link_to 'Mon profil', user_path(result_line.compost.composter_id) %>
+              <%=link_to 'Mon profil', user_path(result_line.compost.composter_id), class:'btn btn-link' %>
             <% else %>
-              <%=link_to User.find(result_line.compost.composter_id).username, user_path(result_line.compost.composter_id) %>
+              <p> Gestionnaire :<%=link_to User.find(result_line.compost.composter_id).username, user_path(result_line.compost.composter_id), class:'btn btn-link' %></p>
             <% end %>
-          <% end %>
-        </h4>
+          <% end %></h5>
         <div class="row">
           <% if result_line.compost.district_list.include?(result_line.result.district) %>
             <%= link_to result_line.compost.district_list.to_s, {
@@ -74,6 +78,11 @@
         <% else %>
           <%= link_to "Voir ce compost", compost_path(result_line.compost.id), class: "btn btn-warning" %>
         <% end %>
+
       </div>
     </div>
   </div>
+</div>
+</div>
+
+
