@@ -25,7 +25,7 @@ class ContributionsController < ApplicationController
             flash[:success] = "Ta demande contribution a bien été prise en compte"
             redirect_to compost_path(@compost)
         else
-            flash[:success] = "La contribution n'a pas pu être créée, tous les champs doivent être remplis"
+            flash[:error] = "La contribution n'a pas pu être créée, tous les champs doivent être remplis"
             redirect_to compost_path(@compost)
         end 
     end
