@@ -4,9 +4,10 @@ class ResultsController < ApplicationController
 
   # GET /results/1
   def show
-    @coordinates_array = []
+    @input_array = []
     @result.composts.each do |compost|
-      @coordinates_array << [compost.latitude, compost.longitude, compost.id]
+      # send input to the JS MapIni function with for each result line an array with : latitude, longitude and compost_id
+      @input_array << [compost.latitude, compost.longitude, compost.id]
     end 
   puts "***********************"
   print @coordinates_array

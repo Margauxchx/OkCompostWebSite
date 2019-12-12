@@ -2,10 +2,11 @@
   <% provide :head_tags do %>
     <script>
     document.addEventListener("DOMContentLoaded", function(){
-      let coordinates_array = <%= @coordinates_array %>;
-      console.log(coordinates_array.length);
-      if ( coordinates_array.length > 0 ){
-        initMap( coordinates_array );
+      let input_array = <%= @input_array %>;
+      let result = <%= @result.id %>
+      console.log(input_array.length);
+      if ( input_array.length > 0 ){
+        initMap( input_array, result );
         }
     });
     </script>
@@ -19,9 +20,7 @@
     <div class="col-6 h-100">
       <div id='search-results'class="row">
         <% @result.result_lines.each do |result_line| %>
-          <div id= 'result_<%= result_line.compost.id %>' >
             <%= render result_line %>
-          </div>
         <% end %>
       </div>
     </div>
