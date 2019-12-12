@@ -10,6 +10,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 
+  # Active Storage association with avatar
+  has_one_attached :avatar
+
   # 1 - N association with owned_composts (composts), as composter
   has_many :owned_composts, class_name: 'Compost', foreign_key: 'composter_id'
 
