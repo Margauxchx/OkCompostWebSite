@@ -21,12 +21,12 @@ class ContributionsController < ApplicationController
             
             status: "submitted"
         )
-        if @contribution.save!
+        if @contribution.save
             flash[:success] = "Ta demande contribution a bien été prise en compte"
             redirect_to compost_path(@compost)
         else
-            flash[:danger] = "La contribution n'a pas pu être créée"
-            render root_path
+            flash[:success] = "La contribution n'a pas pu être créée, tous les champs doivent être remplis"
+            redirect_to compost_path(@compost)
         end 
     end
 
