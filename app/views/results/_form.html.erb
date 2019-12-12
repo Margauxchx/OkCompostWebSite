@@ -14,17 +14,17 @@
   <div class="jumbotron">
     <div class="container h-100">
       <div class="row" id="jumbotron-row">
-        <div class="col-6">
+        <div class="col-lg-6 col-sm-12">
             <h1 id="jumbotron-title" class="display-3 mx-5 text-center">Offrez de belles rencontres à vos épluchures !</h1> 
         </div>
-        <div class="col-6">
+        <div class="col-lg-6 col-sm-12">
           <div class="card mx-5">
             <div class="card-body">
-              <h5 class="card-title">Cherchez un compost !</h5>
+              <h3 class="card-title">Cherchez un compost !</h3>
               <h6 class="card-subtitle mb-2 text-muted mt-3"> Renseignez vos critères de sélection :</h6>
               
               <div>
-                <%= select_tag("result[district]", options_for_select([['Arrondissement', ""],['1er', '75001'], ['2ème', '75002'], ['3ème', '75003'], ['4ème', '75004'], ['5ème', '75005'], ['6ème', '75006'], ['7ème', '75007'], ['8ème', '75008'], ['9ème', '75009'], ['10ème', '75010'], ['11ème', '75011'], ['12ème', '75012'], ['13ème', '75013'], ['14ème', '75014'], ['15ème', '75015'], ['16ème', '75016'], ['17ème', '75017'], ['18ème', '75018'], ['19ème', '75019']]), class: "form-control-welcome mb-2") %>
+                <%= select_tag("result[district]", options_for_select([['Arrondissement de Paris', ""],['1er', '75001'], ['2ème', '75002'], ['3ème', '75003'], ['4ème', '75004'], ['5ème', '75005'], ['6ème', '75006'], ['7ème', '75007'], ['8ème', '75008'], ['9ème', '75009'], ['10ème', '75010'], ['11ème', '75011'], ['12ème', '75012'], ['13ème', '75013'], ['14ème', '75014'], ['15ème', '75015'], ['16ème', '75016'], ['17ème', '75017'], ['18ème', '75018'], ['19ème', '75019'], ['20ème', '75020']]), class: "form-control-welcome mb-2") %>
               </div>
 
               <div>
