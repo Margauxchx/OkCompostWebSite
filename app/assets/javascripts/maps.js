@@ -26,7 +26,6 @@ function initMap(input, result_id) {
                 }
         google.maps.event.addListener(marker, 'mouseover', function() {
             marker.setIcon("http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
-            window.location.href = this.url;
             card.classList.remove('border-'+initial);
             cardHeader.classList.remove('bg-'+initial);
             card.classList.add("border-info");
@@ -35,12 +34,14 @@ function initMap(input, result_id) {
         });
         google.maps.event.addListener(marker, 'mouseout', function() {
             marker.setIcon("http://maps.google.com/mapfiles/ms/icons/green-dot.png");
-            window.location.href = this.url;
             card.classList.remove("border-info");
             cardHeader.classList.remove('bg-info');
             card.classList.add('border-'+initial);
             cardHeader.classList.add('bg-'+initial);
         });
+        google.maps.event.addListener(marker, 'click', function() {
+            card.scrollIntoView(true)
+            })  
     });
 
 }
