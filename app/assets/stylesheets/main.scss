@@ -231,3 +231,27 @@ hr {
 .fa-bell {
   color: #d9534f;
 }
+
+.field_with_errors {
+  width: 100%;
+}
+
+.field_with_errors > .form-control {
+  border-color: #ED8374;
+}
+
+.field_with_errors > .form-control:focus {
+  border-color: #ED8374;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(237, 131, 116, 0.93);
+          box-shadow: 0 0 0 0.2rem rgba(237, 131, 116, 0.93);
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid #ED8374;
+  border-radius: 10px;
+  padding: 7px 7px 0 10px;
+  margin : auto;
+  margin-top: 20px;
+  background-color: #EDDAD7;
+}
