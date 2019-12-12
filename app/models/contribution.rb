@@ -1,5 +1,4 @@
 class Contribution < ApplicationRecord
-  validates :contribution_date, presence: true
   validates :message, presence: true
 
   after_create :ask_contribution_send
