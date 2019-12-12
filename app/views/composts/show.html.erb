@@ -64,25 +64,49 @@
                               }
                             },
                             { :method => "post", :class => 'btn btn-outline-info rounded-pill'}
-                          %>
-
+                  %>
+              <% end %><br><br>
+              </p>
+              <h4>Niveau de remplissage actuel :</h4>
+              <div >
+              <% if @compost.filling < 75 %>
+                <span class="badge badge-pill badge-light text-success px-3 pt-2">
+                        <h5><%= @compost.filling %>%</h5>
+                </span>
+                <div class="progress progress-bar-vertical text-center">
+                  <div class="progress-bar text-dark bg-success" role="progressbar" aria-valuenow=<%= @compost.filling %> aria-valuemin="0" aria-valuemax="100" style="height: <%= @compost.filling %>%;">
+                  </div> 
+                </div>
+                <% elsif @compost.filling < 95 %>
+                <span class="badge badge-pill badge-light text-warning px-3 pt-2">
+                        <h5><%= @compost.filling %>%</h5>
+                </span>
+                <div class="progress progress-bar-vertical text-center">
+                  <div class="progress-bar text-dark bg-warning" role="progressbar" aria-valuenow=<%= @compost.filling %> aria-valuemin="0" aria-valuemax="100" style="height: <%= @compost.filling %>%;">
+                  </div> 
+                </div>
+                <% else %>
+                <span class="badge badge-pill badge-light text-danger px-3 pt-2">
+                        <h5><%= @compost.filling %>%</h5>
+                </span>
+                <div class="progress progress-bar-vertical text-center">
+                  <div class="progress-bar text-dark bg-danger" role="progressbar" aria-valuenow=<%= @compost.filling %> aria-valuemin="0" aria-valuemax="100" style="height: <%= @compost.filling %>%;">
+                  </div> 
+                </div>
               <% end %>
-                    </p>
+              </div>
 
-                  </div>
+                  </div><br><br>
                   <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
                     <% if @compost.is_open %>
-                    <span class="badge badge-pill badge-primary px-3 pt-2">
-                      <h5>Ouvert</h5>
+                    <span class="badge badge-pill badge-light text-success px-3 pt-2">
+                      <h5><i class="fas fa-check"></i> Ouvert aux contributions</h5>
                     </span>
                     <% else %>
                     <span class="badge badge-pill badge-danger px-3 pt-2">
                       <h5>Fermé</h5>
                     </span>
                     <% end %>
-                    <span class="badge badge-pill badge-primary px-3 pt-2">
-                      <h5>Remplissage : <%= @compost.filling %> %</h5>
-                    </span>
                   </div>
                 </div>
               </div>
