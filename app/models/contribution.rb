@@ -1,4 +1,10 @@
 class Contribution < ApplicationRecord
+  after_create :ask_contribution_send
+  
+  def ask_contribution_send
+    UserMailer.ask_contribution_email(self).deliver_now
+  end
+  
   enum status: [:submitted, :accepted, :rejected]
   # N - 1 association with contributors (users)
   belongs_to :contributor, class_name: 'User'
@@ -17,6 +23,6 @@ class Contribution < ApplicationRecord
   	else
   	  @conversation = Conversation.create!(sender_id: @sender_id, recipient_id: @recipient_id)
   	end
-  	Message.create!(conversation_id: @conversation.id, user_id: @sender_id, body: "Date de conribution souhaitée : " +  self.contribution_date.to_s + " " + self.message)
+  	Message.create!(conversation_id: @conversation.id, user_id: @sender_id, body: "Date de contribution souhaitée : " + self.contribution_date.to_s + "\n \n" + self.message)
   end
 end

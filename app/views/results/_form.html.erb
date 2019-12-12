@@ -26,23 +26,20 @@
               <div>
                 <%= select_tag("result[district]", options_for_select([['Arrondissement', ""],['1er', '75001'], ['2ème', '75002'], ['3ème', '75003'], ['4ème', '75004'], ['5ème', '75005'], ['6ème', '75006'], ['7ème', '75007'], ['8ème', '75008'], ['9ème', '75009'], ['10ème', '75010'], ['11ème', '75011'], ['12ème', '75012'], ['13ème', '75013'], ['14ème', '75014'], ['15ème', '75015'], ['16ème', '75016'], ['17ème', '75017'], ['18ème', '75018'], ['19ème', '75019']]), class: "form-control-welcome mb-2") %>
               </div>
+
+              <div>
+                <%= select_tag("result[search_mode]", options_for_select([['Recherche normale', 'normal'], ['Recherche stricte', 'strict'], ['Recherche cool', 'cool']]), class: "form-control-welcome mb-2") %>
+              </div>
               
               <div class="row mt-2 mb-3">
-                <div class="field mr-2">
-                  <%= form.label :bio, class: "ml-3 mr-2" %>
-                  <%= form.check_box(:composition, {:multiple => true}, "bio", nil) %>
-                </div>
-
-                <div class="field mr-2">
-                  <%= form.label :coquilles, class: "mr-2" %>
-                  <%= form.check_box(:composition, {:multiple => true}, "coquilles", nil) %>
-                </div>
-
-                <div class="field mr-2">
-                  <%= form.label :bananes, class: "mr-2" %>
-                  <%= form.check_box(:composition, {:multiple => true}, "bananes", nil) %>
-                </div> 
+                <% @compositions.each do |composition_tag| %>
+                  <div class="field mr-2">
+                    <%= form.label composition_tag.name.to_sym, class: "ml-3 mr-2" %>
+                    <%= form.check_box(:composition, {:multiple => true}, composition_tag.name, nil) %>
+                  </div>
+                <% end %>
               </div>
+
               <button class="btn btn-primary px-5 mr-3">Et zou !</button>
               <p class="my-3">Ou alors : </p>
               <%= link_to "Créer un compost !", new_compost_path, class: "btn btn-info" %>
