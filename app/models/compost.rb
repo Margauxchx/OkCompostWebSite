@@ -1,4 +1,17 @@
 class Compost < ApplicationRecord
+validates :title,
+  presence: true,
+  length: { in: 3..25 }
+validates :address, presence: true
+validates :zipcode, 
+  presence: true,
+  format: { with: /\d{5}/, message: "français, s'il vous plaît !" }
+validates :city, presence: true
+validates :country, presence: true
+validates :description,
+  presence: true,
+  length: { maximum: 160 }
+
   acts_as_taggable_on :districts, :compositions
 
   # N - 1 association with composters (users)
