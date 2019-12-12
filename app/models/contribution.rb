@@ -1,4 +1,6 @@
 class Contribution < ApplicationRecord
+  validates :message, presence: true
+
   after_create :ask_contribution_send
   
   def ask_contribution_send

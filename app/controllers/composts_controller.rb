@@ -28,13 +28,13 @@ class CompostsController < ApplicationController
   # POST /composts
   def create
     @compost = current_user.owned_composts.new(compost_params)
-
-    respond_to do |format|
-      if @compost.save
-        format.html { redirect_to @compost, notice: 'Compost was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    @compost.city = "Paris"
+    @compost.country = "France"
+    
+    if @compost.save
+      redirect_to @compost, notice: 'Le compost a bien été créé.' 
+    else
+      render :new
     end
   end
 
@@ -45,7 +45,7 @@ class CompostsController < ApplicationController
         @compost.composition_list = compost_params[:composition_list]
         @compost.picture.attach(params[:picture]) if params[:picture]
         @compost.save()
-        format.html { redirect_to @compost, notice: 'Compost was successfully updated.' }
+        format.html { redirect_to @compost, notice: 'Le compost a été mis à jour.' }
       else
         format.html { render :edit }
       end
@@ -56,7 +56,7 @@ class CompostsController < ApplicationController
   def destroy
     @compost.destroy
     respond_to do |format|
-      format.html { redirect_to composts_url, notice: 'Compost was successfully destroyed.' }
+      format.html { redirect_to composts_url, notice: 'Le compost a été détruit.' }
     end
   end
 
