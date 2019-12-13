@@ -18,9 +18,6 @@
       <li class="nav-item">
         <%= link_to 'Historique des contributions', '#contributions', { 'data-toggle' => "tab", :class => "nav-link" } %>
       </li>
-      <li class="nav-item">
-        <%= link_to 'Historique des usages', '#use', { 'data-toggle' => "tab", :class => "nav-link" } %>
-      </li>
       <% if is_owner?(@compost) %>
         <li class="nav-item">
           <%= link_to 'Gérer mes disponibilités', '#timeslotsManagement', { 'data-toggle' => "tab", :class => "nav-link" } %>
@@ -212,9 +209,6 @@
                 <h3 class='text-secondary'>Utilisateur·ice</h3>
               </th>
               <th>
-                <h3 class='text-secondary'>Date de la contribution</h3>
-              </th>
-              <th>
                 <h3 class='text-secondary'>Profil</h3>
               </th>
             </thead>
@@ -224,33 +218,10 @@
                   <h4 class='text-secondary'><%= contribution.contributor.username %></h4>
                 </th>
                 <td>
-                  <%= contribution.contribution_date %>
-                </td>
-                <td>
                   <p><%=  link_to "Voir le profil", user_path(contribution.contributor), class:"btn btn-primary" %></p>
                 </td>
               </tr>
             <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div class="tab-pane fade" id="use">
-        <table class="table table-hover table">
-          <thead class='thead-light'>
-            <tr>
-              <th>
-                <h4 class='text-secondary'>Utilisations du compost</h4>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>
-                <h3 class='text-secondary'></h3>
-                Pseudo
-              </th>
-            </tr>
           </tbody>
         </table>
       </div>
