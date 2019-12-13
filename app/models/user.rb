@@ -6,9 +6,6 @@ class User < ApplicationRecord
   validates :username,
     presence: { message: "doit être renseigné" },
     uniqueness: { message: "est déjà utilisé" }
-  validates :password,
-    presence: { message: "doit être renseigné" },
-    length: { minimum: 6, message: "est trop court" }
     
   after_create :welcome_send
   
