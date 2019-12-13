@@ -1,4 +1,4 @@
-footer,.link_to, .btn-primary {
+footer,.link_to,.btn-link,.btn-primary {
   color: #fff;
   background-color: #ADCE4B;
   border-color: #ADCE4B;
@@ -109,9 +109,6 @@ footer,.link_to, .btn-primary {
   outline: 0;
 }
 
-.btn-link {
-  color: #8E8C84;
-}
 
 .btn-link:hover {
   color: #3E3F3A;
@@ -162,6 +159,10 @@ body{
   width: 100%;
 }
 
+body {
+  min-height: 100%;
+  position: relative;
+}
 
 .h3-up {
   text-transform: uppercase;
@@ -177,17 +178,6 @@ body{
   color: black;
 }
 
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
 .search-card {
   max-width: 20rem;
 }
@@ -199,14 +189,6 @@ footer {
   right: 0;
   background-color: #ADCE4B;
   color: #FFF;
-}
-
-.linkfooter1{
-  margin-left: 3rem
-}
-
-.linkfooter2{
-  margin-left: 7rem
 }
 
 .footer-copyright {
