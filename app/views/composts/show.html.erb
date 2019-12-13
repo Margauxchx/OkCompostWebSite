@@ -95,12 +95,13 @@
           <tr>
             <h3>Accès</h3>
             <% if display_access_data?(@compost) || is_owner?(@compost) %>
-            <th>
+            <th width=33%>
               <h4 class='text-secondary'>Adresse</h4>
             </th>
-            <td>
+            <td width=33%>
               <p><%= @compost.address %></p>
             </td>
+            <td width=33% rowspan=6> <%= render 'application/map'%></td>
           </tr>
           <tr>
             <th>
@@ -135,41 +136,13 @@
               </p>
           </tr>
           
-          <tr>
-            <th>
-              <h4 class='text-secondary'>Tags</h4>
-            </th>
-            <td>
-              <%= link_to @compost.district_list.to_s, {
-                        :controller => "results", :action => "create",
-                        :result => {
-                          :district => @compost.district_list.to_s, :composition => []
-                          }
-                        },
-                        :method => "post", :class => 'btn btn-outline-warning rounded-pill'
-                      %>
-            </td>
-            <td>
-              <% @compost.composition_list.sort.each do |composition_tag| %>
-                <%= link_to composition_tag.to_s, {
-                            :controller => "results", :action => "create",
-                            :result => {
-                              :district => nil, :composition => [composition_tag.to_s]
-                              }
-                            },
-                            { :method => "post", :class => 'btn btn-outline-info rounded-pill'}
-                          %>
-
-              <% end %>
-              </td>
-          </tr>
-          </>
+          
         </tbody>
         <%else%>
         <h4 class="center">Contribuer au compost pour voir les infos d'accès.</h4><br><br>
         <%end%>
       </table><br>
-      <%= render 'application/map'%>
+      
       <div class="center">
         <% if is_owner?(@compost) %>
         <%= link_to 'Editer le compost', edit_compost_path(@compost), class: "btn btn-primary" %>
