@@ -1,0 +1,18 @@
+<table class="table table-hover my-2">
+  <thead>
+    <th>Jour</th>
+    <th>Créneau</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @slots.each do |slot| %>
+      <tr>
+        <th><%= slot.nice_day %></th>
+        <td><%= slot.nice_slot %></td>
+        <td>
+          <%= link_to 'Supprimer le créneau', compost_timeslot_path(@compost, slot),  method: :delete, data: { confirm: 'Etes vous sure de vouloir supprimer le créneau ?' }, class: "btn btn-sm btn-outline-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

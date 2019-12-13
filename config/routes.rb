@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :composts do
     resources :pictures, only: [:create]
     resources :contributions, only: [:create, :update, :new]
+    resources :timeslots, only: [:create, :destroy]
   end
   resources :conversations, only: [:create] do
     resources :messages, only: [:create, :index]
