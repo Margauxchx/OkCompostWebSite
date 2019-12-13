@@ -1,15 +1,22 @@
 <%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "erreur") %> a/ont empêché cet utilisateurd'être crée :</h2>
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<% if user.errors.any? %>
+  <div id="error_explanation" class="text-left">
+    <h2>Petit problème :</h2>
+    <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <% if message.split.include?("blank") || message.split.include?("has") %>
+        <% elsif message.split.slice(0) == "Email" %>
+          <li>L'email <%= message.split.slice(1..-1).join(" ") %></li>
+        <% elsif message.split.slice(0) == "Username" %>
+          <li>Le pseudo <%= message.split.slice(1..-1).join(" ") %></li>
+        <% else %>
+          <li>Le mot de passe <%= message.split.slice(1..-1).join(" ") %></li>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="row mb-2">
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  <div class="row mb-2 mt-4">
     <div class="col-sm-6 offset-sm-3">
       <div class="field">
         <%= form.text_field :firstname, class: "form-control", placeholder:raw("&#xf007;  Prénom") %>
