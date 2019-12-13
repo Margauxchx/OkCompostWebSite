@@ -4,7 +4,7 @@ validates :title,
   length: { in: 3..50, message: "a une longueur inappropriée" }
 validates :address,
   presence: { message: "ne peut pas être vide"},
-  length: { in: 3..50 }
+  length: { in: 3..50, message: "a une longueur inappropriée" }
 validates :zipcode, 
   presence: { message: "ne peut pas être vide"},
   inclusion: { in: ["75001", "75002", "75003", "75004", "75005", "75006", "75007", "75008", "75009", "75010", "75011", "75012", "75013", "75014", "75015", "75016", "75017", "75018", "75019", "75020"], message: "est invalide, il doit correspondre à un arrondissement parisien" }
