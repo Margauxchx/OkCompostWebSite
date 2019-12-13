@@ -132,6 +132,16 @@ ActiveRecord::Schema.define(version: 2019_12_13_110810) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "timeslots", force: :cascade do |t|
+    t.bigint "compost_id"
+    t.integer "weekday"
+    t.string "start_time"
+    t.string "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compost_id"], name: "index_timeslots_on_compost_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
