@@ -1,11 +1,14 @@
 class User < ApplicationRecord
   validates :email,
-    presence: true,
-    uniqueness: true,
-    format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: " valide, s'il vous plaît !"}
+    presence: { message: "doit être renseigné" },
+    uniqueness: { message: "est déjà utilisé" },
+    format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "doit être valide"}
   validates :username,
-    presence: true,
-    uniqueness: true
+    presence: { message: "doit être renseigné" },
+    uniqueness: { message: "est déjà utilisé" }
+  validates :password,
+    presence: { message: "doit être renseigné" },
+    length: { minimum: 6, message: "est trop court" }
     
   after_create :welcome_send
   
