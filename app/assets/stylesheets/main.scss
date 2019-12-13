@@ -1,4 +1,4 @@
-footer,.link_to,.btn-link,.btn-primary {
+footer,.link_to,.btn-primary {
   color: #fff;
   background-color: #ADCE4B;
   border-color: #ADCE4B;
@@ -109,9 +109,12 @@ footer,.link_to,.btn-link,.btn-primary {
   outline: 0;
 }
 
+.btn-link {
+  color: #8E8C84;
+}
 
 .btn-link:hover {
-  color: #8E8C84;
+  color: #3E3F3A;
   text-decoration: none;
 }
 
