@@ -77,7 +77,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(
         :firstname, :lastname, :username, :email,
         :address, :zipcode, :city, :country,
-        :avatar_url, :is_composter, :avatar
+        :avatar_url, :is_composter, :avatar, :description
       )
     end
 
