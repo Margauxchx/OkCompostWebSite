@@ -61,6 +61,10 @@
                       <th><h4 class='text-secondary'>Pseudo</h4></th>
                       <td><h5><%= @user.username %></h5></td>
                     </tr>
+                    <tr>
+                      <th><h4 class='text-secondary'>Description</h4></th>
+                      <td><h5><%= @user.description %></h5></td>
+                    </tr>
                     <% if user_signed_in? && current_user.id == @user.id %>
                       <tr>
                         <th><h4 class='text-secondary'>Email</h4></th>
