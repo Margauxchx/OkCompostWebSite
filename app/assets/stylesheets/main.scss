@@ -157,14 +157,13 @@ body, html {
   padding: 0;
 }
 
-body{
-  display: table;
-  width: 100%;
-}
-
 body {
   min-height: 100%;
+  margin: 0;
+  padding: 0;
   position: relative;
+  display: table;
+  width: 100%;
 }
 
 .h3-up {
@@ -186,7 +185,7 @@ body {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
