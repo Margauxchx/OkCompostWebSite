@@ -1,14 +1,16 @@
 <% if resource.errors.any? %>
   <div id="error_explanation">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
+    <h2>Petit problème :</h2>
     <ul>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <% if message.split.include?("blank") || message.split.include?("has") %>
+        <% elsif message.split.slice(0) == "Email" %>
+          <li>L'email <%= message.split.slice(1..-1).join(" ") %></li>
+        <% elsif message.split.slice(0) == "Username" %>
+          <li>Le pseudo <%= message.split.slice(1..-1).join(" ") %></li>
+        <% else %>
+          <li>Le mot de passe <%= message.split.slice(1..-1).join(" ") %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

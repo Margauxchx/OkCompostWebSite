@@ -1,5 +1,5 @@
 class Contribution < ApplicationRecord
-  validates :message, presence: true
+  validates :message, presence: { message: "ne peut pas être vide"}
 
   after_create :ask_contribution_send
   
