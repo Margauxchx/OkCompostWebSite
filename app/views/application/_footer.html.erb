@@ -8,11 +8,19 @@
                 <p>Ok Compost est un service libre et gratuit pour rapprocher toutes les personnes qui veulent composter leurs restes végétaux.</p>
               </div>
 
-              <div class=" col-lg-3 col-md-3 col-sm-6 text-center"><br><h5>Les services que le site offre :</h5>
-                <div class="text-center">
-                  <%= link_to "chercher un compost", root_path, class: "btn btn-link"%><br>
-                  <%= link_to "proposer un nouveau compost", new_compost_path, class: "btn btn-link"%>
-                  </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 text-left"><h3>SERVICES :</h3>
+                <ul>
+                  <li><%= link_to "chercher un compost", root_path, class: "link_to"%></li>
+                  <li><%= link_to "proposer un nouveau compost", new_compost_path, class: "link_to"%></li>
+                </ul>
+            </div>
+
+              <div class="col-lg-3 col-md-3 col-sm-6 text-left"><h3>LIENS UTILES :</h3>
+                <ul>
+                  <li><%= link_to "Le concept", page_path('about'), class: "link_to"%></li>
+                  <li><%= link_to "FAQ", page_path('faq'), class: "link_to"%></li>
+                  <li><%= link_to "La team", page_path('team'), class: "link_to"%></li>
+                </ul>
               </div>
 
               <div class=" col-lg-3 col-md-3 col-sm-6 text-center"><br><h5>Liens utiles</h5>

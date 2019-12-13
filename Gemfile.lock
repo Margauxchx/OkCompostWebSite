@@ -107,6 +107,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    csv (3.1.2)
     debug_inspector (0.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -297,6 +298,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  csv
   devise
   dotenv (~> 2.7)
   dotenv-rails
@@ -308,6 +310,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   letter_opener
   listen (>= 3.0.5, < 3.2)
+  nokogiri
   nyan-cat-formatter
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
