@@ -1,11 +1,18 @@
 <%= form_with(model: compost, local: true) do |form| %>
 <% if compost.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(compost.errors.count, "error") %> prohibited this compost from being saved:</h2>
-
+  <h2>Petit problème :</h2>
   <ul>
     <% compost.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+      <% if message.split.slice(0) == "Title" %>
+        <li>Le titre <%= message.split.slice(1..-1).join(" ") %></li>
+      <% elsif message.split.slice(0) == "Description" %>
+        <li>La description <%= message.split.slice(1..-1).join(" ") %></li>
+      <% elsif message.split.slice(0) == "Address" %>
+        <li>L'adresse <%= message.split.slice(1..-1).join(" ") %></li>
+      <% else %>
+        <li>Le code postal <%= message.split.slice(1..-1).join(" ") %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>
@@ -21,7 +28,7 @@
           <div class="info-form">
             <div class="form-group">
               <div class="input-group-prepend faw">
-                <%= form.text_field :title, class:"form-control", placeholder:raw("&#xf035;  Titre (obligatoire, maximum 30 caractères)")  %>
+                <%= form.text_field :title, class:"form-control", placeholder:raw("&#xf035;  Titre (obligatoire, 3 - 30 caractères)")  %>
               </div> <br>
               <div class="input-group-prepend faw">
                 <%= form.text_area :description, class:"form-control", placeholder:raw("&#xf039;  Description (obligatoire, max 160 caractères)") %>
@@ -30,7 +37,7 @@
                 <%= form.text_field :address, class:"form-control", placeholder:raw("&#xf041;  Adresse (obligatoire)")  %>
               </div><br>
               <div class="input-group-prepend faw">
-                <%= form.text_field :zipcode, class:"form-control", placeholder:raw("&#xf041;  Code postal de Paris (obligatoire)") %>
+                <%= form.text_field :zipcode, class:"form-control", placeholder:raw("&#xf041;  Code postal parisien (obligatoire)") %>
               </div><br>
 
 
