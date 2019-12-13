@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_142009) do
+ActiveRecord::Schema.define(version: 2019_12_13_082157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(version: 2019_12_11_142009) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "calendars", force: :cascade do |t|
+    t.bigint "compost_id"
+    t.string "monday", default: [], array: true
+    t.string "tuesday", default: [], array: true
+    t.string "wednesday", default: [], array: true
+    t.string "thursday", default: [], array: true
+    t.string "friday", default: [], array: true
+    t.string "saturday", default: [], array: true
+    t.string "sunday", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compost_id"], name: "index_calendars_on_compost_id"
   end
 
   create_table "composts", force: :cascade do |t|
@@ -85,17 +99,6 @@ ActiveRecord::Schema.define(version: 2019_12_11_142009) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "private_messages", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.bigint "recipient_id"
-    t.bigint "sender_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipient_id"], name: "index_private_messages_on_recipient_id"
-    t.index ["sender_id"], name: "index_private_messages_on_sender_id"
-  end
-
   create_table "result_lines", force: :cascade do |t|
     t.integer "rank", default: 0
     t.bigint "result_id"
@@ -108,7 +111,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_142009) do
 
   create_table "results", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "district"
+    t.string "district", default: ""
     t.string "composition", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -141,6 +144,16 @@ ActiveRecord::Schema.define(version: 2019_12_11_142009) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "timeslots", force: :cascade do |t|
+    t.bigint "compost_id"
+    t.integer "weekday"
+    t.string "start_time"
+    t.string "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compost_id"], name: "index_timeslots_on_compost_id"
   end
 
   create_table "users", force: :cascade do |t|
