@@ -19,57 +19,35 @@
   <div class="row mb-2 mt-4">
     <div class="col-sm-6 offset-sm-3">
       <div class="field">
-        <%= form.text_field :firstname, class: "form-control", placeholder:raw("&#xf007;  Prénom") %>
-        <br>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :lastname, class: "form-control", placeholder:raw("&#xf007;  Nom") %>
-        <br>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :username, class: "form-control", placeholder:raw("&#xf007;  Pseudo") %>
-        <br>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :email, class: "form-control", placeholder:raw("&#xf0E0;  Email") %>
-        <br>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :address, class: "form-control", placeholder:raw("&#xf041;  Adresse") %>
-        <br>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :zipcode, class: "form-control", placeholder:raw("&#xf041;  Code postal") %>
-        <br>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :city, class: "form-control", placeholder:raw("&#xf041;  Ville") %>
-        <br>
+        <%= form.text_field :firstname, class: "form-control mb-3", placeholder:raw("&#xf007;  Prénom") %>
       </div>
       <div class="field">
-        <%= form.text_field :country, class: "form-control", placeholder:raw("&#xf041;  Pays") %>
-        <br>
+        <%= form.text_field :lastname, class: "form-control mb-3", placeholder:raw("&#xf007;  Nom") %>
       </div>
-
       <div class="field">
-        <%= form.text_field :avatar_url, class: "form-control", placeholder:raw("&#xf030;  Photo de profil") %>
-        <br>
+        <%= form.text_field :username, class: "form-control mb-3", placeholder:raw("&#xf007;  Pseudo") %>
       </div>
-
+      <div class="field">
+        <%= form.text_field :email, class: "form-control mb-3", placeholder:raw("&#xf0E0;  Email") %>
+      </div>
+      <div class="field">
+        <%= form.text_field :address, class: "form-control mb-3", placeholder:raw("&#xf041;  Adresse") %>
+      </div>
+      <div class="field">
+        <%= form.text_field :zipcode, class: "form-control mb-3", placeholder:raw("&#xf041;  Code postal") %>
+      </div>
+      <div class="field">
+        <%= form.text_field :city, class: "form-control mb-3", placeholder:raw("&#xf041;  Ville") %>
+      </div>
+      <div class="field">
+        <%= form.text_field :country, class: "form-control mb-3", placeholder:raw("&#xf041;  Pays") %>
+      </div>
       <div class="faw my-2">
         <h6 class="mr-2">Choisir votre avatar :</h6>
         <%= form.file_field :avatar %>
       </div>
-
       <div class="actions mt-3">
-        <button class="btn btn-primary">Modifier</button>
-        <br>
+        <button class="btn btn-primary mb-3">Modifier</button>
       </div>
     </div>
   </div>
