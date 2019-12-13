@@ -1,0 +1,29 @@
+<h4>Ajouter un créneau :</h4>
+<%= form_tag compost_timeslots_path(@compost), method:"post" do %>
+
+  <div class="field">
+    <%= label_tag :weekday, "Jour : " %>
+    <%= select_tag('timeslot[weekday]', options_for_select([
+      ["Lundi", 1], ["Mardi", 2], ["Mercredi", 3],["Jeudi", 4],["Vendredi", 5], ["Samedi", 6], ["Dimanche", 7]
+      ]))
+    %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :start_time, "Heure de début :" %>
+    <%= text_field_tag('timeslot[start_time]', nil, placeholder: 'ex. 07:30')
+    %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :end_time, "Heure de fin : (doit être postérieure à l'heure de début)" %>
+    <%= text_field_tag('timeslot[end_time]', nil, placeholder: 'ex. 07:45')
+    %>
+  </div>
+
+  <%= hidden_field_tag('timeslot[compost_id]', @compost.id) %>
+
+  <div class="actions">
+    <%= submit_tag "Ajouter le créneau", class:"btn btn-sm btn-outline-success" %>
+  </div>
+<% end %>

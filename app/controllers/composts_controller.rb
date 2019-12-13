@@ -14,6 +14,7 @@ class CompostsController < ApplicationController
   # GET /composts/1
   def show
     @contributions = @compost.contributions
+    @slots = @compost.timeslots.order(:weekday, :start_time)
   end
 
   # GET /composts/new

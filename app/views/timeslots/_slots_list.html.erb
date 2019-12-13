@@ -1,0 +1,19 @@
+<table class="table table-hover table-border">
+  <thead>
+    <th>Jour</th>
+    <th class='text-center' colspan="100%">Créneaux</th>
+  </thead>
+  <% ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"].each_with_index do |day, index| %>
+    <tr>
+      <th><%= day %></th>
+      <% @compost.timeslots.each do |timeslot| %>
+        <% if timeslot.weekday == index + 1 %>
+          <td>
+            <%= timeslot.nice_slot %>
+          </td>
+        <% end %>
+      <% end %>
+      <td colspan='100%'></td>
+    </tr>
+  <% end %>
+</table>
