@@ -189,12 +189,20 @@ body {
 }
 
 footer {
-  position: absolute; 
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: #ADCE4B;
   color: #FFF;
+}
+
+.linkfooter1{
+  margin-left: 3rem
+}
+
+.linkfooter2{
+  margin-left: 7rem
 }
 
 .footer-copyright {
@@ -203,10 +211,9 @@ footer {
 }
 
 * {
-  -moz-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 
 .team > .row {
   padding-top: 25px;
