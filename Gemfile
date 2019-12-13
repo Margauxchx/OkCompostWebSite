@@ -49,6 +49,10 @@ group :development, :test do
   gem 'rspec-rails'
   # Replace fixtures
   gem 'factory_bot_rails'
+  #for scrapping
+  gem 'nokogiri'
+  #for using csv
+  gem 'csv'
 end
 
 group :development do
