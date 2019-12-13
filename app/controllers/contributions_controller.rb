@@ -40,26 +40,6 @@ class ContributionsController < ApplicationController
     redirect_to compost_path(@compost)
   end
 
-    def accept
-        @contribution = Contribution.find(params[:contribution_id])
-        @compost = @contribution.supplied_compost
-        @contribution.accepted!
-        @compost.filling += contribution_default_quantity
-        @compost.save!
-        flash[:success] = "La contribution a bien été acceptée"
-        redirect_to compost_path(@compost.id)
-      UserMailer.valid_contribution_email(@contribution).deliver_now
-    end 
-
-    def reject
-        @contribution = Contribution.find(params[:contribution_id])
-        @compost = @contribution.supplied_compost 
-        @contribution.rejected!
-        flash[:alert] = "La contribution a été refusée"
-        redirect_to compost_path(@compost.id)
-       UserMailer.reject_contribution_email(@contribution).deliver_now
-    end 
-
   private
 
   def contribution_params

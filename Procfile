@@ -1,2 +1,2 @@
-realease: rails db:migrate && rails db:seed
+realease: rails db:migrate
 web: rails server

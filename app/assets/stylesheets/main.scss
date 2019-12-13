@@ -1,4 +1,4 @@
-footer,.link_to, .btn-primary {
+footer,.link_to,.btn-primary {
   color: #fff;
   background-color: #ADCE4B;
   border-color: #ADCE4B;
@@ -162,6 +162,10 @@ body{
   width: 100%;
 }
 
+body {
+  min-height: 100%;
+  position: relative;
+}
 
 .h3-up {
   text-transform: uppercase;
@@ -177,23 +181,12 @@ body{
   color: black;
 }
 
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
 .search-card {
   max-width: 20rem;
 }
 
 footer {
-  position: relative; 
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
@@ -207,10 +200,9 @@ footer {
 }
 
 * {
-  -moz-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 
 .team > .row {
   padding-top: 25px;

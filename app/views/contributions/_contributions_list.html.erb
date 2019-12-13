@@ -1,20 +1,22 @@
 <div class="container">
-<div class="tab-pane" id="contributions_list">
+  <div class="tab-pane" id="contributions_list">
     <table class="table table-hover table">
-    <thead class='thead-light'>
+      <thead class='thead-light'>
         <tr>
-        <th><h4 class='text-secondary'>Contributeur</h4></th>  
-        <th><h4 class='text-secondary'>Date souhaitée</h4></th>  
-        <th><h4 class='text-secondary'>Statut</h4></th>              
-        <th><h4 class='text-secondary'></h4></th>              
+          <th>
+            <h4 class='text-secondary'>Contributeur</h4>
+          </th>
+          <th>
+            <h4 class='text-secondary'>Actions</h4>
+          </th>
         </tr>
-    </thead> 
-    <tbody>
-        <% @contributions.each do |contribution| %>
-        <tr>
-            <th><h3 class='text-secondary'><%= contribution.contributor.username %></h3></th>
-            <th><h3 class='text-secondary'><%= contribution.contribution_date %></h3></th>
-            <th><h3 class='text-secondary'><%= contribution.status %></h3></th>
+      </thead>
+      <tbody>
+        <% @contributions.reject { |contribution| contribution.accepted? || contribution.rejected? }.each do |contribution| %>
+          <tr>
+            <th>
+              <h3 class='text-secondary'><%= contribution.contributor.username %></h3>
+            </th>
             <td>
               <div class="btn-group", role="group">
                 <%= button_to "Accepter",
@@ -22,7 +24,6 @@
                   { :method => :patch, :params => { :contribution => { :status_action => "accept" } } ,
                   :class => "btn btn-success mx-1" } 
                 %>
-
                 <%= button_to "Rejeter",
                   compost_contribution_path(contribution.supplied_compost, contribution),
                   { :method => :patch, :params => { :contribution => { :status_action => "reject" } } ,
@@ -30,9 +31,9 @@
                 %>
               </diV>
             </td>
-        </tr>
+          </tr>
         <% end %>
-    </tbody>
+      </tbody>
     </table>
-</div> 
+  </div>
 </div>
