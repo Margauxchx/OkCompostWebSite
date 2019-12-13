@@ -28,7 +28,7 @@
               </div>
 
               <div>
-                <%= select_tag("result[search_mode]", options_for_select([['Recherche normale', 'normal'], ['Recherche stricte', 'strict'], ['Recherche cool', 'cool']]), class: "form-control-welcome mb-2") %>
+                <%= select_tag("result[search_mode]", options_for_select([['Recherche normale', 'normal'], ['Recherche stricte (uniquement les critères)', 'strict'], ['Recherche cool (au moins un critère)', 'cool']]), class: "form-control-welcome mb-2") %>
               </div>
               
               <div class="row mt-2 mb-3">

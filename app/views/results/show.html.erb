@@ -19,8 +19,11 @@
   <div id="result-page" class="row">
     <div class="col-6 h-100">
       <div id='search-results'class="row">
+        <% if @result.result_lines.length == 0 %>
+          <h2 class="ml-5">Il n'y a aucun résultat pour cette recherche...</h2>
+        <% end %>
         <% @result.result_lines.each do |result_line| %>
-            <%= render result_line %>
+          <%= render result_line %>
         <% end %>
       </div>
     </div>

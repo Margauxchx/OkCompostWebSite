@@ -62,6 +62,11 @@ footer,.link_to, .btn-primary {
 	align-items: center;
 }
 
+.jumbotron-row {
+  height: 100%;
+  align-items: center;
+}
+
 .logo {
   height: 100%;
 }
@@ -288,7 +293,7 @@ hr {
   width: 450px;
   border: 2px solid #ED8374;
   border-radius: 10px;
-  padding: 7px 7px 0 10px;
+  padding: 15px 7px 0 15px;
   margin : auto;
   margin-top: 20px;
   background-color: #EDDAD7;
@@ -305,6 +310,51 @@ hr {
 
 #result-cont {
   margin-left: 20px;
+}
+
+.small-jumbotron {
+  background: url(asset-path('vegetables.jpg'));
+  background-size: cover;
+  background-position: center;
+    position:relative;
+    min-width:100%;
+    height:100%;
+    min-height: 40vh;
+}
+
+#small-jumbotron {
+  background: url(asset-path('vegetables.jpg'));
+  background-size: cover;
+  background-position: center;
+    position:relative;
+    min-width:100%;
+    height:100%;
+    min-height: 25vh;
+}
+
+#small-jumbotron-title {
+  padding-top: 6vh;
+  color: white;
+}
+
+#small-jumbotron-title-faq {
+  padding-top: 6vh;
+  color: white;
+}
+
+#small-jumbotron-faq {
+  background: url(asset-path('vegetables.jpg'));
+  background-size: cover;
+  background-position: center;
+    position:relative;
+    min-width:100%;
+    height:100%;
+    min-height: 25vh;
+}
+
+.small-jumbotron-title {
+  padding-top: 7vh;
+  color: white;
 }
 
 .progress-bar-vertical {
