@@ -32,7 +32,18 @@
       </div>
     <% end %>
 
+    <!-- Static pages link-->
+
     <%= link_to 'Faq', page_path('faq'), class: "text nav-link" %>
+
+    <!-- Notification for unread messages -->
+
+    <% if @conversations != nil && @unread_conversations != 0%>
+      <%= link_to user_path(current_user.id), class: "btn btn-link" do %>
+        <span><%= @unread_conversations.length %></span>
+        <i class="fas fa-envelope"></i>
+      <% end %>
+    <% end %>
 
     <!-- Dropdown menu for log in and Co-->
 
