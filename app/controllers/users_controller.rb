@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: "Votre compote a bien été crée, bienvenue !" }
       else
         format.html { render :new }
       end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.avatar.attach(params[:avatar]) if params[:avatar]
         @user.save()
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Votre profil a été mis à jour.' }
       else
         format.html { render :edit }
       end
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'Votre compte a bien été supprimé. On espère vous revoir bientôt :)' }
     end
   end
 
